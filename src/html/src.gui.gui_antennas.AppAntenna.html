@@ -1,0 +1,1336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>src.gui.gui_antennas.AppAntenna</title>
+    <meta name="generator" content="pydoctor 22.4.0.dev0"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default">
+  
+  <div class="container">
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          src <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="search-help-button" title="Help" onclick="toggleSearchHelpText()"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+      
+            Search bar offers the following options:
+            <ul>   
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that 
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li> 
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li> 
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects 
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents 
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+    
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="class"><code><code><a href="index.html" class="internal-link">src</a></code><wbr></wbr>.<code><a href="src.gui.html" class="internal-link" title="src.gui">gui</a></code><wbr></wbr>.<code><a href="src.gui.gui_antennas.html" class="internal-link" title="src.gui.gui_antennas">gui_antennas</a></code><wbr></wbr>.<code><a href="src.gui.gui_antennas.AppAntenna.html" class="internal-link" title="src.gui.gui_antennas.AppAntenna">AppAntenna</a></code></code></h1>
+        <div id="showPrivate">
+          <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+        </div>
+      </div>
+
+      <div class="categoryHeader">
+        class documentation
+      </div>
+
+      <div class="extrasDocstring">
+        <p><code><span class="py-keyword">class</span> <span class="py-defname">AppAntenna</span>:</code></p>
+        <p><a href="classIndex.html#src.gui.gui_antennas.AppAntenna">View In Hierarchy</a></p>
+      </div>
+
+      <div class="moduleDocstring">
+        <div>This class is the form for the configuration of the antenna.</div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id26">
+  
+  
+  <tr class="class">
+    
+    <td>Class</td>
+    <td><code><a href="src.gui.gui_antennas.AppAntenna.dFrame.html" class="internal-link" title="src.gui.gui_antennas.AppAntenna.dFrame">d​Frame</a></code></td>
+    <td>Auxiliary class to enable and disable a tkinter frame.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="src.gui.gui_antennas.AppAntenna.__init__">__init__</a></code></td>
+    <td>The constructor of the AppAntenna Class.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#cmd_element_pattern" class="internal-link" title="src.gui.gui_antennas.AppAntenna.cmd_element_pattern">cmd​_element​_pattern</a></code></td>
+    <td>This method is called if the user press the button to plot the radiation pattern.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#cmd_pattern_array" class="internal-link" title="src.gui.gui_antennas.AppAntenna.cmd_pattern_array">cmd​_pattern​_array</a></code></td>
+    <td>This method is called if the user press the button to plot the array factor and radiation pattern.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#cmd_rb3gpp" class="internal-link" title="src.gui.gui_antennas.AppAntenna.cmd_rb3gpp">cmd​_rb3gpp</a></code></td>
+    <td>This method is called if the user click the 3gpp radio button.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#cmd_rbiso" class="internal-link" title="src.gui.gui_antennas.AppAntenna.cmd_rbiso">cmd​_rbiso</a></code></td>
+    <td>This method is called if the user click the isotropic radio button.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#cmd_select" class="internal-link" title="src.gui.gui_antennas.AppAntenna.cmd_select">cmd​_select</a></code></td>
+    <td>This method is called if the user click the Select scenario button.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#gui_antenna_array" class="internal-link" title="src.gui.gui_antennas.AppAntenna.gui_antenna_array">gui​_antenna​_array</a></code></td>
+    <td>This method configures the antenna array part of the form.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#gui_antenna_element" class="internal-link" title="src.gui.gui_antennas.AppAntenna.gui_antenna_element">gui​_antenna​_element</a></code></td>
+    <td>This method selcts and configures the antenna elements.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#gui_array_factor" class="internal-link" title="src.gui.gui_antennas.AppAntenna.gui_array_factor">gui​_array​_factor</a></code></td>
+    <td>This method configures the additional rotation angles for the LOS beamforming.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#gui_configuration" class="internal-link" title="src.gui.gui_antennas.AppAntenna.gui_configuration">gui​_configuration</a></code></td>
+    <td>This method builds the main form to enter the data</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#A_max" class="internal-link" title="src.gui.gui_antennas.AppAntenna.A_max">​A_max</a></code></td>
+    <td>Front-back ratio in db. Defualt value 30 db.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ant_type" class="internal-link" title="src.gui.gui_antennas.AppAntenna.ant_type">ant​_type</a></code></td>
+    <td>Antenna type. Value 1 for Isotropic, value 2 for 3gpp model.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#antenna_name" class="internal-link" title="src.gui.gui_antennas.AppAntenna.antenna_name">antenna​_name</a></code></td>
+    <td>The name of the antenna.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#beam" class="internal-link" title="src.gui.gui_antennas.AppAntenna.beam">beam</a></code></td>
+    <td>Beamwidth of the antenna in degrees. Default 65 degrees.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#bearing" class="internal-link" title="src.gui.gui_antennas.AppAntenna.bearing">bearing</a></code></td>
+    <td>Bearing angle of the transformation of the local coordinate system (LCS) to a global coordinate system(GCS). See section 7.1.3 of 3GPP TR 38.901</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#cols" class="internal-link" title="src.gui.gui_antennas.AppAntenna.cols">cols</a></code></td>
+    <td>The number of columns of the panel.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#dh" class="internal-link" title="src.gui.gui_antennas.AppAntenna.dh">dh</a></code></td>
+    <td>The antenna elements are uniformly spaced in the horizontal direction with a spacing of dh. In number of wavelength.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#downtilt" class="internal-link" title="src.gui.gui_antennas.AppAntenna.downtilt">downtilt</a></code></td>
+    <td>Downtilt angle of the transformation of the local coordinate system (LCS) to a global coordinate system(GCS). See section 7.1.3 of 3GPP TR 38.901</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#dv" class="internal-link" title="src.gui.gui_antennas.AppAntenna.dv">dv</a></code></td>
+    <td>The antenna elements are uniformly spaced in the vertical direction with a spacing of dv. In number of wavelength.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ent_A_max_3gpp" class="internal-link" title="src.gui.gui_antennas.AppAntenna.ent_A_max_3gpp">ent_​A_max_3gpp</a></code></td>
+    <td>The tkinter Entry object to enter the Front-back ratio in db.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ent_beam_3gpp" class="internal-link" title="src.gui.gui_antennas.AppAntenna.ent_beam_3gpp">ent​_beam​_3gpp</a></code></td>
+    <td>The tkinter Entry object to enter the beamwidth in degrees of the 3gpp antenna element.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ent_bearing" class="internal-link" title="src.gui.gui_antennas.AppAntenna.ent_bearing">ent​_bearing</a></code></td>
+    <td>The tkinter Entry object to enter the bearing angle of the antenna array.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ent_cols" class="internal-link" title="src.gui.gui_antennas.AppAntenna.ent_cols">ent​_cols</a></code></td>
+    <td>The tkinter Entry object to enter the number of columns of the antenna array.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ent_dh" class="internal-link" title="src.gui.gui_antennas.AppAntenna.ent_dh">ent​_dh</a></code></td>
+    <td>The tkinter Entry object to enter the horizontal distance between elements of the antenna array.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ent_downtilt" class="internal-link" title="src.gui.gui_antennas.AppAntenna.ent_downtilt">ent​_downtilt</a></code></td>
+    <td>The tkinter Entry object to enter the downtilt angle of the antenna array.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ent_dv" class="internal-link" title="src.gui.gui_antennas.AppAntenna.ent_dv">ent​_dv</a></code></td>
+    <td>The tkinter Entry object to enter the vertical distance between elements of the antenna array.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ent_gain_3gpp" class="internal-link" title="src.gui.gui_antennas.AppAntenna.ent_gain_3gpp">ent​_gain​_3gpp</a></code></td>
+    <td>The tkinter Entry object to enter the gain of the 3gpp antenna element.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ent_gain_iso" class="internal-link" title="src.gui.gui_antennas.AppAntenna.ent_gain_iso">ent​_gain​_iso</a></code></td>
+    <td>The tkinter Entry object to enter the gain of the isotropic antenna element.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ent_phi" class="internal-link" title="src.gui.gui_antennas.AppAntenna.ent_phi">ent​_phi</a></code></td>
+    <td>The tkinter Entry object to enter the azimuth additional rotation angle for LOS beamforming.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ent_rows" class="internal-link" title="src.gui.gui_antennas.AppAntenna.ent_rows">ent​_rows</a></code></td>
+    <td>The tkinter Entry object to enter the number of rows of the antenna array.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ent_SLA_v_3gpp" class="internal-link" title="src.gui.gui_antennas.AppAntenna.ent_SLA_v_3gpp">ent_​SLA_v_3gpp</a></code></td>
+    <td>The tkinter Entry object to enter the Slidelobe level limit in db.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ent_slant" class="internal-link" title="src.gui.gui_antennas.AppAntenna.ent_slant">ent​_slant</a></code></td>
+    <td>The tkinter Entry object to enter the slant angle of the antenna array.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ent_theta" class="internal-link" title="src.gui.gui_antennas.AppAntenna.ent_theta">ent​_theta</a></code></td>
+    <td>The tkinter Entry object to enter the inclination additional rotation angle for LOS beamforming.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#frm_3gpp" class="internal-link" title="src.gui.gui_antennas.AppAntenna.frm_3gpp">frm​_3gpp</a></code></td>
+    <td>The frame to group the 3gpp antenna element configuration.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#frm_isotropic" class="internal-link" title="src.gui.gui_antennas.AppAntenna.frm_isotropic">frm​_isotropic</a></code></td>
+    <td>The frame to group the isotropic antenna element configuration.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#function_cbk" class="internal-link" title="src.gui.gui_antennas.AppAntenna.function_cbk">function​_cbk</a></code></td>
+    <td>The callback function to return when the user press OK button.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#gain_3gpp" class="internal-link" title="src.gui.gui_antennas.AppAntenna.gain_3gpp">gain​_3gpp</a></code></td>
+    <td>Maximum directional gain of the 3gpp antenna model. default value 8db.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#gain_iso" class="internal-link" title="src.gui.gui_antennas.AppAntenna.gain_iso">gain​_iso</a></code></td>
+    <td>Maximum directional gain of the isotropic antenna model. default value 8db.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#phi" class="internal-link" title="src.gui.gui_antennas.AppAntenna.phi">phi</a></code></td>
+    <td>The azimuth additional rotation angle for beamforming.Default 0 radians.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#rows" class="internal-link" title="src.gui.gui_antennas.AppAntenna.rows">rows</a></code></td>
+    <td>The number of rows of the panel.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#SLA_v" class="internal-link" title="src.gui.gui_antennas.AppAntenna.SLA_v">​SLA_v</a></code></td>
+    <td>Slidelobe level limit in db. Default 30 db.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#slant" class="internal-link" title="src.gui.gui_antennas.AppAntenna.slant">slant</a></code></td>
+    <td>Slant angle of the transformation of the local coordinate system (LCS) to a global coordinate system(GCS). See section 7.1.3 of 3GPP TR 38.901</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#theta" class="internal-link" title="src.gui.gui_antennas.AppAntenna.theta">theta</a></code></td>
+    <td>The inclination additional rotation angle for beamforming.Default 0 radians.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#v" class="internal-link" title="src.gui.gui_antennas.AppAntenna.v">v</a></code></td>
+    <td>This variable store the type of the antenna element.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#var" class="internal-link" title="src.gui.gui_antennas.AppAntenna.var">var</a></code></td>
+    <td>This variable store the type of the antenna element.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#window" class="internal-link" title="src.gui.gui_antennas.AppAntenna.window">window</a></code></td>
+    <td>The main window of this form.</td>
+  </tr>
+</table>
+        
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basemethod">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span>(self, window, function_cbk, title, name=<span class="rst-variable-quote">'</span><span class="rst-variable-string"> </span><span class="rst-variable-quote">'</span>, rows=1, cols=2, dh=0.5, dv=0.5, bearing=0, downtilt=0, slant=0, phi=0, theta=0, gain_iso=8, gain_3gpp=8, SLA_v=30, A_max=30, beam=65, ant_type=1):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>The constructor of the AppAntenna Class.<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">window:</span>tkinter.Tk() window.</td><td class="fieldArgDesc">The main window of this form.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">function​_cbk:</span>python function.</td><td class="fieldArgDesc">The callback function to return when the user press OK button.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">title:</span>string</td><td class="fieldArgDesc">The title of the form.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">name:</span>string</td><td class="fieldArgDesc">The name of the antenna.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">rows:</span>float .</td><td class="fieldArgDesc">The number of rows of the panel.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">cols:</span>float .</td><td class="fieldArgDesc">The number of columns of the panel.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">dh:</span>float.</td><td class="fieldArgDesc">The antenna elements are uniformly spaced in the horizontal direction with a spacing of dh. In number of wavelength.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">dv:</span>float.</td><td class="fieldArgDesc">The antenna elements are uniformly spaced in the vertical direction with a spacing of dv. In number of wavelength.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">bearing:</span>float .</td><td class="fieldArgDesc">Bearing angle of the transformation of the local coordinate system (LCS) to a global coordinate system(GCS). See section 7.1.3 of 3GPP TR 38.901</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">downtilt:</span>float .</td><td class="fieldArgDesc">Downtilt angle of the transformation of the local coordinate system to a global coordinate system. See section 7.1.3 of 3GPP TR 38.901</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">slant:</span>float .</td><td class="fieldArgDesc">Slant angle of the transformation of the local coordinate system to a global coordinate system. See section 7.1.3 of 3GPP TR 38.901</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">phi:</span>float.</td><td class="fieldArgDesc">The azimuth additional rotation angle for beamforming.Default 0 radians.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">theta:</span>float.</td><td class="fieldArgDesc">The inclination aditional rotation angle for beamforming. Default 0 radians.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">gain​_iso:</span>float .</td><td class="fieldArgDesc">Maximum directional gain of the isotropic antenna model. default value 8db.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">gain​_3gpp:</span>float .</td><td class="fieldArgDesc">Maximum directional gain of the 3gpp antenna model. Default value in 3GPP TR 38.901 value 8 db.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">​SLA_v:</span>float .</td><td class="fieldArgDesc">Slidelobe level limit in db. Default 30 db.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">​A_max:</span>float .</td><td class="fieldArgDesc">Front-back ratio in db. Defualt value 30 db.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">beam:</span>float .</td><td class="fieldArgDesc">Beamwidth of the antenna in degrees. Default 65 degrees.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">ant​_type:</span>int</td><td class="fieldArgDesc">Antenna type. Value 1 for Isotropic, value 2 for 3gpp model.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.cmd_element_pattern">
+    
+  </a>
+  <a name="cmd_element_pattern">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">cmd_element_pattern</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>This method is called if the user press the button to plot the radiation pattern.</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.cmd_pattern_array">
+    
+  </a>
+  <a name="cmd_pattern_array">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">cmd_pattern_array</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>This method is called if the user press the button to plot the array factor and radiation pattern.</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.cmd_rb3gpp">
+    
+  </a>
+  <a name="cmd_rb3gpp">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">cmd_rb3gpp</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>This method is called if the user click the 3gpp radio button.</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.cmd_rbiso">
+    
+  </a>
+  <a name="cmd_rbiso">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">cmd_rbiso</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>This method is called if the user click the isotropic radio button.</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.cmd_select">
+    
+  </a>
+  <a name="cmd_select">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">cmd_select</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>This method is called if the user click the Select scenario button.</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.gui_antenna_array">
+    
+  </a>
+  <a name="gui_antenna_array">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">gui_antenna_array</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>This method configures the antenna array part of the form.</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.gui_antenna_element">
+    
+  </a>
+  <a name="gui_antenna_element">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">gui_antenna_element</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>This method selcts and configures the antenna elements.</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.gui_array_factor">
+    
+  </a>
+  <a name="gui_array_factor">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">gui_array_factor</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>This method configures the additional rotation angles for the LOS beamforming.</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.gui_configuration">
+    
+  </a>
+  <a name="gui_configuration">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">gui_configuration</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>This method builds the main form to enter the data</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.A_max">
+    
+  </a>
+  <a name="A_max">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">A_max</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Front-back ratio in db. Defualt value 30 db.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.ant_type">
+    
+  </a>
+  <a name="ant_type">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ant_type</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Antenna type. Value 1 for Isotropic, value 2 for 3gpp model.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.antenna_name">
+    
+  </a>
+  <a name="antenna_name">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">antenna_name</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The name of the antenna.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.beam">
+    
+  </a>
+  <a name="beam">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">beam</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Beamwidth of the antenna in degrees. Default 65 degrees.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.bearing">
+    
+  </a>
+  <a name="bearing">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">bearing</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Bearing angle of the transformation of the local coordinate system (LCS) to a global coordinate system(GCS). See section 7.1.3 of 3GPP TR 38.901</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.cols">
+    
+  </a>
+  <a name="cols">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">cols</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The number of columns of the panel.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.dh">
+    
+  </a>
+  <a name="dh">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">dh</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The antenna elements are uniformly spaced in the horizontal direction with a spacing of dh. In number of wavelength.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.downtilt">
+    
+  </a>
+  <a name="downtilt">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">downtilt</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Downtilt angle of the transformation of the local coordinate system (LCS) to a global coordinate system(GCS). See section 7.1.3 of 3GPP TR 38.901</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.dv">
+    
+  </a>
+  <a name="dv">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">dv</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The antenna elements are uniformly spaced in the vertical direction with a spacing of dv. In number of wavelength.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.ent_A_max_3gpp">
+    
+  </a>
+  <a name="ent_A_max_3gpp">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ent_A_max_3gpp</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The tkinter Entry object to enter the Front-back ratio in db.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.ent_beam_3gpp">
+    
+  </a>
+  <a name="ent_beam_3gpp">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ent_beam_3gpp</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The tkinter Entry object to enter the beamwidth in degrees of the 3gpp antenna element.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.ent_bearing">
+    
+  </a>
+  <a name="ent_bearing">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ent_bearing</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The tkinter Entry object to enter the bearing angle of the antenna array.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.ent_cols">
+    
+  </a>
+  <a name="ent_cols">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ent_cols</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The tkinter Entry object to enter the number of columns of the antenna array.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.ent_dh">
+    
+  </a>
+  <a name="ent_dh">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ent_dh</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The tkinter Entry object to enter the horizontal distance between elements of the antenna array.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.ent_downtilt">
+    
+  </a>
+  <a name="ent_downtilt">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ent_downtilt</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The tkinter Entry object to enter the downtilt angle of the antenna array.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.ent_dv">
+    
+  </a>
+  <a name="ent_dv">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ent_dv</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The tkinter Entry object to enter the vertical distance between elements of the antenna array.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.ent_gain_3gpp">
+    
+  </a>
+  <a name="ent_gain_3gpp">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ent_gain_3gpp</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The tkinter Entry object to enter the gain of the 3gpp antenna element.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.ent_gain_iso">
+    
+  </a>
+  <a name="ent_gain_iso">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ent_gain_iso</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The tkinter Entry object to enter the gain of the isotropic antenna element.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.ent_phi">
+    
+  </a>
+  <a name="ent_phi">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ent_phi</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The tkinter Entry object to enter the azimuth additional rotation angle for LOS beamforming.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.ent_rows">
+    
+  </a>
+  <a name="ent_rows">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ent_rows</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The tkinter Entry object to enter the number of rows of the antenna array.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.ent_SLA_v_3gpp">
+    
+  </a>
+  <a name="ent_SLA_v_3gpp">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ent_SLA_v_3gpp</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The tkinter Entry object to enter the Slidelobe level limit in db.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.ent_slant">
+    
+  </a>
+  <a name="ent_slant">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ent_slant</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The tkinter Entry object to enter the slant angle of the antenna array.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.ent_theta">
+    
+  </a>
+  <a name="ent_theta">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ent_theta</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The tkinter Entry object to enter the inclination additional rotation angle for LOS beamforming.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.frm_3gpp">
+    
+  </a>
+  <a name="frm_3gpp">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">frm_3gpp</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The frame to group the 3gpp antenna element configuration.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.frm_isotropic">
+    
+  </a>
+  <a name="frm_isotropic">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">frm_isotropic</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The frame to group the isotropic antenna element configuration.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.function_cbk">
+    
+  </a>
+  <a name="function_cbk">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">function_cbk</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The callback function to return when the user press OK button.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.gain_3gpp">
+    
+  </a>
+  <a name="gain_3gpp">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">gain_3gpp</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Maximum directional gain of the 3gpp antenna model. default value 8db.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.gain_iso">
+    
+  </a>
+  <a name="gain_iso">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">gain_iso</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Maximum directional gain of the isotropic antenna model. default value 8db.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.phi">
+    
+  </a>
+  <a name="phi">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">phi</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The azimuth additional rotation angle for beamforming.Default 0 radians.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.rows">
+    
+  </a>
+  <a name="rows">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">rows</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The number of rows of the panel.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.SLA_v">
+    
+  </a>
+  <a name="SLA_v">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">SLA_v</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Slidelobe level limit in db. Default 30 db.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.slant">
+    
+  </a>
+  <a name="slant">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">slant</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Slant angle of the transformation of the local coordinate system (LCS) to a global coordinate system(GCS). See section 7.1.3 of 3GPP TR 38.901</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.theta">
+    
+  </a>
+  <a name="theta">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">theta</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The inclination additional rotation angle for beamforming.Default 0 radians.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.v">
+    
+  </a>
+  <a name="v">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">v</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>This variable store the type of the antenna element.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.var">
+    
+  </a>
+  <a name="var">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">var</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>This variable store the type of the antenna element.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.gui.gui_antennas.AppAntenna.window">
+    
+  </a>
+  <a name="window">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">window</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The main window of this form.</div>
+    
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for src,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    22.4.0.dev0 at 2022-07-25 10:55:29.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

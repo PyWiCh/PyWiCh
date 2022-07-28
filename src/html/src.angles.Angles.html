@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>src.angles.Angles</title>
+    <meta name="generator" content="pydoctor 22.4.0.dev0"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default">
+  
+  <div class="container">
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          src <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="search-help-button" title="Help" onclick="toggleSearchHelpText()"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+      
+            Search bar offers the following options:
+            <ul>   
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that 
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li> 
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li> 
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects 
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents 
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+    
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="class"><code><code><a href="index.html" class="internal-link">src</a></code><wbr></wbr>.<code><a href="src.angles.html" class="internal-link" title="src.angles">angles</a></code><wbr></wbr>.<code><a href="src.angles.Angles.html" class="internal-link" title="src.angles.Angles">Angles</a></code></code></h1>
+        <div id="showPrivate">
+          <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+        </div>
+      </div>
+
+      <div class="categoryHeader">
+        class documentation
+      </div>
+
+      <div class="extrasDocstring">
+        <p><code><span class="py-keyword">class</span> <span class="py-defname">Angles</span>:</code></p>
+        <p><a href="classIndex.html#src.angles.Angles">View In Hierarchy</a></p>
+      </div>
+
+      <div class="moduleDocstring">
+        <div>This class gives variables and methods to work with 3D angles</div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id3">
+  
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="src.angles.Angles.__init__">__init__</a></code></td>
+    <td>Angles class cosntructor.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_angles_vectors" class="internal-link" title="src.angles.Angles.get_angles_vectors">get​_angles​_vectors</a></code></td>
+    <td>This method computes the angles between two vectors a and b.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_azimuth" class="internal-link" title="src.angles.Angles.get_azimuth">get​_azimuth</a></code></td>
+    <td>This method gets the azimuth angle in radians.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_azimuth_degrees" class="internal-link" title="src.angles.Angles.get_azimuth_degrees">get​_azimuth​_degrees</a></code></td>
+    <td>This method gets the azimuth angle in degrees. @return: the azimuth angle in degrees.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_distance3D" class="internal-link" title="src.angles.Angles.get_distance3D">get_distance3​D</a></code></td>
+    <td>This method computes the distance between two 3D vectors.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_inclination" class="internal-link" title="src.angles.Angles.get_inclination">get​_inclination</a></code></td>
+    <td>This method gets the inclination angle in radians.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_inclination_degrees" class="internal-link" title="src.angles.Angles.get_inclination_degrees">get​_inclination​_degrees</a></code></td>
+    <td>This method gets the inclination angle in degrees. @return: the inclination angle in degrees.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#wrap_angles3gpp" class="internal-link" title="src.angles.Angles.wrap_angles3gpp">wrap​_angles3gpp</a></code></td>
+    <td>This method wraps the azimuth to [0,2pi] and the inclination to [0,pi]</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#wrap_to_2pi" class="internal-link" title="src.angles.Angles.wrap_to_2pi">wrap​_to​_2pi</a></code></td>
+    <td>This method wraps an angle to [0,2pi].</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#phi" class="internal-link" title="src.angles.Angles.phi">phi</a></code></td>
+    <td>Azimuth angle .</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#theta" class="internal-link" title="src.angles.Angles.theta">theta</a></code></td>
+    <td>AInclination angle .</td>
+  </tr>
+</table>
+        
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basemethod">
+  
+  
+  <a name="src.angles.Angles.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span>(self, phi, theta):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Angles class cosntructor.</p>
+<p>This method constructs an Angles object given the azimuth and inclination angles. The azimuth (phi) is measure in the horizontal plane xy from the axe x positive to axe y positive and the inclination (theta) is measure in the vertical plane from axe z positive to the horizontal plane.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">phi:</span>float in radians.</td><td class="fieldArgDesc">azimuth angle.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">theta:</span>float in radians.</td><td class="fieldArgDesc">inclination angle.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.angles.Angles.get_angles_vectors">
+    
+  </a>
+  <a name="get_angles_vectors">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_angles_vectors</span>(self, a, b):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>This method computes the angles between two vectors a and b.</p>
+<p>This method calculates the angles phi and theta of the vector a-b. The method set the class variables phi and theta and return phi and theta</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">a:</span>1D numpy array, size 3 .</td><td class="fieldArgDesc">first vector.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">b:</span>1D numpy array, size 3 .</td><td class="fieldArgDesc">second vector.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">phi and theta in radians.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.angles.Angles.get_azimuth">
+    
+  </a>
+  <a name="get_azimuth">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_azimuth</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>This method gets the azimuth angle in radians.<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">the azimuth angle in radians.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.angles.Angles.get_azimuth_degrees">
+    
+  </a>
+  <a name="get_azimuth_degrees">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_azimuth_degrees</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>This method gets the azimuth angle in degrees.<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">the azimuth angle in degrees.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.angles.Angles.get_distance3D">
+    
+  </a>
+  <a name="get_distance3D">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_distance3D</span>(self, a, b):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>This method computes the distance between two 3D vectors.<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">a:</span>1D numpy array, size 3 .</td><td class="fieldArgDesc">first vector.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">b:</span>1D numpy array, size 3 .</td><td class="fieldArgDesc">second vector.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">the distance between both vectors.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.angles.Angles.get_inclination">
+    
+  </a>
+  <a name="get_inclination">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_inclination</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>This method gets the inclination angle in radians.<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">the inclination angle in radians.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.angles.Angles.get_inclination_degrees">
+    
+  </a>
+  <a name="get_inclination_degrees">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_inclination_degrees</span>(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>This method gets the inclination angle in degrees.<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">the inclination angle in degrees.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.angles.Angles.wrap_angles3gpp">
+    
+  </a>
+  <a name="wrap_angles3gpp">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">wrap_angles3gpp</span>(self, azimuthRad, inclinationRad):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>This method wraps the azimuth to [0,2pi] and the inclination to [0,pi]</p>
+<p>See 3gpp eq (7.5-18). Assuming that inclination  angle of arrival (theta AOA) is wrapped within [0, 360°], if theta AOA is within [180, 360°], then theta AOA is set to 360°-thetaAOA .</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">azimuth​Rad:</span>float.</td><td class="fieldArgDesc">the azimuth angle in radians.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">inclination​Rad:</span>float.</td><td class="fieldArgDesc">inclination angle in radians.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">the azzimuth,inclination angles in radians.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.angles.Angles.wrap_to_2pi">
+    
+  </a>
+  <a name="wrap_to_2pi">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">wrap_to_2pi</span>(self, a):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>This method wraps an angle to [0,2pi].<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">a:</span>float.</td><td class="fieldArgDesc">the angle to be wrapped in radians.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">the wrapped angle in radians.</td></tr></table></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.angles.Angles.phi">
+    
+  </a>
+  <a name="phi">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">phi</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Azimuth angle .</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.angles.Angles.theta">
+    
+  </a>
+  <a name="theta">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">theta</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>AInclination angle .</div>
+    
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for src,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    22.4.0.dev0 at 2022-07-25 10:55:29.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

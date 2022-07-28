@@ -1,0 +1,1 @@
+""" This package has funtions for test and quality assurance of the main modules of PyWiCh. """ 

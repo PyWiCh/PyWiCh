@@ -1,0 +1,1771 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>src.scenarios.Scenario3GPPUmi</title>
+    <meta name="generator" content="pydoctor 22.4.0.dev0"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default">
+  
+  <div class="container">
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          src <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="search-help-button" title="Help" onclick="toggleSearchHelpText()"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+      
+            Search bar offers the following options:
+            <ul>   
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that 
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li> 
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li> 
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects 
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents 
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+    
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="class"><code><code><a href="index.html" class="internal-link">src</a></code><wbr></wbr>.<code><a href="src.scenarios.html" class="internal-link" title="src.scenarios">scenarios</a></code><wbr></wbr>.<code><a href="src.scenarios.Scenario3GPPUmi.html" class="internal-link" title="src.scenarios.Scenario3GPPUmi">Scenario3GPPUmi</a></code></code></h1>
+        <div id="showPrivate">
+          <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+        </div>
+      </div>
+
+      <div class="categoryHeader">
+        class documentation
+      </div>
+
+      <div class="extrasDocstring">
+        <p><code><span class="py-keyword">class</span> <span class="py-defname">Scenario3GPPUmi</span>(<a href="src.scenarios.Scenario3GPP.html" class="internal-link" title="src.scenarios.Scenario3GPP">Scenario3GPP</a>):</code></p>
+        <p><a href="classIndex.html#src.scenarios.Scenario3GPPUmi">View In Hierarchy</a></p>
+      </div>
+
+      <div class="moduleDocstring">
+        <div>This class implements the 3gpp Umi scenario defined in the standard 3GPP TR 38.901 version 14.0.0 Release 14. See Table 7.2-1. https://www.etsi.org/deliver/etsi_tr/138900_138999/138901/14.00.00_60/tr_138901v140000p.pdf</div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id73">
+  
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="src.scenarios.Scenario3GPPUmi.__init__">__init__</a></code></td>
+    <td>The constructor of the Umi 3gpp scenario. Calls the parent class constructor.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_loss_los" class="internal-link" title="src.scenarios.Scenario3GPPUmi.get_loss_los">get​_loss​_los</a></code></td>
+    <td>This method computes in the LOS case the pathloss of the 3gpp Umi scenario (see 3GPP TR 38.901, Table 7.4.1-1) @type distance3D: float.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_loss_nlos" class="internal-link" title="src.scenarios.Scenario3GPPUmi.get_loss_nlos">get​_loss​_nlos</a></code></td>
+    <td>This method computes in the NLOS case the pathloss of the 3gpp Umi scenario (see 3GPP TR 38.901, Table 7.4.1-1)</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#n_scatters" class="internal-link" title="src.scenarios.Scenario3GPPUmi.n_scatters">n​_scatters</a></code></td>
+    <td>Number of the scatters of the model.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#name" class="internal-link" title="src.scenarios.Scenario3GPPUmi.name">name</a></code></td>
+    <td>The name of the scenario</td>
+  </tr><tr class="method private">
+    
+    <td>Method</td>
+    <td><code><a href="#_prob_los" class="internal-link" title="src.scenarios.Scenario3GPPUmi._prob_los">_prob​_los</a></code></td>
+    <td>Computes the LOS probability acording to the Line-Of-Sight (LOS) probabilities are given in Table 7.4.2-1 and the distance between the devices.</td>
+  </tr><tr class="method private">
+    
+    <td>Method</td>
+    <td><code><a href="#_set_params" class="internal-link" title="src.scenarios.Scenario3GPPUmi._set_params">_set​_params</a></code></td>
+    <td>This method sets the scenario parameters.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_AOA_AZScorr_distance_LOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._AOA_AZScorr_distance_LOS">_​AOA_​AZScorr_distance_​LOS</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_AOA_AZScorr_distance_NLOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._AOA_AZScorr_distance_NLOS">_​AOA_​AZScorr_distance_​NLOS</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_AOA_ELScorr_distance_LOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._AOA_ELScorr_distance_LOS">_​AOA_​ELScorr_distance_​LOS</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_AOA_ELScorr_distance_NLOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._AOA_ELScorr_distance_NLOS">_​AOA_​ELScorr_distance_​NLOS</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_AOD_AZScorr_distance_LOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._AOD_AZScorr_distance_LOS">_​AOD_​AZScorr_distance_​LOS</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_AOD_AZScorr_distance_NLOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._AOD_AZScorr_distance_NLOS">_​AOD_​AZScorr_distance_​NLOS</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_AOD_ELScorr_distance_LOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._AOD_ELScorr_distance_LOS">_​AOD_​ELScorr_distance_​LOS</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_AOD_ELScorr_distance_NLOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._AOD_ELScorr_distance_NLOS">_​AOD_​ELScorr_distance_​NLOS</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_blockage" class="internal-link" title="src.scenarios.Scenario3GPPUmi._blockage">_blockage</a></code></td>
+    <td>Blockage model. Not implemented yet.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_cASA" class="internal-link" title="src.scenarios.Scenario3GPPUmi._cASA">_c​ASA</a></code></td>
+    <td>cASA is the cluster-wise rms spread of ASA  in Table 7.5-6.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_cASD" class="internal-link" title="src.scenarios.Scenario3GPPUmi._cASD">_c​ASD</a></code></td>
+    <td>cASD is the cluster-wise rms spread of ASD  in Table 7.5-6.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_cDS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._cDS">_c​DS</a></code></td>
+    <td>Is the intracluster delay spread specified in Table 7.5-6.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_corr_LOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._corr_LOS">_corr_​LOS</a></code></td>
+    <td>The correlation distance of LOS parameter for the spatial consistency procedure. Table 7.6.3.1-2.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_corr_ssp_LOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._corr_ssp_LOS">_corr_ssp_​LOS</a></code></td>
+    <td>The correlation distance for the short short scale parameters (ssp) in the LOS condition for the spatial consistency procedure. Table 7.6.3.1-2.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_corr_ssp_NLOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._corr_ssp_NLOS">_corr_ssp_​NLOS</a></code></td>
+    <td>The correlation distance for the short short scale parameters (ssp) in the NLOS condition for the spatial consistency procedure. Table 7.6.3.1-2.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_corrLSPparams_LOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._corrLSPparams_LOS">_corr​LSPparams_​LOS</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_corrLSPparams_NLOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._corrLSPparams_NLOS">_corr​LSPparams_​NLOS</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_cZSA" class="internal-link" title="src.scenarios.Scenario3GPPUmi._cZSA">_c​ZSA</a></code></td>
+    <td>cZSA is the cluster-wise rms spread of ZOA  in Table 7.5-6.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_DScorr_distance_LOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._DScorr_distance_LOS">_​DScorr_distance_​LOS</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_DScorr_distance_NLOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._DScorr_distance_NLOS">_​DScorr_distance_​NLOS</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_Kcorr_distance_LOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._Kcorr_distance_LOS">_​Kcorr_distance_​LOS</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_muASALg" class="internal-link" title="src.scenarios.Scenario3GPPUmi._muASALg">_mu​ASALg</a></code></td>
+    <td>The mean value of the azimuth arrival angle spread in logarihtmic scale.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_muASDLg" class="internal-link" title="src.scenarios.Scenario3GPPUmi._muASDLg">_mu​ASDLg</a></code></td>
+    <td>The mean value of the azimuth departure angle spread in logarihtmic scale.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_muDSLg" class="internal-link" title="src.scenarios.Scenario3GPPUmi._muDSLg">_mu​DSLg</a></code></td>
+    <td>The mean value of the delay spred in logarihtmic scale.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_muKLg" class="internal-link" title="src.scenarios.Scenario3GPPUmi._muKLg">_mu​KLg</a></code></td>
+    <td>The Ricean K factor mean value in logarithmc scale.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_muXpr" class="internal-link" title="src.scenarios.Scenario3GPPUmi._muXpr">_mu​Xpr</a></code></td>
+    <td>The cross polarization spread mean value.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_muZSALg" class="internal-link" title="src.scenarios.Scenario3GPPUmi._muZSALg">_mu​ZSALg</a></code></td>
+    <td>The mean value of the inclination arrival angle spread in logarihtmic scale.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_muZSDLg" class="internal-link" title="src.scenarios.Scenario3GPPUmi._muZSDLg">_mu​ZSDLg</a></code></td>
+    <td>The mean value of the inclination departure angle spread in logarihtmic scale.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_O2I" class="internal-link" title="src.scenarios.Scenario3GPPUmi._O2I">_O2I</a></code></td>
+    <td>Outdoor to Indoor bolean value. Not implemented yet.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_offsetZOD" class="internal-link" title="src.scenarios.Scenario3GPPUmi._offsetZOD">_offset​ZOD</a></code></td>
+    <td>the mean value of the offset of ZOD in Tables 7.5.6./7/8</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_paranum" class="internal-link" title="src.scenarios.Scenario3GPPUmi._paranum">_paranum</a></code></td>
+    <td>The number of LSP parameters of the model</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_perClusterShadowingStd" class="internal-link" title="src.scenarios.Scenario3GPPUmi._perClusterShadowingStd">_per​Cluster​Shadowing​Std</a></code></td>
+    <td>Is the per cluster shadowing term in [dB].</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_raysPerCluster" class="internal-link" title="src.scenarios.Scenario3GPPUmi._raysPerCluster">_rays​Per​Cluster</a></code></td>
+    <td>Number of rays of each scatter.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_rTau" class="internal-link" title="src.scenarios.Scenario3GPPUmi._rTau">_r​Tau</a></code></td>
+    <td>Is the delay distribution proportionality factor.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_shadowScorr_distance_LOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._shadowScorr_distance_LOS">_shadow​Scorr_distance_​LOS</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_shadowScorr_distance_NLOS" class="internal-link" title="src.scenarios.Scenario3GPPUmi._shadowScorr_distance_NLOS">_shadow​Scorr_distance_​NLOS</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_sigmaASALg" class="internal-link" title="src.scenarios.Scenario3GPPUmi._sigmaASALg">_sigma​ASALg</a></code></td>
+    <td>The standar deviation value of the azimuth arrival angle spread in logarihtmic scale.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_sigmaASDLg" class="internal-link" title="src.scenarios.Scenario3GPPUmi._sigmaASDLg">_sigma​ASDLg</a></code></td>
+    <td>The standar deviation value of the azimuth departure angle spread in logarihtmic scale.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_sigmaDSLg" class="internal-link" title="src.scenarios.Scenario3GPPUmi._sigmaDSLg">_sigma​DSLg</a></code></td>
+    <td>The standar deviation value of the delay spred in logarihtmic scale.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_sigmaKLg" class="internal-link" title="src.scenarios.Scenario3GPPUmi._sigmaKLg">_sigma​KLg</a></code></td>
+    <td>The Ricean K factor standard deviation value in logarithmc scale.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_sigmaShadow" class="internal-link" title="src.scenarios.Scenario3GPPUmi._sigmaShadow">_sigma​Shadow</a></code></td>
+    <td>The standard deviation of the shadow fading</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_sigmaXpr" class="internal-link" title="src.scenarios.Scenario3GPPUmi._sigmaXpr">_sigma​Xpr</a></code></td>
+    <td>The cross polarization spread standard deviation value.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_sigmaZSALg" class="internal-link" title="src.scenarios.Scenario3GPPUmi._sigmaZSALg">_sigma​ZSALg</a></code></td>
+    <td>The standard deviation value of the inclination arrival angle spread in logarihtmic scale.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_sigmaZSDLg" class="internal-link" title="src.scenarios.Scenario3GPPUmi._sigmaZSDLg">_sigma​ZSDLg</a></code></td>
+    <td>The standard deviation value of the inclination departure angle spread in logarihtmic scale.</td>
+  </tr>
+</table>
+        
+          <p class="inheritedFrom">
+            Inherited from <code><a href="src.scenarios.Scenario3GPP.html" class="internal-link" title="src.scenarios.Scenario3GPP">Scenario3GPP</a></code>:
+          </p>
+          <table class="children sortable" id="id74">
+  
+  
+  <tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#generate_correlated_LSP_vector" class="internal-link" title="src.scenarios.Scenario3GPP.generate_correlated_LSP_vector">generate_correlated_​LSP_vector</a></code></td>
+    <td>This method given the LSP parameters grid and a MS position, estimates the LSP parameters for this point.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#get_shadowing_db" class="internal-link" title="src.scenarios.Scenario3GPP.get_shadowing_db">get​_shadowing​_db</a></code></td>
+    <td>This method computes the shadowing value for the MS position, sets its values and return it.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#is_los_cond" class="internal-link" title="src.scenarios.Scenario3GPP.is_los_cond">is​_los​_cond</a></code></td>
+    <td>Computes the LOS condition acording to the Line-Of-Sight (LOS) probabilities are given in Table 7.4.2-1 and the distance between the devices.It uses also the force_los variable. If the force_los is 0 or 1 return False or True only if force_los =2 the los probability is taking into account.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#raysPerCluster.setter" class="internal-link" title="src.scenarios.Scenario3GPP.raysPerCluster.setter">rays​Per​Cluster​.setter</a></code></td>
+    <td>Sets the number of rays of each scatter.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#save" class="internal-link" title="src.scenarios.Scenario3GPP.save">save</a></code></td>
+    <td>This method saves the scenario configuration to disk.</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#force_los" class="internal-link" title="src.scenarios.Scenario3GPP.force_los">force​_los</a></code></td>
+    <td>It takes the value 0 if the LOS condition is forced to False, it takes the value 1 if the LOS condition is forced to True and it takes the value 2 if the LOS condition is computed from the probability model.</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#gridLSP_LOS" class="internal-link" title="src.scenarios.Scenario3GPP.gridLSP_LOS">grid​LSP_​LOS</a></code></td>
+    <td>An Array where each element has for one point in the scenario grid  the value of each Large scale parameter (LSP) of the 3gpp model in LOS condition.</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#gridLSP_NLOS" class="internal-link" title="src.scenarios.Scenario3GPP.gridLSP_NLOS">grid​LSP_​NLOS</a></code></td>
+    <td>An Array where each element has for one point in the scenario grid  the value of each Large scale parameter (LSP) of the 3gpp model in NLOS condition.</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#LOS_rv" class="internal-link" title="src.scenarios.Scenario3GPP.LOS_rv">​LOS_rv</a></code></td>
+    <td>A grid with the LOS rv with spatial correlation in each point of the grid.</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#shadow" class="internal-link" title="src.scenarios.Scenario3GPP.shadow">shadow</a></code></td>
+    <td>The sadow fading value for a given position of the mobile in the scenario</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#shadow_enabled" class="internal-link" title="src.scenarios.Scenario3GPP.shadow_enabled">shadow​_enabled</a></code></td>
+    <td>Boolean variable, it indicates if the shadowing is enabled.</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#X" class="internal-link" title="src.scenarios.Scenario3GPP.X">X</a></code></td>
+    <td>The x grid "of the scenario</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#XY" class="internal-link" title="src.scenarios.Scenario3GPP.XY">XY</a></code></td>
+    <td>np.array([self.X, self.Y]))</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#Y" class="internal-link" title="src.scenarios.Scenario3GPP.Y">Y</a></code></td>
+    <td>The y grid "of the scenario</td>
+  </tr><tr class="baseproperty">
+    
+    <td>Property</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#blockage" class="internal-link" title="src.scenarios.Scenario3GPP.blockage">blockage</a></code></td>
+    <td>Blockage model. Not implemented yet.</td>
+  </tr><tr class="baseproperty">
+    
+    <td>Property</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#cASA" class="internal-link" title="src.scenarios.Scenario3GPP.cASA">c​ASA</a></code></td>
+    <td>cASA is the cluster-wise rms spread of ASA  in Table 7.5-6.</td>
+  </tr><tr class="baseproperty">
+    
+    <td>Property</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#cASD" class="internal-link" title="src.scenarios.Scenario3GPP.cASD">c​ASD</a></code></td>
+    <td>cASD is the cluster-wise rms spread of ASD  in Table 7.5-6.</td>
+  </tr><tr class="baseproperty">
+    
+    <td>Property</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#cDS" class="internal-link" title="src.scenarios.Scenario3GPP.cDS">c​DS</a></code></td>
+    <td>Is the intracluster delay spread specified in Table 7.5-6.</td>
+  </tr><tr class="baseproperty">
+    
+    <td>Property</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#corr_ssp_LOS" class="internal-link" title="src.scenarios.Scenario3GPP.corr_ssp_LOS">corr_ssp_​LOS</a></code></td>
+    <td>The correlation distance for the short scale parameters (ssp) in the LOS condition for the spatial consistency procedure. Table 7.6.3.1-2.</td>
+  </tr><tr class="baseproperty">
+    
+    <td>Property</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#corr_ssp_NLOS" class="internal-link" title="src.scenarios.Scenario3GPP.corr_ssp_NLOS">corr_ssp_​NLOS</a></code></td>
+    <td>The correlation distance for the short short scale parameters (ssp) in the NLOS condition for the spatial consistency procedure. Table 7.6.3.1-2.</td>
+  </tr><tr class="baseproperty">
+    
+    <td>Property</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#cZSA" class="internal-link" title="src.scenarios.Scenario3GPP.cZSA">c​ZSA</a></code></td>
+    <td>cZSA is the cluster-wise rms spread of ZOA  in Table 7.5-6.</td>
+  </tr><tr class="baseproperty">
+    
+    <td>Property</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#muXpr" class="internal-link" title="src.scenarios.Scenario3GPP.muXpr">mu​Xpr</a></code></td>
+    <td>The cross polarization spread mean value.</td>
+  </tr><tr class="baseproperty">
+    
+    <td>Property</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#muZSDLg" class="internal-link" title="src.scenarios.Scenario3GPP.muZSDLg">mu​ZSDLg</a></code></td>
+    <td>The mean value of the delay spred in logarihtmic scale.</td>
+  </tr><tr class="baseproperty">
+    
+    <td>Property</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#O2I" class="internal-link" title="src.scenarios.Scenario3GPP.O2I">O2I</a></code></td>
+    <td>Outdoor to Indoor bolean value. Not implemented yet.</td>
+  </tr><tr class="baseproperty">
+    
+    <td>Property</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#offsetZOD" class="internal-link" title="src.scenarios.Scenario3GPP.offsetZOD">offset​ZOD</a></code></td>
+    <td>The mean value of the offset of ZOD in Tables 7.5.6./7/8</td>
+  </tr><tr class="baseproperty">
+    
+    <td>Property</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#perClusterShadowingStd" class="internal-link" title="src.scenarios.Scenario3GPP.perClusterShadowingStd">per​Cluster​Shadowing​Std</a></code></td>
+    <td>Is the per cluster shadowing term in [dB].</td>
+  </tr><tr class="baseproperty">
+    
+    <td>Property</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#raysPerCluster" class="internal-link" title="src.scenarios.Scenario3GPP.raysPerCluster">rays​Per​Cluster</a></code></td>
+    <td>Number of rays of each scatter.</td>
+  </tr><tr class="baseproperty">
+    
+    <td>Property</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#rTau" class="internal-link" title="src.scenarios.Scenario3GPP.rTau">r​Tau</a></code></td>
+    <td>Is the delay distribution proportionality factor.</td>
+  </tr><tr class="baseproperty">
+    
+    <td>Property</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#sigmaXpr" class="internal-link" title="src.scenarios.Scenario3GPP.sigmaXpr">sigma​Xpr</a></code></td>
+    <td>The cross polarization spread standard deviation value.</td>
+  </tr><tr class="basemethod private">
+    
+    <td>Method</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#__generate_correlated_LSP" class="internal-link" title="src.scenarios.Scenario3GPP.__generate_correlated_LSP">__generate_correlated_​LSP</a></code></td>
+    <td>This method first generates for each LSP parameter an independent gaussian N(0,1) random variable for each point in the scenario grid. Later, using cholesky method and the correlation matrix between the LSP parameters, generates a set of correlated LSP params. At last, the method applies to each parameter its expected value and its variance.</td>
+  </tr><tr class="basemethod private">
+    
+    <td>Method</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#__generate_grid_los" class="internal-link" title="src.scenarios.Scenario3GPP.__generate_grid_los">__generate​_grid​_los</a></code></td>
+    <td>Adds mu and sigma to each lsp (the mu and sigma depend on the MS postion)</td>
+  </tr><tr class="basemethod private">
+    
+    <td>Method</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#__generate_grid_lsp_sigma" class="internal-link" title="src.scenarios.Scenario3GPP.__generate_grid_lsp_sigma">__generate​_grid​_lsp​_sigma</a></code></td>
+    <td>Adds mu and sigma to each lsp (the mu and sigma depend on the MS postion)</td>
+  </tr><tr class="basemethod private">
+    
+    <td>Method</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#__generate_LOSgrid" class="internal-link" title="src.scenarios.Scenario3GPP.__generate_LOSgrid">__generate_​LOSgrid</a></code></td>
+    <td>This method generates a spatial correlated uniform rvs for LOS.</td>
+  </tr><tr class="basemethod private">
+    
+    <td>Method</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#__generate_LSPgrid" class="internal-link" title="src.scenarios.Scenario3GPP.__generate_LSPgrid">__generate_​LSPgrid</a></code></td>
+    <td>This method generates a spatial correlated gaussian random variables using the correlation distance.</td>
+  </tr><tr class="basemethod private">
+    
+    <td>Method</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#__grid_lsp_mu_sigma" class="internal-link" title="src.scenarios.Scenario3GPP.__grid_lsp_mu_sigma">__grid​_lsp​_mu​_sigma</a></code></td>
+    <td>Adds mu and sigma to each lsp (the mu and sigma depend on the MS postion)</td>
+  </tr><tr class="basemethod private">
+    
+    <td>Method</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#__set_los" class="internal-link" title="src.scenarios.Scenario3GPP.__set_los">__set​_los</a></code></td>
+    <td>This method sets the LOS to the value (True or False)</td>
+  </tr><tr class="basemethod private">
+    
+    <td>Method</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#__set_los_positions" class="internal-link" title="src.scenarios.Scenario3GPP.__set_los_positions">__set​_los​_positions</a></code></td>
+    <td>This method computes the computes the LOS condition given the distance between two devices and set the LOS parameter acording to it.</td>
+  </tr><tr class="basemethod private">
+    
+    <td>Method</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#_inverse_distance_interpol" class="internal-link" title="src.scenarios.Scenario3GPP._inverse_distance_interpol">_inverse​_distance​_interpol</a></code></td>
+    <td>This method interpolates one point in the grid with inverse distance interpolation with module p.</td>
+  </tr><tr class="basemethod private">
+    
+    <td>Method</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#_set_scenario_LSP_correlated_params" class="internal-link" title="src.scenarios.Scenario3GPP._set_scenario_LSP_correlated_params">_set_scenario_​LSP_correlated_params</a></code></td>
+    <td>This method computes and sets the random values of the correlated LSP parameters. This method also computes the grid of correlate LOS conditions in the scenario.</td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#_AOA_AZScorr_distance" class="internal-link" title="src.scenarios.Scenario3GPP._AOA_AZScorr_distance">_​AOA_​AZScorr_distance</a></code></td>
+    <td>Azimuth angle of arraival spread correlation distance.</td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#_AOA_ELScorr_distance" class="internal-link" title="src.scenarios.Scenario3GPP._AOA_ELScorr_distance">_​AOA_​ELScorr_distance</a></code></td>
+    <td>Inclination angle of arraival spread correlation distance.</td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#_AOD_AZScorr_distance" class="internal-link" title="src.scenarios.Scenario3GPP._AOD_AZScorr_distance">_​AOD_​AZScorr_distance</a></code></td>
+    <td>Azimuth angle of departure spread correlation distance.</td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#_AOD_ELScorr_distance" class="internal-link" title="src.scenarios.Scenario3GPP._AOD_ELScorr_distance">_​AOD_​ELScorr_distance</a></code></td>
+    <td>Inclination angle of departure spread correlation distance.</td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#_corrLSPparams" class="internal-link" title="src.scenarios.Scenario3GPP._corrLSPparams">_corr​LSPparams</a></code></td>
+    <td>The cross correlation matrix between the LSP parameters.</td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#_DScorr_distance" class="internal-link" title="src.scenarios.Scenario3GPP._DScorr_distance">_​DScorr_distance</a></code></td>
+    <td>Delay spread correlation distance.</td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#_Kcorr_distance" class="internal-link" title="src.scenarios.Scenario3GPP._Kcorr_distance">_​Kcorr_distance</a></code></td>
+    <td>Ricean K factor correlation distance</td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#_LOS" class="internal-link" title="src.scenarios.Scenario3GPP._LOS">_LOS</a></code></td>
+    <td>Line of sight in the scenario. Boolean.</td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#_r" class="internal-link" title="src.scenarios.Scenario3GPP._r">_r</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario3GPP.html#_shadowScorr_distance" class="internal-link" title="src.scenarios.Scenario3GPP._shadowScorr_distance">_shadow​Scorr_distance</a></code></td>
+    <td>Shadow fading correlatio  distance</td>
+  </tr>
+</table>
+          
+          <p class="inheritedFrom">
+            Inherited from <code><a href="src.scenarios.Scenario.html" class="internal-link" title="src.scenarios.Scenario">Scenario</a></code> (via <code><a href="src.scenarios.Scenario3GPP.html" class="internal-link" title="src.scenarios.Scenario3GPP">Scenario3GPP</a></code>):
+          </p>
+          <table class="children sortable" id="id75">
+  
+  
+  <tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario.html#BS_pos" class="internal-link" title="src.scenarios.Scenario.BS_pos">​BS_pos</a></code></td>
+    <td>The position of the Base Satation in the scenario in the coordinates system [x,y,z].</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario.html#fcGHz" class="internal-link" title="src.scenarios.Scenario.fcGHz">fc​GHz</a></code></td>
+    <td>Frequency in GHz of the carrier frequency of the scenario.</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario.html#grid_number" class="internal-link" title="src.scenarios.Scenario.grid_number">grid​_number</a></code></td>
+    <td>For calculating the spacial distribution of the parameters of the scenario, the scenario is divided by a grid in x and y cordinates. This value is the number of divisions in each coordinate.</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario.html#posx_max" class="internal-link" title="src.scenarios.Scenario.posx_max">posx​_max</a></code></td>
+    <td>The maximum limit of the x coordinate in the scenario.</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario.html#posx_min" class="internal-link" title="src.scenarios.Scenario.posx_min">posx​_min</a></code></td>
+    <td>The minimum limit of the x coordinate in the scenario.</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario.html#posy_max" class="internal-link" title="src.scenarios.Scenario.posy_max">posy​_max</a></code></td>
+    <td>The maximum limit of the y coordinate in the scenario.</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario.html#posy_min" class="internal-link" title="src.scenarios.Scenario.posy_min">posy​_min</a></code></td>
+    <td>The minimum limit of the y coordinate in the scenario.</td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.scenarios.Scenario.html#Ptx_db" class="internal-link" title="src.scenarios.Scenario.Ptx_db">​Ptx_db</a></code></td>
+    <td>The power transmited by the base station in dbm.</td>
+  </tr><tr class="basemethod private">
+    
+    <td>Method</td>
+    <td><code><a href="src.scenarios.Scenario.html#__set_params" class="internal-link" title="src.scenarios.Scenario.__set_params">__set​_params</a></code></td>
+    <td>The abstract method to set the params of the scenario</td>
+  </tr>
+</table>
+          
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basemethod">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span>(self, fcGHz, posx_min, posx_max, posy_min, posy_max, grid_number, bspos, Ptx_db, shadowing_enabled=True, force_loss=2):
+    
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#__init__" class="internal-link">src.scenarios.Scenario3GPP.__init__</a></code></div>
+    
+    <div>The constructor of the Umi 3gpp scenario. Calls the parent class constructor.</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi.get_loss_los">
+    
+  </a>
+  <a name="get_loss_los">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_loss_los</span>(self, distance3D, h_MS):
+    
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario.html#get_loss_los" class="internal-link">src.scenarios.Scenario.get_loss_los</a></code></div>
+    
+    <div>This method computes in the LOS case the pathloss of the 3gpp Umi scenario (see 3GPP TR 38.901, Table 7.4.1-1)<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">distance3​D:</span>float.</td><td class="fieldArgDesc">The 3D distance in meters between the Tx and Rx devices.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">h_​MS:</span>float.</td><td class="fieldArgDesc">The MS antenna height.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">the path loss in los condition for 3gpp Umi model. See3GPP TR 38.901 version 14.0.0 Release 14,</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi.get_loss_nlos">
+    
+  </a>
+  <a name="get_loss_nlos">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_loss_nlos</span>(self, distance3D, h_MS):
+    
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario.html#get_loss_nlos" class="internal-link">src.scenarios.Scenario.get_loss_nlos</a></code></div>
+    
+    <div>This method computes in the NLOS case the pathloss of the 3gpp Umi scenario (see 3GPP TR 38.901, Table 7.4.1-1)<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">distance3​D:</span>float.</td><td class="fieldArgDesc">The 3D distance in meters between the Tx and Rx devices.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">h_​MS:</span>float.</td><td class="fieldArgDesc">The MS antenna height.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">the path loss in nlos condition for 3gpp Umi model.</td></tr></table></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi.n_scatters">
+    
+  </a>
+  <a name="n_scatters">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">n_scatters</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#n_scatters" class="internal-link">src.scenarios.Scenario3GPP.n_scatters</a></code></div>
+    
+    <div>Number of the scatters of the model.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi.name">
+    
+  </a>
+  <a name="name">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">name</span>: <code>str</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#name" class="internal-link">src.scenarios.Scenario3GPP.name</a></code></div>
+    
+    <div>The name of the scenario</div>
+    
+  </div>
+</div><div class="basemethod private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._prob_los">
+    
+  </a>
+  <a name="_prob_los">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_prob_los</span>(self, d2d, h_MS):
+    
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario.html#_prob_los" class="internal-link">src.scenarios.Scenario._prob_los</a></code></div>
+    
+    <div>Computes the LOS probability acording to the Line-Of-Sight (LOS) probabilities are given in Table 7.4.2-1 and the distance between the devices.<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">d2d:</span>float.</td><td class="fieldArgDesc">The 2D distance in meters between the Tx and Rx devices.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">h_​MS:</span>float.</td><td class="fieldArgDesc">The MS antenna height.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">LOS probability</td></tr></table></div>
+  </div>
+</div><div class="basemethod private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._set_params">
+    
+  </a>
+  <a name="_set_params">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_set_params</span>(self, d2d, h_MS, los):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>This method sets the scenario parameters.</p>
+<p>It sets for LOS and NLOS condition the correlation distance of the LSP parameters, the mean and variance of the LSP parameters and the crosscorrelation matrix between LSP parameters. The LSP parameters are: The Delay Spread (DS), Azimuth angle of arrival spread (AOA_AZS or ASA azimuth spread arrival), Azimuth angle of departure spread (AOD_AZS or ASD), Shadowing (Shadow), elevation angle of departure spread(AOD_ELS or ZSD zenith spread departure), elevation angle of arrival spread (AOA_ELS or ZSD), Ricean K factor(K). See Table 7.5-6 Part-1.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">d2d:</span>float.</td><td class="fieldArgDesc">The distance between the BS and MS positions. Default 10.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">h_​MS:</span>float.</td><td class="fieldArgDesc">The MS antenna height. Default 2.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">los</span></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr></table></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._AOA_AZScorr_distance_LOS">
+    
+  </a>
+  <a name="_AOA_AZScorr_distance_LOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_AOA_AZScorr_distance_LOS</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._AOA_AZScorr_distance_NLOS">
+    
+  </a>
+  <a name="_AOA_AZScorr_distance_NLOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_AOA_AZScorr_distance_NLOS</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._AOA_ELScorr_distance_LOS">
+    
+  </a>
+  <a name="_AOA_ELScorr_distance_LOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_AOA_ELScorr_distance_LOS</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._AOA_ELScorr_distance_NLOS">
+    
+  </a>
+  <a name="_AOA_ELScorr_distance_NLOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_AOA_ELScorr_distance_NLOS</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._AOD_AZScorr_distance_LOS">
+    
+  </a>
+  <a name="_AOD_AZScorr_distance_LOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_AOD_AZScorr_distance_LOS</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._AOD_AZScorr_distance_NLOS">
+    
+  </a>
+  <a name="_AOD_AZScorr_distance_NLOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_AOD_AZScorr_distance_NLOS</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._AOD_ELScorr_distance_LOS">
+    
+  </a>
+  <a name="_AOD_ELScorr_distance_LOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_AOD_ELScorr_distance_LOS</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._AOD_ELScorr_distance_NLOS">
+    
+  </a>
+  <a name="_AOD_ELScorr_distance_NLOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_AOD_ELScorr_distance_NLOS</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._blockage">
+    
+  </a>
+  <a name="_blockage">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_blockage</span>: <code>bool</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_blockage" class="internal-link">src.scenarios.Scenario3GPP._blockage</a></code></div>
+    
+    <div>Blockage model. Not implemented yet.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._cASA">
+    
+  </a>
+  <a name="_cASA">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_cASA</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_cASA" class="internal-link">src.scenarios.Scenario3GPP._cASA</a></code></div>
+    
+    <div>cASA is the cluster-wise rms spread of ASA  in Table 7.5-6.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._cASD">
+    
+  </a>
+  <a name="_cASD">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_cASD</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_cASD" class="internal-link">src.scenarios.Scenario3GPP._cASD</a></code></div>
+    
+    <div>cASD is the cluster-wise rms spread of ASD  in Table 7.5-6.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._cDS">
+    
+  </a>
+  <a name="_cDS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_cDS</span> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_cDS" class="internal-link">src.scenarios.Scenario3GPP._cDS</a></code></div>
+    
+    <div>Is the intracluster delay spread specified in Table 7.5-6.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._corr_LOS">
+    
+  </a>
+  <a name="_corr_LOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_corr_LOS</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_corr_LOS" class="internal-link">src.scenarios.Scenario3GPP._corr_LOS</a></code></div>
+    
+    <div>The correlation distance of LOS parameter for the spatial consistency procedure. Table 7.6.3.1-2.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._corr_ssp_LOS">
+    
+  </a>
+  <a name="_corr_ssp_LOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_corr_ssp_LOS</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_corr_ssp_LOS" class="internal-link">src.scenarios.Scenario3GPP._corr_ssp_LOS</a></code></div>
+    
+    <div>The correlation distance for the short short scale parameters (ssp) in the LOS condition for the spatial consistency procedure. Table 7.6.3.1-2.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._corr_ssp_NLOS">
+    
+  </a>
+  <a name="_corr_ssp_NLOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_corr_ssp_NLOS</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_corr_ssp_NLOS" class="internal-link">src.scenarios.Scenario3GPP._corr_ssp_NLOS</a></code></div>
+    
+    <div>The correlation distance for the short short scale parameters (ssp) in the NLOS condition for the spatial consistency procedure. Table 7.6.3.1-2.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._corrLSPparams_LOS">
+    
+  </a>
+  <a name="_corrLSPparams_LOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_corrLSPparams_LOS</span>: <code>list[<wbr></wbr>list]</code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._corrLSPparams_NLOS">
+    
+  </a>
+  <a name="_corrLSPparams_NLOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_corrLSPparams_NLOS</span>: <code>list[<wbr></wbr>list]</code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._cZSA">
+    
+  </a>
+  <a name="_cZSA">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_cZSA</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_cZSA" class="internal-link">src.scenarios.Scenario3GPP._cZSA</a></code></div>
+    
+    <div>cZSA is the cluster-wise rms spread of ZOA  in Table 7.5-6.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._DScorr_distance_LOS">
+    
+  </a>
+  <a name="_DScorr_distance_LOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_DScorr_distance_LOS</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._DScorr_distance_NLOS">
+    
+  </a>
+  <a name="_DScorr_distance_NLOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_DScorr_distance_NLOS</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._Kcorr_distance_LOS">
+    
+  </a>
+  <a name="_Kcorr_distance_LOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_Kcorr_distance_LOS</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._muASALg">
+    
+  </a>
+  <a name="_muASALg">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_muASALg</span> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_muASALg" class="internal-link">src.scenarios.Scenario3GPP._muASALg</a></code></div>
+    
+    <div>The mean value of the azimuth arrival angle spread in logarihtmic scale.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._muASDLg">
+    
+  </a>
+  <a name="_muASDLg">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_muASDLg</span> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_muASDLg" class="internal-link">src.scenarios.Scenario3GPP._muASDLg</a></code></div>
+    
+    <div>The mean value of the azimuth departure angle spread in logarihtmic scale.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._muDSLg">
+    
+  </a>
+  <a name="_muDSLg">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_muDSLg</span> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_muDSLg" class="internal-link">src.scenarios.Scenario3GPP._muDSLg</a></code></div>
+    
+    <div>The mean value of the delay spred in logarihtmic scale.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._muKLg">
+    
+  </a>
+  <a name="_muKLg">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_muKLg</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_muKLg" class="internal-link">src.scenarios.Scenario3GPP._muKLg</a></code></div>
+    
+    <div>The Ricean K factor mean value in logarithmc scale.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._muXpr">
+    
+  </a>
+  <a name="_muXpr">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_muXpr</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_muXpr" class="internal-link">src.scenarios.Scenario3GPP._muXpr</a></code></div>
+    
+    <div>The cross polarization spread mean value.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._muZSALg">
+    
+  </a>
+  <a name="_muZSALg">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_muZSALg</span> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_muZSALg" class="internal-link">src.scenarios.Scenario3GPP._muZSALg</a></code></div>
+    
+    <div>The mean value of the inclination arrival angle spread in logarihtmic scale.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._muZSDLg">
+    
+  </a>
+  <a name="_muZSDLg">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_muZSDLg</span> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_muZSDLg" class="internal-link">src.scenarios.Scenario3GPP._muZSDLg</a></code></div>
+    
+    <div>The mean value of the inclination departure angle spread in logarihtmic scale.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._O2I">
+    
+  </a>
+  <a name="_O2I">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_O2I</span>: <code>bool</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_O2I" class="internal-link">src.scenarios.Scenario3GPP._O2I</a></code></div>
+    
+    <div>Outdoor to Indoor bolean value. Not implemented yet.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._offsetZOD">
+    
+  </a>
+  <a name="_offsetZOD">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_offsetZOD</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_offsetZOD" class="internal-link">src.scenarios.Scenario3GPP._offsetZOD</a></code></div>
+    
+    <div>the mean value of the offset of ZOD in Tables 7.5.6./7/8</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._paranum">
+    
+  </a>
+  <a name="_paranum">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_paranum</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_paranum" class="internal-link">src.scenarios.Scenario3GPP._paranum</a></code></div>
+    
+    <div>The number of LSP parameters of the model</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._perClusterShadowingStd">
+    
+  </a>
+  <a name="_perClusterShadowingStd">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_perClusterShadowingStd</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_perClusterShadowingStd" class="internal-link">src.scenarios.Scenario3GPP._perClusterShadowingStd</a></code></div>
+    
+    <div>Is the per cluster shadowing term in [dB].</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._raysPerCluster">
+    
+  </a>
+  <a name="_raysPerCluster">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_raysPerCluster</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_raysPerCluster" class="internal-link">src.scenarios.Scenario3GPP._raysPerCluster</a></code></div>
+    
+    <div>Number of rays of each scatter.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._rTau">
+    
+  </a>
+  <a name="_rTau">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_rTau</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_rTau" class="internal-link">src.scenarios.Scenario3GPP._rTau</a></code></div>
+    
+    <div>Is the delay distribution proportionality factor.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._shadowScorr_distance_LOS">
+    
+  </a>
+  <a name="_shadowScorr_distance_LOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_shadowScorr_distance_LOS</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._shadowScorr_distance_NLOS">
+    
+  </a>
+  <a name="_shadowScorr_distance_NLOS">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_shadowScorr_distance_NLOS</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._sigmaASALg">
+    
+  </a>
+  <a name="_sigmaASALg">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_sigmaASALg</span> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_sigmaASALg" class="internal-link">src.scenarios.Scenario3GPP._sigmaASALg</a></code></div>
+    
+    <div>The standar deviation value of the azimuth arrival angle spread in logarihtmic scale.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._sigmaASDLg">
+    
+  </a>
+  <a name="_sigmaASDLg">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_sigmaASDLg</span>: <code>float</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_sigmaASDLg" class="internal-link">src.scenarios.Scenario3GPP._sigmaASDLg</a></code></div>
+    
+    <div>The standar deviation value of the azimuth departure angle spread in logarihtmic scale.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._sigmaDSLg">
+    
+  </a>
+  <a name="_sigmaDSLg">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_sigmaDSLg</span>: <code>float</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_sigmaDSLg" class="internal-link">src.scenarios.Scenario3GPP._sigmaDSLg</a></code></div>
+    
+    <div>The standar deviation value of the delay spred in logarihtmic scale.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._sigmaKLg">
+    
+  </a>
+  <a name="_sigmaKLg">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_sigmaKLg</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_sigmaKLg" class="internal-link">src.scenarios.Scenario3GPP._sigmaKLg</a></code></div>
+    
+    <div>The Ricean K factor standard deviation value in logarithmc scale.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._sigmaShadow">
+    
+  </a>
+  <a name="_sigmaShadow">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_sigmaShadow</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_sigmaShadow" class="internal-link">src.scenarios.Scenario3GPP._sigmaShadow</a></code></div>
+    
+    <div>The standard deviation of the shadow fading</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._sigmaXpr">
+    
+  </a>
+  <a name="_sigmaXpr">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_sigmaXpr</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_sigmaXpr" class="internal-link">src.scenarios.Scenario3GPP._sigmaXpr</a></code></div>
+    
+    <div>The cross polarization spread standard deviation value.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._sigmaZSALg">
+    
+  </a>
+  <a name="_sigmaZSALg">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_sigmaZSALg</span> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_sigmaZSALg" class="internal-link">src.scenarios.Scenario3GPP._sigmaZSALg</a></code></div>
+    
+    <div>The standard deviation value of the inclination arrival angle spread in logarihtmic scale.</div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="src.scenarios.Scenario3GPPUmi._sigmaZSDLg">
+    
+  </a>
+  <a name="_sigmaZSDLg">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_sigmaZSDLg</span>: <code>float</code> =
+    
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.scenarios.Scenario3GPP.html#_sigmaZSDLg" class="internal-link">src.scenarios.Scenario3GPP._sigmaZSDLg</a></code></div>
+    
+    <div>The standard deviation value of the inclination departure angle spread in logarihtmic scale.</div>
+    
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for src,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    22.4.0.dev0 at 2022-07-25 10:55:29.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>src.antennas.Antenna3gpp3D</title>
+    <meta name="generator" content="pydoctor 22.4.0.dev0"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default">
+  
+  <div class="container">
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          src <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="search-help-button" title="Help" onclick="toggleSearchHelpText()"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+      
+            Search bar offers the following options:
+            <ul>   
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that 
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li> 
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li> 
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects 
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents 
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+    
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="class"><code><code><a href="index.html" class="internal-link">src</a></code><wbr></wbr>.<code><a href="src.antennas.html" class="internal-link" title="src.antennas">antennas</a></code><wbr></wbr>.<code><a href="src.antennas.Antenna3gpp3D.html" class="internal-link" title="src.antennas.Antenna3gpp3D">Antenna3gpp3D</a></code></code></h1>
+        <div id="showPrivate">
+          <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+        </div>
+      </div>
+
+      <div class="categoryHeader">
+        class documentation
+      </div>
+
+      <div class="extrasDocstring">
+        <p><code><span class="py-keyword">class</span> <span class="py-defname">Antenna3gpp3D</span>(<a href="src.antennas.Antenna.html" class="internal-link" title="src.antennas.Antenna">Antenna</a>):</code></p>
+        <p><a href="classIndex.html#src.antennas.Antenna3gpp3D">View In Hierarchy</a></p>
+      </div>
+
+      <div class="moduleDocstring">
+        <div>This class implements the 3gpp antenna model defined in table 7.3-1 in 3GPP TR 38.901.</div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id8">
+  
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="src.antennas.Antenna3gpp3D.__init__">__init__</a></code></td>
+    <td>This is the constructor of Antenna3gpp3D Class.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_gaindb" class="internal-link" title="src.antennas.Antenna3gpp3D.get_gaindb">get​_gaindb</a></code></td>
+    <td>This method computes the power radiation of the antenna in the specified angle.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#save" class="internal-link" title="src.antennas.Antenna3gpp3D.save">save</a></code></td>
+    <td>This is method saves to disk the configuration of the isotropic antenna model.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#A_max" class="internal-link" title="src.antennas.Antenna3gpp3D.A_max">​A_max</a></code></td>
+    <td>Front-back ratio in db.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#beamwidth" class="internal-link" title="src.antennas.Antenna3gpp3D.beamwidth">beamwidth</a></code></td>
+    <td>Beamwidth of the antenna in degrees.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#maxgaindb" class="internal-link" title="src.antennas.Antenna3gpp3D.maxgaindb">maxgaindb</a></code></td>
+    <td>The Maximum directional gain of the antenna.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#SLA_v" class="internal-link" title="src.antennas.Antenna3gpp3D.SLA_v">​SLA_v</a></code></td>
+    <td>Slidelobe level limit in db.</td>
+  </tr>
+</table>
+        
+          <p class="inheritedFrom">
+            Inherited from <code><a href="src.antennas.Antenna.html" class="internal-link" title="src.antennas.Antenna">Antenna</a></code>:
+          </p>
+          <table class="children sortable" id="id9">
+  
+  
+  <tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="src.antennas.Antenna.html#gaindb" class="internal-link" title="src.antennas.Antenna.gaindb">gaindb</a></code></td>
+    <td>Maximum directional gain of the antenna. Default value 1 db</td>
+  </tr>
+</table>
+          
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basemethod">
+  
+  
+  <a name="src.antennas.Antenna3gpp3D.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span>(self, maxgaindb=1, A_max=30, SLA_v=30, beamwidth=65):
+    
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.antennas.Antenna.html#__init__" class="internal-link">src.antennas.Antenna.__init__</a></code></div>
+    
+    <div>This is the constructor of Antenna3gpp3D Class.<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">maxgaindb:</span>float .</td><td class="fieldArgDesc">Maximum directional gain of the antenna. Default value 0 db.In 3GPP TR 38.901 value 8 db.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">​A_max:</span>float .</td><td class="fieldArgDesc">Front-back ratio in db. Defualt value 30 db.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">​SLA_v:</span>float .</td><td class="fieldArgDesc">Slidelobe level limit in db. Default 30 db.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">beamwidth:</span>float .</td><td class="fieldArgDesc">Beamwidth of the antenna in degrees. Default 65 degrees.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.antennas.Antenna3gpp3D.get_gaindb">
+    
+  </a>
+  <a name="get_gaindb">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_gaindb</span>(self, angle_prime):
+    
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <code><a href="src.antennas.Antenna.html#get_gaindb" class="internal-link">src.antennas.Antenna.get_gaindb</a></code></div>
+    
+    <div><p>This method computes the power radiation of the antenna in the specified angle.</p>
+<p>The azimuth is forced in the method to[-pi,pi].table 7.3-1 in 3GPP TR 38.901 The inclination is forced in the method to[0,pi]. The angles are in the local coordinate system.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">angle​_prime:</span>Class Angles .</td><td class="fieldArgDesc">The azimuth and inclination angle in the local reference system of the antenna.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">maxgaindb-min(A_max,min(12*(azimuth/beamwidth)**2,A_max)+min(12*((inclination-90)/beamwidth)**2,SLA_v)).</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.antennas.Antenna3gpp3D.save">
+    
+  </a>
+  <a name="save">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">save</span>(self, path, name):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>This is method saves to disk the configuration of the isotropic antenna model.<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">path:</span>string.</td><td class="fieldArgDesc">the path to the directory where the antenna configuration will be saved.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">name:</span>string.</td><td class="fieldArgDesc">A name that identifies the antenna. For example indicates if the antenna is Tx or Rx.</td></tr></table></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.antennas.Antenna3gpp3D.A_max">
+    
+  </a>
+  <a name="A_max">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">A_max</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Front-back ratio in db.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.antennas.Antenna3gpp3D.beamwidth">
+    
+  </a>
+  <a name="beamwidth">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">beamwidth</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Beamwidth of the antenna in degrees.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.antennas.Antenna3gpp3D.maxgaindb">
+    
+  </a>
+  <a name="maxgaindb">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">maxgaindb</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The Maximum directional gain of the antenna.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.antennas.Antenna3gpp3D.SLA_v">
+    
+  </a>
+  <a name="SLA_v">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">SLA_v</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Slidelobe level limit in db.</div>
+    
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for src,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    22.4.0.dev0 at 2022-07-25 10:55:29.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

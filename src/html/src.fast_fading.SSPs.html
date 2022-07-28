@@ -1,0 +1,1052 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>src.fast_fading.SSPs</title>
+    <meta name="generator" content="pydoctor 22.4.0.dev0"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default">
+  
+  <div class="container">
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          src <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="search-help-button" title="Help" onclick="toggleSearchHelpText()"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div class="hint" id="search-help-box">
+          <p class="rst-last">
+      
+            Search bar offers the following options:
+            <ul>   
+                <li>
+                  <strong>Term presence.</strong> The below example searches for documents that 
+                    must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                </li> 
+
+                <li>
+                  <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                </li> 
+
+                <li>
+                  <strong>Search in specific fields.</strong> The following search matches all objects 
+                  in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+
+                  <p>
+                    Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                    Last two fields are only applicable if "search in docstrings" is enabled.
+                  </p>
+                </li>
+
+                <li>
+                  <strong>Fuzzy matches.</strong> The following search matches all documents 
+                  that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                </li>
+            </ul>
+
+          </p>
+        </div>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 8px;">
+          <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+    
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="class"><code><code><a href="index.html" class="internal-link">src</a></code><wbr></wbr>.<code><a href="src.fast_fading.html" class="internal-link" title="src.fast_fading">fast_fading</a></code><wbr></wbr>.<code><a href="src.fast_fading.SSPs.html" class="internal-link" title="src.fast_fading.SSPs">SSPs</a></code></code></h1>
+        <div id="showPrivate">
+          <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+        </div>
+      </div>
+
+      <div class="categoryHeader">
+        class documentation
+      </div>
+
+      <div class="extrasDocstring">
+        <p><code><span class="py-keyword">class</span> <span class="py-defname">SSPs</span>:</code></p>
+        <p><a href="classIndex.html#src.fast_fading.SSPs">View In Hierarchy</a></p>
+      </div>
+
+      <div class="moduleDocstring">
+        <div><p>This class implments the Short Scale Parameterss object.</p>
+<p>This class enables the access to all ssps in a single object. The ssps are stored in an array, and can be acceded in this way but also they can be access by setter and getter methos like properties.</p>
+</div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id15">
+  
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="src.fast_fading.SSPs.__init__">__init__</a></code></td>
+    <td>The constructor method of the  SSPs Class.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#iniphases.setter" class="internal-link" title="src.fast_fading.SSPs.iniphases.setter">iniphases​.setter</a></code></td>
+    <td>Sets the initial phases array</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#P.setter" class="internal-link" title="src.fast_fading.SSPs.P.setter">P​.setter</a></code></td>
+    <td>Sets the array of powers recieved of each cluster . Power delay profile (PDP)</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#P_LOS.setter" class="internal-link" title="src.fast_fading.SSPs.P_LOS.setter">P​_LOS​.setter</a></code></td>
+    <td>Sets the array of powers recieved of each cluster in the LOS condition . Power delay profile (PDP)</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#phiAOA.setter" class="internal-link" title="src.fast_fading.SSPs.phiAOA.setter">phi​AOA​.setter</a></code></td>
+    <td>Sets the array with the azimuth angle of arrival for each cluster.In degrees.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#phiAOA_m_rad.setter" class="internal-link" title="src.fast_fading.SSPs.phiAOA_m_rad.setter">phi​AOA_m_rad​.setter</a></code></td>
+    <td>Sets the matrix (cluster number x ray number) with the azimuth angle of arrival for each ray in each cluster. In radians.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#phiAOD.setter" class="internal-link" title="src.fast_fading.SSPs.phiAOD.setter">phi​AOD​.setter</a></code></td>
+    <td>Sets the array with the azimuth angle of departure for each cluster.In degrees.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#phiAOD_m_rad.setter" class="internal-link" title="src.fast_fading.SSPs.phiAOD_m_rad.setter">phi​AOD_m_rad​.setter</a></code></td>
+    <td>Sets the matrix (cluster number x ray number) with the azimuth angle of departure for each ray in each cluster. In radians.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#tau.setter" class="internal-link" title="src.fast_fading.SSPs.tau.setter">tau​.setter</a></code></td>
+    <td>Sets the array of relative delays of each cluster</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#tau_LOS.setter" class="internal-link" title="src.fast_fading.SSPs.tau_LOS.setter">tau_​LOS​.setter</a></code></td>
+    <td>Sets the array of relative delays (in the LOS condition) of each cluster</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#tau_min.setter" class="internal-link" title="src.fast_fading.SSPs.tau_min.setter">tau​_min​.setter</a></code></td>
+    <td>Sets the minimum delay of all clusters</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#thetaAOA.setter" class="internal-link" title="src.fast_fading.SSPs.thetaAOA.setter">theta​AOA​.setter</a></code></td>
+    <td>Sets the array with the inclination angle of arrival for each cluster.In degrees.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#thetaAOA_m_rad.setter" class="internal-link" title="src.fast_fading.SSPs.thetaAOA_m_rad.setter">theta​AOA_m_rad​.setter</a></code></td>
+    <td>Sets the array with the inclination angle of arrival for each cluster.In degrees.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#thetaAOD.setter" class="internal-link" title="src.fast_fading.SSPs.thetaAOD.setter">theta​AOD​.setter</a></code></td>
+    <td>Sets the array with the inclination angle of departure for each cluster.In degrees.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#thetaAOD_m_rad.setter" class="internal-link" title="src.fast_fading.SSPs.thetaAOD_m_rad.setter">theta​AOD_m_rad​.setter</a></code></td>
+    <td>Sets the matrix (cluster number x ray number) with the inclination angle of departure for each ray in each cluster. In radians.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#xpol.setter" class="internal-link" title="src.fast_fading.SSPs.xpol.setter">xpol​.setter</a></code></td>
+    <td>Sets the cross polarization array</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#n_scatters" class="internal-link" title="src.fast_fading.SSPs.n_scatters">n​_scatters</a></code></td>
+    <td>The number of the scatters in this channel model.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#number_sps" class="internal-link" title="src.fast_fading.SSPs.number_sps">number​_sps</a></code></td>
+    <td>The number of the short scale parameters.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#reduced_n_scatters" class="internal-link" title="src.fast_fading.SSPs.reduced_n_scatters">reduced​_n​_scatters</a></code></td>
+    <td>The number of the scatters after filter the scatters with low power.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#ssp_array" class="internal-link" title="src.fast_fading.SSPs.ssp_array">ssp​_array</a></code></td>
+    <td>An array of ssps. Each element of the array is an array of each ssp.</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#iniphases" class="internal-link" title="src.fast_fading.SSPs.iniphases">iniphases</a></code></td>
+    <td>Gets the intial phases</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#P" class="internal-link" title="src.fast_fading.SSPs.P">P</a></code></td>
+    <td>Gets the array of powers recieved of each cluster . Power delay profile (PDP)</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#P_LOS" class="internal-link" title="src.fast_fading.SSPs.P_LOS">P​_LOS</a></code></td>
+    <td>Gets the array of powers recieved of each cluster in the LOS condition . Power delay profile (PDP)</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#phiAOA" class="internal-link" title="src.fast_fading.SSPs.phiAOA">phi​AOA</a></code></td>
+    <td>Gets the array with the azimuth angle of arrival for each cluster.In degrees.</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#phiAOA_m_rad" class="internal-link" title="src.fast_fading.SSPs.phiAOA_m_rad">phi​AOA_m_rad</a></code></td>
+    <td>Gets the matrix (cluster number x ray number) with the azimuth angle of arrival for each ray in each cluster. In radians.</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#phiAOD" class="internal-link" title="src.fast_fading.SSPs.phiAOD">phi​AOD</a></code></td>
+    <td>Gets the array with the azimuth angle of departure for each cluster.In degrees.</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#phiAOD_m_rad" class="internal-link" title="src.fast_fading.SSPs.phiAOD_m_rad">phi​AOD_m_rad</a></code></td>
+    <td>Gets the matrix (cluster number x ray number) with the azimuth angle of departure for each ray in each cluster. In radians.</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#tau" class="internal-link" title="src.fast_fading.SSPs.tau">tau</a></code></td>
+    <td>Gets the array of relative delays of each cluster</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#tau_LOS" class="internal-link" title="src.fast_fading.SSPs.tau_LOS">tau_​LOS</a></code></td>
+    <td>Gets the array of relative delays (in LOS condition) of each cluster</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#tau_min" class="internal-link" title="src.fast_fading.SSPs.tau_min">tau​_min</a></code></td>
+    <td>Gets the minimum delay of all clusters</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#thetaAOA" class="internal-link" title="src.fast_fading.SSPs.thetaAOA">theta​AOA</a></code></td>
+    <td>Gets the array with the inclination angle of arrival for each cluster.In degrees.</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#thetaAOA_m_rad" class="internal-link" title="src.fast_fading.SSPs.thetaAOA_m_rad">theta​AOA_m_rad</a></code></td>
+    <td>Gets the matrix (cluster number x ray number) with the inclination angle of arrival for each ray in each cluster. In radians.</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#thetaAOD" class="internal-link" title="src.fast_fading.SSPs.thetaAOD">theta​AOD</a></code></td>
+    <td>Gets the array with the inclination angle of departure for each cluster.In degrees.</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#thetaAOD_m_rad" class="internal-link" title="src.fast_fading.SSPs.thetaAOD_m_rad">theta​AOD_m_rad</a></code></td>
+    <td>Gets the matrix (cluster number x ray number) with the inclination angle of departure for each ray in each cluster. In radians.</td>
+  </tr><tr class="property">
+    
+    <td>Property</td>
+    <td><code><a href="#xpol" class="internal-link" title="src.fast_fading.SSPs.xpol">xpol</a></code></td>
+    <td>Gets the cross polarization array</td>
+  </tr>
+</table>
+        
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basemethod">
+  
+  
+  <a name="src.fast_fading.SSPs.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span>(self, n_scatters=0):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>The constructor method of the  SSPs Class.<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">n​_scatters:</span>int.</td><td class="fieldArgDesc">The number of the scatters in this channel model.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.fast_fading.SSPs.iniphases.setter">
+    
+  </a>
+  <a name="iniphases.setter">
+    
+  </a>
+  <div class="functionHeader">
+    @<a href="#iniphases.setter" class="internal-link" title="src.fast_fading.SSPs.iniphases.setter">iniphases.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">iniphases</span>(self, value):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Sets the initial phases array</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.fast_fading.SSPs.P.setter">
+    
+  </a>
+  <a name="P.setter">
+    
+  </a>
+  <div class="functionHeader">
+    @<a href="#P.setter" class="internal-link" title="src.fast_fading.SSPs.P.setter">P.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">P</span>(self, value):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Sets the array of powers recieved of each cluster . Power delay profile (PDP)</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.fast_fading.SSPs.P_LOS.setter">
+    
+  </a>
+  <a name="P_LOS.setter">
+    
+  </a>
+  <div class="functionHeader">
+    @<a href="#P_LOS.setter" class="internal-link" title="src.fast_fading.SSPs.P_LOS.setter">P_LOS.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">P_LOS</span>(self, value):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Sets the array of powers recieved of each cluster in the LOS condition . Power delay profile (PDP)</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.fast_fading.SSPs.phiAOA.setter">
+    
+  </a>
+  <a name="phiAOA.setter">
+    
+  </a>
+  <div class="functionHeader">
+    @<a href="#phiAOA.setter" class="internal-link" title="src.fast_fading.SSPs.phiAOA.setter">phiAOA.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">phiAOA</span>(self, value):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Sets the array with the azimuth angle of arrival for each cluster.In degrees.</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.fast_fading.SSPs.phiAOA_m_rad.setter">
+    
+  </a>
+  <a name="phiAOA_m_rad.setter">
+    
+  </a>
+  <div class="functionHeader">
+    @<a href="#phiAOA_m_rad.setter" class="internal-link" title="src.fast_fading.SSPs.phiAOA_m_rad.setter">phiAOA_m_rad.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">phiAOA_m_rad</span>(self, value):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Sets the matrix (cluster number x ray number) with the azimuth angle of arrival for each ray in each cluster. In radians.</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.fast_fading.SSPs.phiAOD.setter">
+    
+  </a>
+  <a name="phiAOD.setter">
+    
+  </a>
+  <div class="functionHeader">
+    @<a href="#phiAOD.setter" class="internal-link" title="src.fast_fading.SSPs.phiAOD.setter">phiAOD.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">phiAOD</span>(self, value):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Sets the array with the azimuth angle of departure for each cluster.In degrees.</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.fast_fading.SSPs.phiAOD_m_rad.setter">
+    
+  </a>
+  <a name="phiAOD_m_rad.setter">
+    
+  </a>
+  <div class="functionHeader">
+    @<a href="#phiAOD_m_rad.setter" class="internal-link" title="src.fast_fading.SSPs.phiAOD_m_rad.setter">phiAOD_m_rad.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">phiAOD_m_rad</span>(self, value):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Sets the matrix (cluster number x ray number) with the azimuth angle of departure for each ray in each cluster. In radians.</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.fast_fading.SSPs.tau.setter">
+    
+  </a>
+  <a name="tau.setter">
+    
+  </a>
+  <div class="functionHeader">
+    @<a href="#tau.setter" class="internal-link" title="src.fast_fading.SSPs.tau.setter">tau.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">tau</span>(self, value):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Sets the array of relative delays of each cluster</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.fast_fading.SSPs.tau_LOS.setter">
+    
+  </a>
+  <a name="tau_LOS.setter">
+    
+  </a>
+  <div class="functionHeader">
+    @<a href="#tau_LOS.setter" class="internal-link" title="src.fast_fading.SSPs.tau_LOS.setter">tau_LOS.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">tau_LOS</span>(self, value):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Sets the array of relative delays (in the LOS condition) of each cluster</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.fast_fading.SSPs.tau_min.setter">
+    
+  </a>
+  <a name="tau_min.setter">
+    
+  </a>
+  <div class="functionHeader">
+    @<a href="#tau_min.setter" class="internal-link" title="src.fast_fading.SSPs.tau_min.setter">tau_min.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">tau_min</span>(self, value):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Sets the minimum delay of all clusters</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.fast_fading.SSPs.thetaAOA.setter">
+    
+  </a>
+  <a name="thetaAOA.setter">
+    
+  </a>
+  <div class="functionHeader">
+    @<a href="#thetaAOA.setter" class="internal-link" title="src.fast_fading.SSPs.thetaAOA.setter">thetaAOA.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">thetaAOA</span>(self, value):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Sets the array with the inclination angle of arrival for each cluster.In degrees.</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.fast_fading.SSPs.thetaAOA_m_rad.setter">
+    
+  </a>
+  <a name="thetaAOA_m_rad.setter">
+    
+  </a>
+  <div class="functionHeader">
+    @<a href="#thetaAOA_m_rad.setter" class="internal-link" title="src.fast_fading.SSPs.thetaAOA_m_rad.setter">thetaAOA_m_rad.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">thetaAOA_m_rad</span>(self, value):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Sets the array with the inclination angle of arrival for each cluster.In degrees.</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.fast_fading.SSPs.thetaAOD.setter">
+    
+  </a>
+  <a name="thetaAOD.setter">
+    
+  </a>
+  <div class="functionHeader">
+    @<a href="#thetaAOD.setter" class="internal-link" title="src.fast_fading.SSPs.thetaAOD.setter">thetaAOD.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">thetaAOD</span>(self, value):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Sets the array with the inclination angle of departure for each cluster.In degrees.</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.fast_fading.SSPs.thetaAOD_m_rad.setter">
+    
+  </a>
+  <a name="thetaAOD_m_rad.setter">
+    
+  </a>
+  <div class="functionHeader">
+    @<a href="#thetaAOD_m_rad.setter" class="internal-link" title="src.fast_fading.SSPs.thetaAOD_m_rad.setter">thetaAOD_m_rad.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">thetaAOD_m_rad</span>(self, value):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Sets the matrix (cluster number x ray number) with the inclination angle of departure for each ray in each cluster. In radians.</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="src.fast_fading.SSPs.xpol.setter">
+    
+  </a>
+  <a name="xpol.setter">
+    
+  </a>
+  <div class="functionHeader">
+    @<a href="#xpol.setter" class="internal-link" title="src.fast_fading.SSPs.xpol.setter">xpol.setter</a><br />
+    <span class="py-keyword">def</span> <span class="py-defname">xpol</span>(self, value):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>Sets the cross polarization array</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.fast_fading.SSPs.n_scatters">
+    
+  </a>
+  <a name="n_scatters">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">n_scatters</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The number of the scatters in this channel model.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.fast_fading.SSPs.number_sps">
+    
+  </a>
+  <a name="number_sps">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">number_sps</span>: <code>int</code> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The number of the short scale parameters.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.fast_fading.SSPs.reduced_n_scatters">
+    
+  </a>
+  <a name="reduced_n_scatters">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">reduced_n_scatters</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>The number of the scatters after filter the scatters with low power.</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="src.fast_fading.SSPs.ssp_array">
+    
+  </a>
+  <a name="ssp_array">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">ssp_array</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>An array of ssps. Each element of the array is an array of each ssp.</div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="src.fast_fading.SSPs.iniphases">
+    
+  </a>
+  <a name="iniphases">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">iniphases</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Gets the intial phases</div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="src.fast_fading.SSPs.P">
+    
+  </a>
+  <a name="P">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">P</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Gets the array of powers recieved of each cluster . Power delay profile (PDP)</div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="src.fast_fading.SSPs.P_LOS">
+    
+  </a>
+  <a name="P_LOS">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">P_LOS</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Gets the array of powers recieved of each cluster in the LOS condition . Power delay profile (PDP)</div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="src.fast_fading.SSPs.phiAOA">
+    
+  </a>
+  <a name="phiAOA">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">phiAOA</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Gets the array with the azimuth angle of arrival for each cluster.In degrees.</div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="src.fast_fading.SSPs.phiAOA_m_rad">
+    
+  </a>
+  <a name="phiAOA_m_rad">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">phiAOA_m_rad</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Gets the matrix (cluster number x ray number) with the azimuth angle of arrival for each ray in each cluster. In radians.</div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="src.fast_fading.SSPs.phiAOD">
+    
+  </a>
+  <a name="phiAOD">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">phiAOD</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Gets the array with the azimuth angle of departure for each cluster.In degrees.</div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="src.fast_fading.SSPs.phiAOD_m_rad">
+    
+  </a>
+  <a name="phiAOD_m_rad">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">phiAOD_m_rad</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Gets the matrix (cluster number x ray number) with the azimuth angle of departure for each ray in each cluster. In radians.</div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="src.fast_fading.SSPs.tau">
+    
+  </a>
+  <a name="tau">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">tau</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Gets the array of relative delays of each cluster</div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="src.fast_fading.SSPs.tau_LOS">
+    
+  </a>
+  <a name="tau_LOS">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">tau_LOS</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Gets the array of relative delays (in LOS condition) of each cluster</div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="src.fast_fading.SSPs.tau_min">
+    
+  </a>
+  <a name="tau_min">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">tau_min</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Gets the minimum delay of all clusters</div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="src.fast_fading.SSPs.thetaAOA">
+    
+  </a>
+  <a name="thetaAOA">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">thetaAOA</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Gets the array with the inclination angle of arrival for each cluster.In degrees.</div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="src.fast_fading.SSPs.thetaAOA_m_rad">
+    
+  </a>
+  <a name="thetaAOA_m_rad">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">thetaAOA_m_rad</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Gets the matrix (cluster number x ray number) with the inclination angle of arrival for each ray in each cluster. In radians.</div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="src.fast_fading.SSPs.thetaAOD">
+    
+  </a>
+  <a name="thetaAOD">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">thetaAOD</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Gets the array with the inclination angle of departure for each cluster.In degrees.</div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="src.fast_fading.SSPs.thetaAOD_m_rad">
+    
+  </a>
+  <a name="thetaAOD_m_rad">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">thetaAOD_m_rad</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Gets the matrix (cluster number x ray number) with the inclination angle of departure for each ray in each cluster. In radians.</div>
+    
+  </div>
+</div><div class="baseproperty">
+  
+  
+  <a name="src.fast_fading.SSPs.xpol">
+    
+  </a>
+  <a name="xpol">
+    
+  </a>
+  <div class="functionHeader">
+    @property<br />
+    <span class="py-defname">xpol</span> =
+    
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Gets the cross polarization array</div>
+    
+  </div>
+</div>
+
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container">
+    <a href="index.html">API Documentation</a> for src,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    22.4.0.dev0 at 2022-07-25 10:55:29.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>
