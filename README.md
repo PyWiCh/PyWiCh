@@ -24,11 +24,11 @@ python3 ./src/gui/gui_App_graph.py
 ## Contributing
 [Contributing](CONTRIBUTING.md)
 
-##Code of conduct
+## Code of conduct
 [Code of conduct](CODE_OF_CONDUCT.md)
 
-##Licence
-[Licence](Licence.md)
+## Licence
+[Licence](Licence)
 
 ## Project status
 This is version 1.0 of PyWiCh.
