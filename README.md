@@ -21,8 +21,9 @@ python3 ./src/gui/gui_App_graph.py
 ## User manual
 [User manual](user_manual.pdf)
 
-## Contributions
-[contributions](contributions.md)
+## Contributing
+[contributing](CONTRIBUTING.md)
+
 
 ## Project status
 This is version 1.0 of PyWiCh.
