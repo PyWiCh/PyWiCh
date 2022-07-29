@@ -1,6 +1,6 @@
-# WirelessChannelSimulator
+# PyWiCh
 
-Wireless Channel Simulator
+Python Wireless Channel Simulator
 
 ## Getting started
 
@@ -18,9 +18,12 @@ If you are not in the project directory change your directory to the project dir
 Run:
 python3 ./src/gui/gui_App_graph.py 
 
-## Project status
-This is an alpha version of the software.
+## User manual
+[Documentation](https://iie.fing.edu.uy/~belza/wirelesschannelsimulator/html/index.html)
 
-## Documentation 
+## Project status
+This is version 1.0 of PyWiCh.
+
+## Software Documentation 
 [Documentation](https://iie.fing.edu.uy/~belza/wirelesschannelsimulator/html/index.html)
 
