@@ -28,7 +28,7 @@ python3 ./src/gui/gui_App_graph.py
 [Code of conduct](CODE_OF_CONDUCT.md)
 
 ## Licence
-[Licence](Licence)
+[Licence](LICENSE)
 
 ## Project status
 This is version 1.0 of PyWiCh.
