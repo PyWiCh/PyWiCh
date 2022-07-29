@@ -14,7 +14,7 @@ import angles as angles
 from pylab import rcParams
 #import seaborn as sns
 from matplotlib import cm  
-from scipy.signal import lfilter
+
 
 
 

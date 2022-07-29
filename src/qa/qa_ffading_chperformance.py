@@ -14,7 +14,7 @@ import src.antennas as antennas
 import src.channel_performance as cp
 import src.frequency_band as fb
 import numpy as np
-import os
+
 
 class FadingPerformanceTest(unittest.TestCase):
   """Unitest class for testing fast_fading and channel performance.
