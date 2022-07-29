@@ -36,5 +36,9 @@ This is version 1.0 of PyWiCh.
 ## Software Documentation 
 [Software Documentation](https://htmlpreview.github.io/?https://github.com/PyWiCh/PyWiCh/blob/master/src/html/index.html)
 
+## Citation
+To cite this project 
+[DOI] (https://zenodo.org/badge/518983962.svg)
+
 ## Contact
 belza@fing.edu.uy
