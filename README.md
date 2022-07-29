@@ -37,7 +37,8 @@ This is version 1.0 of PyWiCh.
 [Software Documentation](https://htmlpreview.github.io/?https://github.com/PyWiCh/PyWiCh/blob/master/src/html/index.html)
 
 ## Citation
-To cite this project 
+To cite this project: Pablo Belzarena, PyWiCh-Python Wireless Channel Simulator, version 1.0, release date 29/7/202,
+https://github.com/PyWiCh/PyWiCh ,
 [![DOI](https://zenodo.org/badge/518983962.svg)](https://zenodo.org/badge/latestdoi/518983962)
 
 ## Contact
