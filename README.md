@@ -22,8 +22,10 @@ python3 ./src/gui/gui_App_graph.py
 [User manual](user_manual.pdf)
 
 ## Contributing
-[contributing](CONTRIBUTING.md)
+[Contributing](CONTRIBUTING.md)
 
+##Code of conduct
+[Code of conduct](CODE_OF_CONDUCT.md)
 
 ## Project status
 This is version 1.0 of PyWiCh.
