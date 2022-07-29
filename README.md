@@ -32,6 +32,7 @@ In attention to a respectful and productive participation, in this project we ha
 [Code of conduct](CODE_OF_CONDUCT.md)
 
 ## Licence
+PyWiCh is licensed under GNU General Public License v3.0. Please, read the following document:
 [Licence](LICENSE)
 
 ## Project status
