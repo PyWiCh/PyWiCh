@@ -453,7 +453,7 @@ class AppGraph():
         @param force_los: This parameter can take value 0 if LOS condition is forced to NLOS, 1 if is forcd to LOS, and 2 if iti is calculated from the probability model.
         @type MS_move: Array
         @param MS_move: An array of the number of MSs. Each element has the position, velocity, path length and samples.
-         @type move_probability: float
+        @type move_probability: float
         @param move_probability: The probability that each scatter is moving.
         @type v_min_scatters: float
         @param v_min_scatters: The minimum velocity of one scatter movement.
