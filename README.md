@@ -25,7 +25,7 @@ python3 ./src/gui/gui_App_graph.py
 This is version 1.0 of PyWiCh.
 
 ## Software Documentation 
-[Software Documentation](https://htmlpreview.github.io/?src/html/index.html)
+[Software Documentation](https://htmlpreview.github.io/?https://github.com/PyWiCh/PyWiCh/blob/master/src/html/index.html)
 
 ## Contact
 belza@fing.edu.uy
