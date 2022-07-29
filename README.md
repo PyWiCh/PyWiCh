@@ -19,13 +19,13 @@ Run:
 python3 ./src/gui/gui_App_graph.py 
 
 ## User manual
-[Documentation](user_manual.pdf)
+[User manual](user_manual.pdf)
 
 ## Project status
 This is version 1.0 of PyWiCh.
 
 ## Software Documentation 
-[Software Documentation](html/index.html)
+[Software Documentation](src/html/index.html)
 
 ## Contact
 belza@fing.edu.uy
