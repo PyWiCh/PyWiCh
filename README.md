@@ -19,10 +19,13 @@ Run:
 python3 ./src/gui/gui_App_graph.py 
 
 ## User manual
-[Documentation](https://iie.fing.edu.uy/~belza/wirelesschannelsimulator/html/index.html)
+[Documentation](user_manual.pdf)
 
 ## Project status
 This is version 1.0 of PyWiCh.
 
 ## Software Documentation 
-[Documentation](https://iie.fing.edu.uy/~belza/wirelesschannelsimulator/html/index.html)
+[Software Documentation](html/index.html)
+
+## Contact
+belza@fing.edu.uy
