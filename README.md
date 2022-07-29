@@ -22,9 +22,11 @@ python3 ./src/gui/gui_App_graph.py
 [User manual](user_manual.pdf)
 
 ## Contributing
+For bugs, suggestions, or ways to contribute, please see the Contributing document. 
 [Contributing](CONTRIBUTING.md)
 
 ## Code of conduct
+In attention to a respectful and productive participation, in this project we have adopted the following Code of conduct:
 [Code of conduct](CODE_OF_CONDUCT.md)
 
 ## Licence
