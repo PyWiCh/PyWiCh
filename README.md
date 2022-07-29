@@ -26,4 +26,3 @@ This is version 1.0 of PyWiCh.
 
 ## Software Documentation 
 [Documentation](https://iie.fing.edu.uy/~belza/wirelesschannelsimulator/html/index.html)
-
