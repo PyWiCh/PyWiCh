@@ -5,10 +5,20 @@ This module tests the antennas module.
 
 @author: pablobelzarena
 """
+##### to run from the project directory
+import sys,os
+sys.path.append('./src')
+sys.path.append('./src/gui')
+sys.path.append('./src/graph')
+
+###### to run from qa directory
+sys.path.append('../')
+sys.path.append('../gui')
+sys.path.append('../graph')
 
 import unittest
-import src.antennas as antennas
-import src.angles as angles
+import antennas as antennas
+import angles as angles
 import numpy as np
 
 class AntennasTest(unittest.TestCase):

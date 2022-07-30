@@ -5,9 +5,19 @@ This module tests the graph_antennas module.
 
 @author: pablobelzarena
 """
+##### to run from the project directory
+import sys,os
+sys.path.append('./src')
+sys.path.append('./src/gui')
+sys.path.append('./src/graph')
 
-import src.antennas as antennas
-import src.graph.graph_antennas as gra
+###### to run from qa directory
+sys.path.append('../')
+sys.path.append('../gui')
+sys.path.append('../graph')
+
+import antennas as antennas
+import graph_antennas as gra
 class AntennasGraphaTest():
   """This class tests graph_antennas."""  
 

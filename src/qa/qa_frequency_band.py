@@ -5,8 +5,18 @@ This module tests the frequency_band module.
 
 @author: pablobelzarena
 """
+##### to run from the project directory
+import sys,os
+sys.path.append('./src')
+sys.path.append('./src/gui')
+sys.path.append('./src/graph')
 
-import src.frequency_band as fb
+###### to run from qa directory
+sys.path.append('../')
+sys.path.append('../gui')
+sys.path.append('../graph')
+
+import frequency_band as fb
 import numpy as np 
 import unittest
 

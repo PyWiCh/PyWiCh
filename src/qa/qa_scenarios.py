@@ -7,8 +7,19 @@ This module tests the scenarios module.
 """
 
 # qa_scenarios.py : unittest for scenarios.py
+##### to run from the project directory
+import sys,os
+sys.path.append('./src')
+sys.path.append('./src/gui')
+sys.path.append('./src/graph')
+
+###### to run from qa directory
+sys.path.append('../')
+sys.path.append('../gui')
+sys.path.append('../graph')
+
 import unittest
-import src.scenarios as sc
+import scenarios as sc
 import numpy as np
 class ScenariosTest(unittest.TestCase):
   """Unitest class for testing scenarios."""  

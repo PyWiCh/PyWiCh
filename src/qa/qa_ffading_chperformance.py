@@ -7,12 +7,23 @@ This module tests the fast_fading and channel_performance modules.
 """
 
 # qa_angles.py : unittest for angles.py
+##### to run from the project directory
+import sys,os
+sys.path.append('./src')
+sys.path.append('./src/gui')
+sys.path.append('./src/graph')
+
+###### to run from qa directory
+sys.path.append('../')
+sys.path.append('../gui')
+sys.path.append('../graph')
+
 import unittest
-import src.scenarios as sc
-import src.fast_fading as fad
-import src.antennas as antennas
-import src.channel_performance as cp
-import src.frequency_band as fb
+import scenarios as sc
+import fast_fading as fad
+import antennas as antennas
+import channel_performance as cp
+import frequency_band as fb
 import numpy as np
 
 
