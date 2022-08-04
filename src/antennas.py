@@ -339,8 +339,8 @@ class AntennaArray3gpp(Antenna):
     @type theta_AOA:  float.
     @param theta_AOA: The inclination angle of arrival for Rx (or departure for Tx). The angle must be between 
     0 and pi.
-    @type phi_add  float.
-    @param phi_add The azimuth additional rotation angle for beamforming.Default 0 radians.
+    @type phi_add:  float.
+    @param phi_add: The azimuth additional rotation angle for beamforming.Default 0 radians.
     @type theta_add:  float.
     @param theta_add: The inclination aditional rotation angle for beamforming. Default 0 radians.
     """    
