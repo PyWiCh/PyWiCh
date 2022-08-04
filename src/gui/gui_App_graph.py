@@ -42,7 +42,7 @@ class AppGraph():
     """ This class is the main form of the Python wireless channel simulator.
     
     """
-    def __init__(self,window,title):
+    def __init__(self,window,title,FONT_SIZE):
         """The constructor of the AppNameInput Class
         
         @type window: tkinter.Tk() window.
@@ -84,6 +84,7 @@ class AppGraph():
         """ The minimum velocity of one scatter movement.""" 
         self.v_max_scatters = 0
         """ The maximum velocity of one scatter movement. """ 
+        self.__FONT_SIZE = FONT_SIZE
         self.gui_configuration()
 
     def gui_configuration(self):
@@ -98,72 +99,73 @@ class AppGraph():
         """This method builds the buttons to enter the configuration, to run the simulation and to analyze the results of the simulations.
         
         """         
-        font = tkfont.Font(family="Helvetica", size=25, weight = tkfont.BOLD)
-        square_size = int(font.metrics('linespace')/2.7)
+             
+        font = tkfont.Font(family="Helvetica", size=self.__FONT_SIZE, weight = tkfont.BOLD)
+        square_size = int(font.metrics('linespace')/1.)
         
         frm_config = tk.Frame(master=self.__window)
-        lbl_config = tk.Label(master=frm_config, text="Configuration of the simulation scenario: ",fg = "dark blue",font = "Verdana 18 bold")
+        lbl_config = tk.Label(master=frm_config, text="Configuration of the \n simulation scenario: ",fg = "dark blue",font = font)#Verdana 18 bold")
         lbl_config.grid(row=0, column=0, sticky="w")
         frm_config.grid(row=0, column=2, padx=10)
 
        
         aux0 = tk.Button(self.__window, text="Select \n Frequency \n Band",font=font, compound=tk.CENTER, command=self.cmd_freq_band)
         aux0.grid(row=2, column=3, padx=10)
-        aux0.config(width=square_size, height=int(square_size/2))
+        aux0.config(width=int(square_size*1.5), height=int(square_size/2))
         
         aux0 = tk.Button(self.__window, text="Select Tx \n Antenna", font=font, compound=tk.CENTER,command=self.cmd_tx_antenna)
         aux0.grid(row=2, column=0, padx=10)
-        aux0.config(width=square_size, height=int(square_size/2))
+        aux0.config(width=int(square_size*1.5), height=int(square_size/2))
         
         aux0 = tk.Button(self.__window, text="Select Rx \n Antenna", font=font, compound=tk.CENTER,command=self.cmd_rx_antenna)
         aux0.grid(row=2, column=1, padx=10)
-        aux0.config(width=square_size, height=int(square_size/2))
+        aux0.config(width=int(square_size*1.5), height=int(square_size/2))
 
         aux0 = tk.Button(self.__window, text="Select \n Scenario", font=font, compound=tk.CENTER,command=self.cmd_scenario)
         aux0.grid(row=2, column=2, padx=10)
-        aux0.config(width=square_size, height=int(square_size/2))
+        aux0.config(width=int(square_size*1.5), height=int(square_size/2))
 
         frm_runsim = tk.Frame(master=self.__window)
-        lbl_runsim = tk.Label(master=frm_runsim, text="Run the simulation : ",fg = "dark blue",font = "Verdana 18 bold")
+        lbl_runsim = tk.Label(master=frm_runsim, text="Run the simulation : ",fg = "dark blue",font = font)
         lbl_runsim.grid(row=0, column=0, sticky="w")
         frm_runsim.grid(row=3, column=2, padx=10)
 
         aux0 = tk.Button(self.__window, text="Graph \nscenario\n and Tx \npower map",font=font, compound=tk.CENTER, command=self.cmd_tx_pm)
         aux0.grid(row=2, column=4, padx=10)
-        aux0.config(width=square_size, height=int(square_size/2))
+        aux0.config(width=int(square_size*1.5), height=int(square_size/2))
                
         aux0 = tk.Button(self.__window, text="Run \n Simulation", font=font, compound=tk.CENTER,command=self.cmd_run)
         aux0.grid(row=4, column=2, padx=10)
-        aux0.config(width=square_size, height=int(square_size/2))
+        aux0.config(width=int(square_size*1.5), height=int(square_size/2))
 
         frm_graph = tk.Frame(master=self.__window)
-        lbl_graph = tk.Label(master=frm_graph, text="Analysis of simulation results : ",fg = "dark blue",font = "Verdana 18 bold")
+        lbl_graph = tk.Label(master=frm_graph, text="Analysis of \n simulation results : ",fg = "dark blue",font = font)
         lbl_graph.grid(row=0, column=0, sticky="w")
         frm_graph.grid(row=5, column=2, padx=10)
 
         aux0 = tk.Button(self.__window, text="Select the \n directory with\n simulation \n results" , font=font, compound=tk.CENTER,command=self.cmd_directory)
         aux0.grid(row=6, column=2, padx=10)
-        aux0.config(width=square_size, height=int(square_size/2))
+        aux0.config(width=int(square_size*1.5), height=int(square_size/2))
 
         aux0 = tk.Button(self.__window, text="Channel \n Matrix \n Analysis", font=font, compound=tk.CENTER,command=self.cmd_ch_matrix)
         aux0.grid(row=7, column=0, padx=10)
-        aux0.config(width=square_size, height=int(square_size/2))
+        aux0.config(width=int(square_size*1.5), height=int(square_size/2))
 
         aux0 = tk.Button(self.__window, text="Multipah \n LSP \n Analysis",font=font, compound=tk.CENTER, command=self.cmd_multipath_lsp)
         aux0.grid(row=7, column=1, padx=10)
-        aux0.config(width=square_size, height=int(square_size/2))
+        aux0.config(width=int(square_size*1.5), height=int(square_size/2))
 
         aux0 = tk.Button(self.__window, text="Multipath \n SSP \n Analysis"  ,font=font, compound=tk.CENTER, command=self.cmd_multipath_ssp)
         aux0.grid(row=7, column=2, padx=10)
-        aux0.config(width=square_size, height=int(square_size/2))
+        aux0.config(width=int(square_size*1.5), height=int(square_size/2))
   
         aux0 = tk.Button(self.__window, text="System \n Performance \n Analysis",font=font, compound=tk.CENTER, command=self.cmd_ch_performance)
         aux0.grid(row=7, column=3, padx=10)
-        aux0.config(width=square_size, height=int(square_size/2))
+        aux0.config(width=int(square_size*1.5), height=int(square_size/2))
         
         aux0 = tk.Button(self.__window, text="Path \n Performance \n Analysis",font=font, compound=tk.CENTER, command=self.cmd_path_performance)
         aux0.grid(row=7, column=4, padx=10)
-        aux0.config(width=square_size, height=int(square_size/2))
+        aux0.config(width=int(square_size*1.5), height=int(square_size/2))
 
     ##### comand functions
         
@@ -856,7 +858,12 @@ class AppGraph():
 
 if __name__ == "__main__":
     window = tk.Tk()
-    app = AppGraph(window,"PyWiCh" )
+
+    width, height = window.winfo_screenwidth(), window.winfo_screenheight()
+    FONT_SIZE = int(width /1.25/ 1920*25)
+    window.geometry('%dx%d+0+0' % (width/1.1,height/1.1))
+
+    app = AppGraph(window,"PyWiCh",FONT_SIZE )
     try:
         window.mainloop()
     except:
