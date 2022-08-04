@@ -1,2 +1,2 @@
-## Welcome to PyWiCh, The Python wireless channel simulator.
+## Welcome to PyWiCh, The Python Wireless Channel simulator.
 
