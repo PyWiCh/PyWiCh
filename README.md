@@ -24,19 +24,17 @@ The user manual explains how to use PyWiCh from its Graphical Interface. In addi
 [User manual](user_manual.pdf)
 
 ## Contributing
-For bugs, suggestions, or ways to contribute, please see the Contributing document. 
-[Contributing](CONTRIBUTING.md)
+For bugs, suggestions, or ways to contribute, please see the [Contributing document](CONTRIBUTING.md)
 
 ## Code of conduct
-In attention to a respectful and productive participation, in this project we have adopted the following Code of conduct:
-[Code of conduct](CODE_OF_CONDUCT.md)
+In attention to a respectful and productive participation, in this project we have adopted the following [Code of conduct](CODE_OF_CONDUCT.md).
 
 ## Licence
 PyWiCh is licensed under GNU General Public License v3.0. Please, read the following document:
 [Licence](LICENSE)
 
 ## Project status
-This is version 1.0 of PyWiCh.
+This is version 1.01 of PyWiCh.
 
 ## Software Documentation 
 The software documentation is generated with Pydoctor from the source code and can be found in:
