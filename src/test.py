@@ -25,9 +25,9 @@ nMS=2 # number of antennas in the Mobile Station antenna array
 nBS = 2 # number of antennas in the Base Station antenna array
 antenna_gain = 8
 aeBS = antennas.Antenna3gpp3D(antenna_gain) # Build the Base Station antenna element
-aBS  = antennas.AntennaArray3gpp(0.5, 0.5, 1, nBS, 0, 0, 0, aeBS, 1) # Build the Base Station antenna array 
+aBS  = antennas.AntennaArray3gpp(0.5, 0.5, 1, nBS, 0, 0, 0, aeBS, 1,"antennaRx") # Build the Base Station antenna array 
 aeMS  = antennas.AntennaIsotropic(antenna_gain) #Build the Mobile Station antenna element
-aMS  = antennas.AntennaArray3gpp(0.5, 0.5, 1, nMS, 0, 0, 0, aeMS, 1) # Build the MS antenna array
+aMS  = antennas.AntennaArray3gpp(0.5, 0.5, 1, nMS, 0, 0, 0, aeMS, 1,"antennaTx") # Build the MS antenna array
 ###########################################################
 ###### Build the steering vectors for beamforming according the the BS and MS positions
 wBS = aBS.compute_phase_steering (0,np.pi/2,0,0)
@@ -56,16 +56,9 @@ freq_band.compute_tx_psd(tx_power_dbm=30) # Sets the BS tranmision power and bui
  #### Build the channel performance object to runs the simulation  and gets the results after the simulation
 performance  = cp.ChannelPerformance()
 """ Channel performance object"""
-#####################################################
-###################### Mobile stations routes configuratiom
-n_MS = 1 # number of MSs in this simulation
-positions = np.empty(shape=(n_MS),dtype = object) # The positions of the route of all MSs
-mspositions1= np.array(([10,10,2],[20,10,2])) # The positions of the MS 1. It has only two points in its route.
-positions[0] = mspositions1
-times  = np.empty(shape=(n_MS),dtype = object) # The times of each point in the MS route
-timesMS1 = np.array(([0,0.01])) # Th first point of the route is in simulation time 0 s and the second in the simulation time 0.1 s.
-times[0] = timesMS1
-path = "./data/"+SIM_NAME  # The path to save the results of the simulation.
+
+###########################save scenario
+path = "./data/"+SIM_NAME 
 try:
     os.makedirs(path)
 except OSError as e:
@@ -74,5 +67,20 @@ except OSError as e:
 
     else:
         print('Exception!',str(e)+' occurred.' )
+
+scf.save(path)
+aBS.save(path)
+aMS.save(path)
+freq_band.save(path)
+
+###################### Mobile stations routes configuratiom
+n_MS = 1 # number of MSs in this simulation
+positions = np.empty(shape=(n_MS),dtype = object) # The positions of the route of all MSs
+mspositions1= np.array(([10,10,2],[20,10,2])) # The positions of the MS 1. It has only two points in its route.
+positions[0] = mspositions1
+times  = np.empty(shape=(n_MS),dtype = object) # The times of each point in the MS route
+timesMS1 = np.array(([0,0.01])) # Th first point of the route is in simulation time 0 s and the second in the simulation time 0.1 s.
+times[0] = timesMS1
+ # The path to save the results of the simulation.
 performance.compute_path(scf, freq_band, aMS,aBS,positions,times,force_los,path,mode=2,scatters_move=False,move_probability=0,v_min_scatters=0,v_max_scatters=10)               
 #####################################################
