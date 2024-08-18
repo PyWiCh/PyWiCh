@@ -347,7 +347,7 @@ class AppScenarios():
         
         """ 
         self.windowsMS[ms_number].destroy()
-        self.MSs_move[ms_number] = np.array([mspos,msvel,length,samples]) 
+        self.MSs_move[ms_number] = np.array([mspos,msvel,length,samples],dtype= object) 
         if ms_number < int(self.ent_nMS.get())-1:
             self.windowsMS[ms_number +1] = tk.Tk()
             """ The tk.TK() window for the AppMSconfig form. """ 
