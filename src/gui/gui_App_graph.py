@@ -31,6 +31,8 @@ import gui.gui_select_point_prb as gspp
 
 import frequency_band as fband
 import scenarios as sc
+import fading as fad
+
 import graph.graph_scenarios as grs
 import channel_performance as cp
 import numpy as np
@@ -407,8 +409,9 @@ class AppGraph():
         self.antennaTx.save(path)
         self.antennaRx.save(path)
         self.freq_band.save(path)
+        fading = fad.Fading3gpp(self.scenario,self.scatters_move,self.move_probability,self.v_min_scatters,self.v_max_scatters)
 
-        performance.compute_path(self.scenario,self.freq_band,self.antennaTx,self.antennaRx,self.positions,self.times,self.force_los,path,self.sspmode,self.scatters_move,self.move_probability,self.v_min_scatters,self.v_max_scatters,self.phi_addTx,self.theta_addTx,self.phi_addRx,self.theta_addRx) 
+        performance.compute_path(fading,self.freq_band,self.antennaTx,self.antennaRx,self.positions,self.times,self.force_los,path,self.sspmode,self.phi_addTx,self.theta_addTx,self.phi_addRx,self.theta_addRx) 
         self.scenario_update = False
 
          

@@ -20,17 +20,20 @@ sys.path.append('../graph')
 
 import unittest
 import scenarios as sc
-import fast_fading as fad
+import fading as fad
 import antennas as antennas
 import channel_performance as cp
 import frequency_band as fb
 import numpy as np
+import matplotlib.pyplot as plt
+import datetime
+
 
 
 class FadingPerformanceTest(unittest.TestCase):
-  """Unitest class for testing fast_fading and channel performance.
+  """Unitest class for testing fading and channel performance.
   
-    It is very difficult to test the fast_fading module because all short scale parameters are build
+    It is very difficult to test the fading module because all short scale parameters are build
     using random variables. Therefore, the channel matrix coefficients depend on the realization of
     many rvs like: clusters delays, clusters powers, clusters arrival and departure angles,
     cross polarizations and intial phases. For testing this module we override these random variables
@@ -39,7 +42,237 @@ class FadingPerformanceTest(unittest.TestCase):
     API) to access the results of the wireless channel simulations.
 
   """   
+  def test_SISORayleighFading(self):
+    fcGHz = 1
+    posx_min = -100
+    posx_max = 100
+    posy_min = -100
+    posy_max = 100
+    grid_number = 10
+    BS_pos = [0,0,0]
+    Ptx_db = 10
+    sigma_shadow=5
+    shadow_corr_distance=5
+    pos_ini =[0,0,0]
+    order=2
+    scf=  sc.ScenarioSimpleLossModel(fcGHz,posx_min,posx_max,posy_min,posy_max,grid_number,BS_pos, Ptx_db,order,sigma_shadow,shadow_corr_distance)
+    MS_pos = [0,0,0]    
+    MS_vel = [10,0,0]
+        ######## Build the receive and transmit antenna for testing 
+    nMS=1
+    nBS = 1
+    aeBS = antennas.Antenna3gpp3D(8)
+    self.aBS  = antennas.AntennaArray3gpp(0.5, 0.5, 1, nBS, 0, 0, 0, aeBS, 1)
+    """ Base station antenna array""" 
+    aeMS  = antennas.AntennaIsotropic(8)
+    self.aMS  = antennas.AntennaArray3gpp(0.5, 0.5, 1, nMS, 0, 0, 0, aeMS, 1)
+
+    fading = fad.FadingSiSoRayleigh(scf,10)
+    iterations = 100000
+    z = np.zeros(iterations,dtype=complex)
+    t= 0
+    for i in range(iterations):
+        t = t+0.001
+        z[i] = fading.compute_ch_matrix(MS_pos,MS_vel,self.aMS,self.aBS,t)
+    z_mag = np.abs(z) # take magnitude for the sake of plotting
+    z_mag_dB = 10*np.log10(z_mag) # convert to dB
+    # Plot fading over time
+    plt.plot(z_mag_dB)
+    plt.show()
+    count, bins_count = np.histogram(z_mag, bins=10)
+  
+    # finding the PDF of the histogram using count values
+    pdf = count / sum(count)
+  
+    # using numpy np.cumsum to calculate the CDF
+    # We can also find using the PDF values by looping and adding
+    cdf = np.cumsum(pdf)
+  
+    # plotting PDF and CDF
+    #plt.plot(bins_count[1:], pdf, color="red", label="PDF")
+    plt.plot(bins_count[1:], cdf, label="CDF")
+    plt.legend()
+    plt.show()
+  
+  def test_SISORicianFading(self):
+    fcGHz = 1
+    posx_min = -100
+    posx_max = 100
+    posy_min = -100
+    posy_max = 100
+    grid_number = 10
+    BS_pos = [0,0,0]
+    Ptx_db = 10
+    sigma_shadow=5
+    shadow_corr_distance=5
+    pos_ini =[0,0,0]
+    order=2
+    scf=  sc.ScenarioSimpleLossModel(fcGHz,posx_min,posx_max,posy_min,posy_max,grid_number,BS_pos, Ptx_db,order,sigma_shadow,shadow_corr_distance)
+    MS_pos = [0,0,0]    
+    MS_vel = [10,0,0]
+        ######## Build the receive and transmit antenna for testing 
+    nMS=1
+    nBS = 1
+    aeBS = antennas.Antenna3gpp3D(8)
+    self.aBS  = antennas.AntennaArray3gpp(0.5, 0.5, 1, nBS, 0, 0, 0, aeBS, 1)
+    """ Base station antenna array""" 
+    aeMS  = antennas.AntennaIsotropic(8)
+    self.aMS  = antennas.AntennaArray3gpp(0.5, 0.5, 1, nMS, 0, 0, 0, aeMS, 1)
+
+    fading = fad.FadingSiSoRician(scf,10,10)
+    iterations = 10000
+    z = np.zeros(iterations,dtype=complex)
+    t= 0
+    for i in range(iterations):
+        t = t+0.001
+        z[i] = fading.compute_ch_matrix(MS_pos,MS_vel,self.aMS,self.aBS,t)
+    z_mag = np.abs(z) # take magnitude for the sake of plotting
+    z_mag_dB = 10*np.log10(z_mag) # convert to dB
+    # Plot fading over time
+    plt.plot(z_mag_dB)
+    plt.show()
+    count, bins_count = np.histogram(z_mag, bins=10)
+  
+    # finding the PDF of the histogram using count values
+    pdf = count / sum(count)
+  
+    # using numpy np.cumsum to calculate the CDF
+    # We can also find using the PDF values by looping and adding
+    cdf = np.cumsum(pdf)
+  
+    # plotting PDF and CDF
+    #plt.plot(bins_count[1:], pdf, color="red", label="PDF")
+    plt.plot(bins_count[1:], cdf, label="CDF")
+    plt.legend()
+    plt.show()
+  
+     #z/sqrt(k+1)+sqrt(K/(K+1)) e**j( 2 pi fd_LOS t + tita_LOS)  
+ 
+    # iterations = 1000000
+    # res = np.zeros(iterations)
+    # res[0] = scf.get_shadowing_db(MS_pos,0)
+    # for i in range(1,iterations):
+    #     MS_pos[0]= MS_pos[0]+1
+    #     res[i] = scf.get_shadowing_db(MS_pos,0)
+    
   def config(self):
+    """ This method configures the antennas, scenario, etc. 
+    
+    
+    """ 
+
+    ######## Build the receive and transmit antenna for testing 
+    nMS=1
+    nBS = 1
+    aeBS = antennas.Antenna3gpp3D(8)
+    self.aBS  = antennas.AntennaArray3gpp(0.5, 0.5, 1, nBS, 0, 0, 0, aeBS, 1)
+    """ Base station antenna array""" 
+    aeMS  = antennas.AntennaIsotropic(8)
+    self.aMS  = antennas.AntennaArray3gpp(0.5, 0.5, 1, nMS, 0, 0, 0, aeMS, 1)
+    """ Ms antenna array""" 
+    #print(self.aBS.get_number_of_elements(), " numero de elementos "    )
+     ###########################################################
+    
+    ######## Build the scenario for testing
+    self.fcGHz = 30
+    """ Scenario frequency in GHz""" 
+    posx_min = -1000
+    posx_max = 1000
+    posy_min = -1000
+    posy_max = 1000
+    grid_number = 20
+    BS_pos = np.array([0,0,20])
+    Ptx_db = 30
+
+    sigma_shadow=5
+    shadow_corr_distance=5  
+    order = 2
+    self.LOS = True
+    self.scf=  sc.ScenarioSimpleLossModel(self.fcGHz,posx_min,posx_max,posy_min,posy_max,grid_number,BS_pos, Ptx_db,order,sigma_shadow,shadow_corr_distance)
+    """ Scenario for test Simple model of Losses """ 
+    #self.scf=  sc.Scenario3GPPUmi(self.fcGHz, posx_min,posx_max, posy_min, posy_max, grid_number, BS_pos, Ptx_db,True,self.LOS)
+
+    #####################################################
+    
+    ########## Build the OFDM frequency band for testing
+    self.freq_band =  fb.FrequencyBand(fcGHz=self.fcGHz,number_prbs=81,bw_prb=10000000,noise_figure_db=5.0,thermal_noise_dbm_Hz=-174.0) 
+    """ OFDM frequency band for test""" 
+    self.freq_band.compute_tx_psd(tx_power_dbm=30)
+    ###################################################
+    
+    #####################################################
+    
+    #### Build the channel performance object to get the results after the simulation
+    self.performance  = cp.ChannelPerformance()
+    """ Channel performance object"""
+    #####################################################
+  def test_SISO(self):   
+    """ This method tests. 
+    
+    Hay que entender los saltos..... y ver si sortear una sin diferente es razonable....
+    """ 
+    MS_pos = [10,0,2]    
+    MS_vel = [100,0,0]
+    fading = fad.FadingSiSoRayleigh(self.scf,10)
+    #fading = fad.Fading3gpp(self.scf)
+
+    iterations = 1000
+    snr = np.zeros(iterations)
+    snr_pl = np.zeros(iterations)
+    snr_pl_shadow= np.zeros(iterations)
+    sp_eff = np.zeros(iterations)
+    t = 0
+    force_los =2
+    mode = 0
+    mode = 1 #for 3gpp
+    #dt = datetime.datetime.now()
+    #print(dt)
+    for i in range(iterations):
+        t = 0.001
+        snr[i],rxpsd,H,G,linear_losses,snr_pl[i],sp_eff[i],snr_pl_shadow[i] = self.performance.compute_point(fading,self.freq_band,self.aBS,self.aMS,MS_pos,MS_vel,t,force_los,mode)               
+        MS_pos[0]= MS_pos[0]+MS_vel[0] * t
+        MS_pos[1]= MS_pos[1]+MS_vel[1] * t
+        MS_pos[2]= MS_pos[2]+MS_vel[2] * t
+    #dt1 = datetime.datetime.now()
+    #print(dt1)
+    #print(dt-dt1)
+
+    MS_pos = [500,0,2]    
+    MS_vel = [-1000,0,0] 
+    snr2 = np.zeros(iterations)  
+    snr_pl2 = np.zeros(iterations)
+    snr_pl_shadow2 = np.zeros(iterations)
+    sp_eff2 = np.zeros(iterations)
+
+    t = 0
+    force_los =2
+    mode = 0
+    
+    for i in range(iterations):
+        t = 0.001
+        snr2[i],rxpsd,H,G,linear_losses,snr_pl2[i],sp_eff2[i],snr_pl_shadow2[i] = self.performance.compute_point(fading,self.freq_band,self.aBS,self.aMS,MS_pos,MS_vel,t,force_los,mode)               
+        MS_pos[0]= MS_pos[0]+MS_vel[0] * t
+        MS_pos[1]= MS_pos[1]+MS_vel[1] * t
+        MS_pos[2]= MS_pos[2]+MS_vel[2] * t 
+
+    fig, ax = plt.subplots()
+    ax.plot(snr,'--b',label = "snr")
+    ax.plot(snr_pl,'r',label="snr_pl")
+    ax.plot(snr_pl_shadow,'g',label="snr_pl_shadow")
+    ax.plot(snr2,'--c',label = "snr2")
+    ax.plot(snr_pl_shadow2,'--y',label = "snr2 shadow")
+
+
+    leg = ax.legend()
+    plt.show()
+
+    
+    
+    #print( "Resultados : " , snr,rxpsd,H,G,linear_losses,snr_pl,sp_eff,snr_pl_shadow)
+      
+  
+    
+  def config3gpp(self):
     """ This method configures the antennas, scenario, etc. 
     
     
@@ -101,14 +334,14 @@ class FadingPerformanceTest(unittest.TestCase):
     
     """ 
 
-    ####### Build the fast fading object. This object generates all random short scale parameters
-    ####### and computes the channel coefficients. This call checks that all method in fast_fading
+    ####### Build the fading object. This object generates all random short scale parameters
+    ####### and computes the channel coefficients. This call checks that all method in fading
     ####### modules are executed without errors
     ##### First set the LOS condition of the scenario
     self.LOS = 0 ### Condition LOS
     self.scf.force_los = self.LOS
-    fading = fad.FastFading3gpp(self.scf, self.aMS,self.aBS)
-    fading.compute_ch_matrix(self.MS_pos,self.MS_vel,0,mode=0)
+    fading = fad.Fading3gpp(self.scf)
+    fading.compute_ch_matrix(self.MS_pos,self.MS_vel, self.aMS,self.aBS,0,mode=0)
 
     ############################################################
     
@@ -116,14 +349,14 @@ class FadingPerformanceTest(unittest.TestCase):
     ##### we compute the channel matrix coefficients for these ssps.
     ##### generateChannelCoeff() is a private method but for this testing we call it.
     self.set_deterministic_ssp(fading)
-    fading.H_usn = fading._FastFading3gpp__generateChannelCoeff()
+    fading.H_usn = fading._Fading3gpp__generateChannelCoeff()
     ##############################################################
     
     ###### Now, we call one of the main API functions of the channel performance
     ###### module to get the different channel performance mtrics and test that
     ###### results are OK.
     
-    snr,rxpsd,H,G,linear_losses,snr_pl,sp_eff,snr_pl_shadow= self.performance.compute_snr(fading,self.freq_band,self.wMS,self.wBS)
+    snr,rxpsd,H,G,linear_losses,snr_pl,sp_eff,snr_pl_shadow= self.performance.compute_snr(fading,self.freq_band,self.wMS,self.wBS,self.aMS,self.aBS)
     u,s,vh = np.linalg.svd(np.average(H,axis=0))
     cond = max(s)/min(s)
     self.assertAlmostEqual(snr,13.0,1,"snr error", )
@@ -141,8 +374,8 @@ class FadingPerformanceTest(unittest.TestCase):
     
     """ 
 
-    ####### Build the fast fading object. This object generates all random short scale parameters
-    ####### and computes the channel coefficients. This call checks that all method in fast_fading
+    ####### Build the fading object. This object generates all random short scale parameters
+    ####### and computes the channel coefficients. This call checks that all method in fading
     ####### modules are executed without errors
     ##### First set the LOS condition of the scenario
     self.LOS = 1 ### Condition LOS
@@ -152,22 +385,22 @@ class FadingPerformanceTest(unittest.TestCase):
     ### The results are the similar with the ones obtained in test1 for NLOS but the channel coefficients
     ### with only imaginay part.
     self.MS_pos = np.array([100.0025,0,20])
-    fading = fad.FastFading3gpp(self.scf, self.aMS,self.aBS)
-    fading.compute_ch_matrix(self.MS_pos,self.MS_vel,0,mode=0)
+    fading = fad.Fading3gpp(self.scf)
+    fading.compute_ch_matrix(self.MS_pos,self.MS_vel, self.aMS,self.aBS,0,mode=0)
     ############################################################
     
     ##### In the following function we override the short scale parameters and 
     ##### we compute the channel matrix coefficients for these ssps.
     ##############################################################
     self.set_deterministic_ssp(fading)
-    fading.H_usn = fading._FastFading3gpp__generateChannelCoeff()
+    fading.H_usn = fading._Fading3gpp__generateChannelCoeff()
 
     
     ###### Now, we call one of the main API functions of the channel performance
     ###### module to get the different channel performance mtrics and test that
     ###### results are OK.
     
-    snr,rxpsd,H,G,linear_losses,snr_pl,sp_eff,snr_pl_shadow= self.performance.compute_snr(fading,self.freq_band,self.wMS,self.wBS)
+    snr,rxpsd,H,G,linear_losses,snr_pl,sp_eff,snr_pl_shadow= self.performance.compute_snr(fading,self.freq_band,self.wMS,self.wBS,self.aMS,self.aBS)
 
     self.assertAlmostEqual(snr,28,0,"snr error", )
     self.assertAlmostEqual(np.average(rxpsd,axis=0),7.93e-18,19,"average over prbs rxpsd error", )
@@ -186,14 +419,14 @@ class FadingPerformanceTest(unittest.TestCase):
     """ 
 
     ####### Build the fast fading object. This object generates all random short scale parameters
-    ####### and computes the channel coefficients. This call checks that all method in fast_fading
+    ####### and computes the channel coefficients. This call checks that all method in fading
     ####### modules are executed without errors
     ##### First set the LOS condition of the scenario
     self.LOS = 0 ### Condition NLOS
     self.scf.force_los = self.LOS
     self.MS_pos = np.array([100.0025,0,20])
-    fading = fad.FastFading3gpp(self.scf, self.aMS,self.aBS)
-    fading.compute_ch_matrix(self.MS_pos,self.MS_vel,0,mode=0)
+    fading = fad.Fading3gpp(self.scf)
+    fading.compute_ch_matrix(self.MS_pos,self.MS_vel, self.aMS,self.aBS,0,mode=0)
     ############################################################
     
     ##### In the following instructions we override the short scale parameters and 
@@ -206,18 +439,18 @@ class FadingPerformanceTest(unittest.TestCase):
          # For the moment we are using only vertical polarization. Then, the only
          #initalphase that has influence is the 0 one, \Phi_{theta,theta}.
          # For testing only access to the provate attributes
-         fading._FastFading3gpp__ini_phases[i][j][0]=np.pi/4
-         fading._FastFading3gpp__ini_phases[i][j][1]=0
-         fading._FastFading3gpp__ini_phases[i][j][2]=0
-         fading._FastFading3gpp__ini_phases[i][j][3]=0
-    fading.H_usn = fading._FastFading3gpp__generateChannelCoeff()
+         fading._Fading3gpp__ini_phases[i][j][0]=np.pi/4
+         fading._Fading3gpp__ini_phases[i][j][1]=0
+         fading._Fading3gpp__ini_phases[i][j][2]=0
+         fading._Fading3gpp__ini_phases[i][j][3]=0
+    fading.H_usn = fading._Fading3gpp__generateChannelCoeff()
     ##############################################################
     
     ###### Now, we call one of the main API functions of the channel performance
     ###### module to get the different channel performance mtrics and test that
     ###### results are OK.
     
-    snr,rxpsd,H,G,linear_losses,snr_pl,sp_eff,snr_pl_shadow= self.performance.compute_snr(fading,self.freq_band,self.wMS,self.wBS)
+    snr,rxpsd,H,G,linear_losses,snr_pl,sp_eff,snr_pl_shadow= self.performance.compute_snr(fading,self.freq_band,self.wMS,self.wBS,self.aMS,self.aBS)
     u,s,vh = np.linalg.svd(np.average(H,axis=0))
     self.assertAlmostEqual(snr,13,0,"snr error", )
     self.assertAlmostEqual(np.average(rxpsd,axis=0),2.52e-19,20,"average over prbs rxpsd error", )
@@ -241,8 +474,8 @@ class FadingPerformanceTest(unittest.TestCase):
     self.LOS = 0 ### Condition NLOS
     self.scf.force_los = self.LOS
     self.MS_pos = np.array([100.0025,0,20])
-    fading = fad.FastFading3gpp(self.scf, self.aMS,self.aBS)
-    fading.compute_ch_matrix(self.MS_pos,self.MS_vel,0,mode=0)
+    fading = fad.Fading3gpp(self.scf)
+    fading.compute_ch_matrix(self.MS_pos,self.MS_vel, self.aMS,self.aBS,0,mode=0)
     ############################################################
     
     ##### In the following instructions we override the short scale parameters and 
@@ -254,15 +487,15 @@ class FadingPerformanceTest(unittest.TestCase):
       for j in range(m_rays):
          # For the moment we are using only vertical polarization. Then, the only
          #initalphase that has influence is the 0 one, \Phi_{theta,theta}.
-         fading._FastFading3gpp__phiAOD_m_rad[i][j] = np.pi/4
-    fading.H_usn = fading._FastFading3gpp__generateChannelCoeff()
+         fading._Fading3gpp__phiAOD_m_rad[i][j] = np.pi/4
+    fading.H_usn = fading._Fading3gpp__generateChannelCoeff()
     ##############################################################
     
     ###### Now, we call one of the main API functions of the channel performance
     ###### module to get the different channel performance mtrics and test that
     ###### results are OK.
     
-    snr,rxpsd,H,G,linear_losses,snr_pl,sp_eff,snr_pl_shadow= self.performance.compute_snr(fading,self.freq_band,self.wMS,self.wBS)
+    snr,rxpsd,H,G,linear_losses,snr_pl,sp_eff,snr_pl_shadow= self.performance.compute_snr(fading,self.freq_band,self.wMS,self.wBS,self.aMS,self.aBS)
     u,s,vh = np.linalg.svd(np.average(H,axis=0))
 
     self.assertAlmostEqual(snr,0.22,2,"snr error", )
@@ -303,24 +536,24 @@ class FadingPerformanceTest(unittest.TestCase):
     ### The results are the similar with the ones obtained in test1 for NLOS but the channel coefficients
     ### with only imaginay part.
     self.MS_pos = np.array([100.0025,0,20])
-    fading = fad.FastFading3gpp(self.scf, self.aMS,self.aBS)
-    fading.compute_ch_matrix(self.MS_pos,self.MS_vel,0,mode=0)
+    fading = fad.Fading3gpp(self.scf)
+    fading.compute_ch_matrix(self.MS_pos,self.MS_vel, self.aMS,self.aBS,0,mode=0)
     ############################################################
     
     ##### In the following instructions we override the short scale parameters and 
     ##### we compute the channel matrix coefficients for these ssps.
     ##### For testing only access to private variables
     self.set_deterministic_ssp(fading)
-    fading._FastFading3gpp__P[0] = 0.5
-    fading._FastFading3gpp__P[1] = 0.5
-    fading.H_usn = fading._FastFading3gpp__generateChannelCoeff()
+    fading._Fading3gpp__P[0] = 0.5
+    fading._Fading3gpp__P[1] = 0.5
+    fading.H_usn = fading._Fading3gpp__generateChannelCoeff()
     ##############################################################
     
     ###### Now, we call one of the main API functions of the channel performance
     ###### module to get the different channel performance mtrics and test that
     ###### results are OK.
     
-    snr,rxpsd,H,G,linear_losses,snr_pl,sp_eff,snr_pl_shadow= self.performance.compute_snr(fading,self.freq_band,self.wMS,self.wBS)
+    snr,rxpsd,H,G,linear_losses,snr_pl,sp_eff,snr_pl_shadow= self.performance.compute_snr(fading,self.freq_band,self.wMS,self.wBS,self.aMS,self.aBS)
     self.assertAlmostEqual(snr,16,0,"snr error", )
     self.assertAlmostEqual(np.average(rxpsd,axis=0),5.05e-19,20,"average over prbs rxpsd error", )
     ### The square module of H elements must be 16 because Rx and Tx antennas have 8db gain in the phi=0 theta = 90 direction
@@ -381,12 +614,16 @@ class FadingPerformanceTest(unittest.TestCase):
     times[0] = timesMS1
     path = "./data" 
     #Scatters no move case
-    self.performance.compute_path(self.scf, self.freq_band, self.aMS,self.aBS,positions,times,force_los,path,mode=2,scatters_move=False,move_probability=0,v_min_scatters=0,v_max_scatters=10)               
+    fading = fad.Fading3gpp(self.scf, scatters_move=False,move_probability=0,v_min_scatters=0,v_max_scatters=10)
+
+    self.performance.compute_path(fading, self.freq_band, self.aMS,self.aBS,positions,times,force_los,path,mode=2)               
     H = self.performance.H[0]
 
     self.assertTrue(np.allclose(H[0],H[1], rtol=1e-05, atol=1e-08)," Error : in the same point and the scatters not moving, H must be the same")
     #Scatters move case
-    self.performance.compute_path(self.scf, self.freq_band, self.aMS,self.aBS,positions,times,force_los,path,mode=2,scatters_move=True,move_probability=1,v_min_scatters=0,v_max_scatters=10)               
+    fading = fad.Fading3gpp(self.scf,scatters_move=True,move_probability=1,v_min_scatters=0,v_max_scatters=10)
+
+    self.performance.compute_path(fading, self.freq_band, self.aMS,self.aBS,positions,times,force_los,path,mode=2)               
     H = self.performance.H[0]
     #print(H[0],H[1])
     self.assertTrue(np.all(np.not_equal(H[0],H[1]))," Error : in the same point and the scatters  moving, H must be different")
@@ -410,7 +647,9 @@ class FadingPerformanceTest(unittest.TestCase):
 
     path = "./data" 
     #Scatters no move case
-    self.performance.compute_path(self.scf, self.freq_band, self.aMS,self.aBS,positions,times,force_los,path,mode=1,scatters_move=False,move_probability=0.1,v_min_scatters=0,v_max_scatters=10)               
+    fading = fad.Fading3gpp(self.scf,scatters_move=False,move_probability=0,v_min_scatters=0,v_max_scatters=10)
+
+    self.performance.compute_path(fading, self.freq_band, self.aMS,self.aBS,positions,times,force_los,path,mode=1)               
     # self.assertTrue(np.all(np.equal(H[0],H[1]))," Error : in the same point and the scatters not moving, H must be the same")
     # #Scatters move case
     # snr,rxpsd,H,G,linear_losses, distances,snr_pl,sp_eff = self.performance.compute_path(self.scf, self.freq_band, self.aMS,self.aBS,mspositions,times,force_los,path,mode=1,scatters_move=True,move_probability=1,v_min_scatters=0,v_max_scatters=10)               
@@ -420,8 +659,8 @@ class FadingPerformanceTest(unittest.TestCase):
   def set_deterministic_ssp(self,fading):
     """ This method sets the deterministics values of the short scale parameters.
     
-    @type fading: Class FastFading3gpp.
-    @param fading: The fast fading object to override its ssps values.
+    @type fading: Class Fading3gpp.
+    @param fading: The fading object to override its ssps values.
     """ 
     ###### we access and assign the private atributes only for test
     fading.scenario.raysPerCluster =1
@@ -429,32 +668,37 @@ class FadingPerformanceTest(unittest.TestCase):
     fading.reduced_n_scatters = 2
     n_clus = fading.reduced_n_scatters
     m_rays = fading.scenario.raysPerCluster
-    fading._FastFading3gpp__sigma_K = 100
-    fading._FastFading3gpp__P = np.zeros(n_clus)
-    fading._FastFading3gpp__P[0] = 1
-    fading._FastFading3gpp__P[1] = 0
-    fading._FastFading3gpp__P_LOS = np.zeros(n_clus)
-    fading._FastFading3gpp__P_LOS[0] = 1
-    fading._FastFading3gpp__P_LOS[1] = 0
-    fading._FastFading3gpp__tau = np.zeros(n_clus)
-    fading._FastFading3gpp__phiAOA = np.zeros(n_clus)
-    fading._FastFading3gpp__phiAOD = np.zeros(n_clus)
-    fading._FastFading3gpp__thetaAOA = np.ones(n_clus)*np.pi/2
-    fading._FastFading3gpp__thetaAOD = np.ones(n_clus)*np.pi/2
-    fading._FastFading3gpp__phiAOA_m_rad = np.zeros((n_clus,m_rays))
-    fading._FastFading3gpp__phiAOD_m_rad = np.zeros((n_clus,m_rays))
-    fading._FastFading3gpp__thetaAOA_m_rad = np.ones((n_clus,m_rays))*np.pi/2
-    fading._FastFading3gpp__thetaAOD_m_rad = np.ones((n_clus,m_rays))*np.pi/2
-    fading._FastFading3gpp__xpol = np.zeros((n_clus,m_rays)) 
-    fading._FastFading3gpp__ini_phases= np.zeros((n_clus,m_rays,4))
+    fading._Fading3gpp__sigma_K = 100
+    fading._Fading3gpp__P = np.zeros(n_clus)
+    fading._Fading3gpp__P[0] = 1
+    fading._Fading3gpp__P[1] = 0
+    fading._Fading3gpp__P_LOS = np.zeros(n_clus)
+    fading._Fading3gpp__P_LOS[0] = 1
+    fading._Fading3gpp__P_LOS[1] = 0
+    fading._Fading3gpp__tau = np.zeros(n_clus)
+    fading._Fading3gpp__phiAOA = np.zeros(n_clus)
+    fading._Fading3gpp__phiAOD = np.zeros(n_clus)
+    fading._Fading3gpp__thetaAOA = np.ones(n_clus)*np.pi/2
+    fading._Fading3gpp__thetaAOD = np.ones(n_clus)*np.pi/2
+    fading._Fading3gpp__phiAOA_m_rad = np.zeros((n_clus,m_rays))
+    fading._Fading3gpp__phiAOD_m_rad = np.zeros((n_clus,m_rays))
+    fading._Fading3gpp__thetaAOA_m_rad = np.ones((n_clus,m_rays))*np.pi/2
+    fading._Fading3gpp__thetaAOD_m_rad = np.ones((n_clus,m_rays))*np.pi/2
+    fading._Fading3gpp__xpol = np.zeros((n_clus,m_rays)) 
+    fading._Fading3gpp__ini_phases= np.zeros((n_clus,m_rays,4))
     fading.scenario.shadow_enabled = False
-    fading._FastFading3gpp__cluster1 = 0
-    fading._FastFading3gpp__cluster2 = 0
+    fading._Fading3gpp__cluster1 = 0
+    fading._Fading3gpp__cluster2 = 0
  
 if __name__ == "__main__":
     
     test = FadingPerformanceTest()
+    test.test_SISORayleighFading()
+    test.test_SISORicianFading()
     test.config()
+    test.test_SISO()
+    
+    test.config3gpp()
     test.test_NLOS_1cluster()
     test.test_LOS_imaginary()
     test.test_NLOS_initialphase()

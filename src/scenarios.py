@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """This module implements different simulation scenarios. The scenarios specifies different
-parameters for pathloss, shadowing and fading.
+parameters and the calculus of pathloss and shadowing.
 
 @author: pablo belzarena
 """
@@ -12,10 +12,14 @@ import numpy as np
 from scipy.linalg import cholesky
 import scipy.spatial
 import scipy.stats
+import scipy.signal as signal
 
 class Scenario:
-  """ This class is the abstract class Scenario from where inherit all scenarios.   """
-  def __init__(self,fcGHz,posx_min,posx_max,posy_min,posy_max,grid_number,bspos,Ptx_db):  
+  """ This class is the abstract class Scenario from where inherit all scenarios.   
+  
+      It implement only the save method an a shadowing model.
+  """
+  def __init__(self,fcGHz,posx_min,posx_max,posy_min,posy_max,grid_number,bspos,Ptx_db,sigma_shadow=2,shadow_corr_distance=10):  
     """
     The constructor of the abstract class Scenario.
     
@@ -36,6 +40,12 @@ class Scenario:
     @param bspos: The position of the Base Satation in the scenario in the coordinates system [x,y,z].
     @type Ptx_db: float.
     @param Ptx_db: The power transmited by the base station in dbm. 
+    @type sigma_shadow: float.
+    @param sigma_shadow: The variance of the shadow gaussian model.
+    @type shadow_corr_distance: float.
+    @param shadow_corr_distance: The shadow correlation distance.
+    
+   
     """ 
     self.fcGHz = fcGHz
     """ Frequency in GHz of the carrier frequency of the scenario. """
@@ -56,7 +66,65 @@ class Scenario:
     """ The position of the Base Satation in the scenario in the coordinates system [x,y,z]. """ 
     self.Ptx_db = Ptx_db
     """ The power transmited by the base station in dbm. """ 
+    self.sigma_shadow = sigma_shadow
+    """ The variance of the shadow gaussian model """ 
+    self.shadow_pre = 0
+    """ The previous value of the shadow. Used to filter and impose correlation """ 
+    self.shadow_corr_distance = shadow_corr_distance
+    """ The shadow correlation distance """ 
+    self.pos = [100,100,0]
+    """ The previous position of the mobile""" 
+    self.shadow_enabled = True
+    """ If shadow is enabled or not """
+    self.X = np.array([])
+    """ The x grid "of the scenario """ 
+    self.Y = np.array([])
+    """ The y grid "of the scenario """ 
+    self.XY = np.array([])
+    """ np.array([self.X, self.Y]))  """ 
+    stepx = (self.posx_max-self.posx_min)/self.grid_number
+    stepy = (self.posy_max-self.posy_min)/self.grid_number
+
+    x = np.linspace(self.posx_min,self.posx_max+stepx,self.grid_number+1) # 2*self.grid_number)*(self.posx_max-self.posx_min)/(2*self.grid_number-1)+self.posx_min
+    y = np.linspace(self.posy_min,self.posy_max+stepy,self.grid_number+1) #np.arange(0, 2*self.grid_number)*(self.posy_max-self.posy_min)/(2*self.grid_number-1)+self.posy_min
+    self.X, self.Y = np.meshgrid(x, y) 
+    self._paranum = 1
+    """ Number of LSP parameters """ 
+    self.gridLSP_LOS,self.XY = self.__generate_correlated_LSP()
+
+
+  def __generate_correlated_LSP(self):
+    """This method first generates for each LSP parameter an independent gaussian N(0,1) random variable for each point in the scenario grid. Later, 
+    using cholesky method and the correlation matrix between the LSP parameters, generates a set of correlated LSP params.
+    At last, the method applies to each parameter its expected value and its variance.
+
+    """ 
+    gridLSP = np.zeros((1,self.grid_number+1,self.grid_number+1))   
+    gridLSP[0],XY = self.generate_LSPgrid(self.shadow_corr_distance)    
+    return gridLSP, XY
+
+
+ 
     
+  def generate_LSPgrid(self,corr_distance):
+    """This method generates a spatial correlated gaussian random variables using the correlation distance.
+
+    The covariance matrix is defined by cov = exp(-distance/correlation_distance)
+    @type corr_distance: float.
+    @param corr_distance: The correlation distance for the spatial correlated gaussian random variable.
+    @return: A 2D matrix where the values of the matrix are spatially correlated gaussian random variables.
+    """ 
+    # Create a vector of cells
+    XY = np.column_stack((np.ndarray.flatten(self.X),np.ndarray.flatten(self.Y)))
+    # Calculate a matrix of distances between the cells
+    dist = scipy.spatial.distance.pdist(XY)
+    dist = scipy.spatial.distance.squareform(dist)    
+    # Convert the distance matrix into a covariance matrix
+    cov = np.exp(-dist/(corr_distance)) 
+    noise = scipy.stats.multivariate_normal.rvs(mean = np.zeros((self.grid_number+1)**2),cov = cov)
+    return(noise.reshape((self.grid_number+1,self.grid_number+1)),np.array([self.X, self.Y]))
+ 
+
   def save(self,path):
     """This method save to disk the configuration of the scenario. 
     
@@ -67,17 +135,7 @@ class Scenario:
     params = np.array([self.fcGHz,self.posx_min,self.posx_max,self.posy_min,self.posy_max,self.grid_number,self.Ptx_db])  
     np.savetxt(path+'/scenario.csv', params, delimiter=',')
       
-  def __set_params(self,d2d,h_MS):
-    """ The abstract method to set the params of the scenario
-    
-    @type d2d: float.
-    @param d2d: The distance between the BS and MS positions.
-    @type h_MS: float.
-    @param h_MS: The MS antenna height.
-    
-    """
-    pass
-
+ 
   def get_loss_los (self,distance,h_MS):   
     """ The default method the get the path loss in the LOS condition of the scenario. By default 0. 
     
@@ -119,78 +177,140 @@ class Scenario:
     @return: 1
     """   
     return 1
+  def generate_correlated_LSP_vector(self,MS_pos,type_approx):
+    """ This method given the LSP parameters grid and a MS position, estimates the LSP parameters for this point.
 
-
-class ScenarioFriis(Scenario):
-  """This class implements the Friis loss model scenario.
-  """
-  def __init__(self,fcGHz,posx_max,posx_min,posy_max,posy_min,grid_number,bspos,Ptx_db):
-    """ The constructor of the Friis loss model scenario. It Calls the parent class constructor.
-    
-    @type fcGHz: float .
-    @param fcGHz: Frequency in GHz of the carrier frequency of the scenario.
-    @type posx_min: float .
-    @param posx_min: The minimum limit of the x coordinate in the scenario. 
-    @type posx_max: float .
-    @param posx_max: The maximum limit of the x coordinate in the scenario. 
-    @type posy_min: float .
-    @param posy_min: The minimum limit of the y coordinate in the scenario. 
-    @type posy_max: float .
-    @param posy_max: The maximum limit of the y coordinate in the scenario. 
-    @type grid_number: int .
-    @param grid_number: For calculating the spacial distribution of the parameters of the scenario, 
-    the scenario is divided by a grid in x and y cordinates. This value is the number of divisions in each coordinate. 
-    @type bspos: 3d array or list .
-    @param bspos: The position of the Base Satation in the scenario in the coordinates system [x,y,z].
-    @type Ptx_db: float.
-    @param Ptx_db: The power transmited by the base station in db. 
+    The method can use two approximation methods. The first one use the parameter of the closest point in the grid. 
+    The second on interpolates between the two closests point in the grid.
+    @type MS_pos: 3D array or list.
+    @param MS_pos: the position of the mobile device in the scenario.
+    @type type_approx: int.
+    @param type_approx: The type of approximation. 0 for the closest point. 1 for interpolation.
+    @return: the LSP parameters for the MS_pos point in the scenario.
     """ 
-    super().__init__(fcGHz,posx_max,posx_min,posy_max,posy_min,grid_number,bspos,Ptx_db)
-    self.loss = 0
-    """ The path loss """ 
+
+    gridLSP = np.copy(self.gridLSP_LOS)
+    gridLSP[0] = gridLSP[0]* self.sigma_shadow
+    return self.LSP_vector_position(gridLSP,MS_pos,type_approx)
+
+  def LSP_vector_position(self,gridLSP,MS_pos,type_approx):
+    LSP_xy = np.zeros((self._paranum))
+    absolute_val_array = np.abs(self.XY[0][0]- MS_pos[0])
+    smallest_difference_index_x = absolute_val_array.argmin()
+    closest_element_x = self.XY[0][0][smallest_difference_index_x]
     
-  def __set_params(self,d2d,h_MS):
-    """ This  sets the params of the scenario. Not used in this scenario
+    absolute_val_array = np.abs(self.XY[1][:,0]- MS_pos[1])
+    smallest_difference_index_y = absolute_val_array.argmin()
+    closest_element_y = self.XY[1][smallest_difference_index_y,0]
+    if type_approx == 0:
+        LSP_xy[:] = gridLSP[:,smallest_difference_index_y,smallest_difference_index_x] 
+    else:
+        if smallest_difference_index_x < self.XY[0][0].size-1 and smallest_difference_index_y < self.XY[1][:,0].size-1:    
+            distance = np.sqrt((closest_element_x - MS_pos[0])**2 + (closest_element_y - MS_pos[1])**2 )
+            d_step = np.sqrt((closest_element_x -self.XY[0][0][smallest_difference_index_x]+1)**2 + (closest_element_y - self.XY[1][smallest_difference_index_y+1,0])**2) 
+            LSP_xy[:] = (d_step -distance)/d_step*gridLSP[:,smallest_difference_index_y,smallest_difference_index_x] +  distance/d_step*gridLSP[:,smallest_difference_index_y+1,smallest_difference_index_x+1]
+        else:
+            LSP_xy[:] = gridLSP[:,smallest_difference_index_y,smallest_difference_index_x] 
+    return LSP_xy
+
+  def get_shadowing_db(self,MS_pos,type_approx):
+    """ This method computes the shadowing value for the MS position, sets its values and return it.
     
-    @type d2d: float.
-    @param d2d: The distance between the BS and MS positions.
-    @type h_MS: float.
-    @param h_MS: The MS antenna height.
-
-    """
-    pass
-
-  def get_loss_los(self,distance,h_MS =1): 
-    """ This method computes the path loss of the scenario using the Friis equation. 
-
-    @type distance: float.
-    @param distance: The distance between the BS and MS positions.
-    @type h_MS: float.
-    @param h_MS: The MS antenna height. Default value 1.
-    @return: -20*np.log10(3e8/4/np.pi/self.fcGHz/1e9) + 20*np.log10(distance)
+    @type MS_pos: 3D array or list.
+    @param MS_pos: the position of the movil device in the scenario.
+    @type type_approx: int.
+    @param type_approx: The type of approximation used. 0 for the closest point in the grid. 1 for interpolating between closets points in the grid.
+    @return: The shadowing valu for the MS position.
     """ 
-    self.loss = 0
-    if distance > 0:
-        self.loss = -20*np.log10(3e8/4/np.pi/self.fcGHz/1e9) + 20*np.log10(distance)
-    return self.loss
+    
+    LSP = self.generate_correlated_LSP_vector(MS_pos,type_approx)
+    self.shadow = LSP[0]
+    return self.shadow
+
+    d= np.sqrt((self.pos[0] - MS_pos[0] )**2+(self.pos[1] - MS_pos[1])**2)
+    self.pos = [MS_pos[0],MS_pos[1],MS_pos[2]]
+    a = np.exp(-d/self.shadow_corr_distance )
+    b = self.sigma_shadow*np.sqrt(1-a**2)
+    sample = np.random.normal(0,1)
+    shadow = sample + self.shadow_pre * a
+    self.shadow_pre = shadow
+    if (b != 0):
+        shadow = shadow * b
+    return shadow
+
+
+# class ScenarioFriis(Scenario):
+#   """This class implements the Friis loss model scenario.
+#   """
+#   def __init__(self,fcGHz,posx_max,posx_min,posy_max,posy_min,grid_number,bspos,Ptx_db,sigma_shadow=2,shadow_corr_distance=10):
+#     """ The constructor of the Friis loss model scenario. It Calls the parent class constructor.
+    
+#     @type fcGHz: float .
+#     @param fcGHz: Frequency in GHz of the carrier frequency of the scenario.
+#     @type posx_min: float .
+#     @param posx_min: The minimum limit of the x coordinate in the scenario. 
+#     @type posx_max: float .
+#     @param posx_max: The maximum limit of the x coordinate in the scenario. 
+#     @type posy_min: float .
+#     @param posy_min: The minimum limit of the y coordinate in the scenario. 
+#     @type posy_max: float .
+#     @param posy_max: The maximum limit of the y coordinate in the scenario. 
+#     @type grid_number: int .
+#     @param grid_number: For calculating the spacial distribution of the parameters of the scenario, 
+#     the scenario is divided by a grid in x and y cordinates. This value is the number of divisions in each coordinate. 
+#     @type bspos: 3d array or list .
+#     @param bspos: The position of the Base Satation in the scenario in the coordinates system [x,y,z].
+#     @type Ptx_db: float.
+#     @param Ptx_db: The power transmited by the base station in db. 
+#     """ 
+#     super().__init__(fcGHz,posx_max,posx_min,posy_max,posy_min,grid_number,bspos,Ptx_db,sigma_shadow,shadow_corr_distance)
+#     self.loss = 0
+#     """ The path loss """ 
   
-  def get_loss_nlos(self,distance,h_MS=1):
-    """ This method computes the path loss of the scenario using the Friis equation. The Friis
-    model asumes LOS condition so the loss y the NLOS condition calls the  get_loss_los method.
+    
+#   def __set_params(self,d2d,h_MS):
+#     """ This  sets the params of the scenario. Not used in this scenario
+    
+#     @type d2d: float.
+#     @param d2d: The distance between the BS and MS positions.
+#     @type h_MS: float.
+#     @param h_MS: The MS antenna height.
 
-    @type distance: float.
-    @param distance: The distance between the BS and MS positions.
-    @type h_MS: float.
-    @param h_MS: The MS antenna height. Default value 1.
-    @return: get_loss_los(distance,h_MS)
-    """     
-    return self.get_loss_los(distance,h_MS)
+#     """
+#     pass
 
-class ScenarioSimpleLOS(Scenario):
+#   def get_loss_los(self,distance,h_MS =1): 
+#     """ This method computes the path loss of the scenario using the Friis equation. 
+
+#     @type distance: float.
+#     @param distance: The distance between the BS and MS positions.
+#     @type h_MS: float.
+#     @param h_MS: The MS antenna height. Default value 1.
+#     @return: -20*np.log10(3e8/4/np.pi/self.fcGHz/1e9) + 20*np.log10(distance)
+#     """ 
+#     self.loss = 0
+#     if distance > 0:
+#         self.loss = -20*np.log10(3e8/4/np.pi/self.fcGHz/1e9) + 20*np.log10(distance)
+#     return self.loss
+  
+#   def get_loss_nlos(self,distance,h_MS=1):
+#     """ This method computes the path loss of the scenario using the Friis equation. The Friis
+#     model asumes LOS condition so the loss y the NLOS condition calls the  get_loss_los method.
+
+#     @type distance: float.
+#     @param distance: The distance between the BS and MS positions.
+#     @type h_MS: float.
+#     @param h_MS: The MS antenna height. Default value 1.
+#     @return: get_loss_los(distance,h_MS)
+#     """     
+#     return self.get_loss_los(distance,h_MS)
+   
+
+class ScenarioSimpleLossModel(Scenario):
   """This class implements an extended Friis loss model scenario
   where the loss is not cuadratic with the distance but depends as distance**order  
   """  
-  def __init__(self,fcGHz,posx_max,posx_min,posy_max,posy_min,grid_number,bspos,Ptx_db,order): 
+  def __init__(self,fcGHz,posx_max,posx_min,posy_max,posy_min,grid_number,bspos,Ptx_db,order,sigma_shadow=2,shadow_corr_distance=10): 
     """ The constructor of the extended Friis loss model scenario. Calls the parent class constructor.  
     
     @type fcGHz: float .
@@ -213,7 +333,7 @@ class ScenarioSimpleLOS(Scenario):
     @type order: float.
     @param order: The order of the exponent of the distance in the loss model.
     """ 
-    super().__init__(fcGHz,posx_max,posx_min,posy_max,posy_min,grid_number,bspos,Ptx_db)
+    super().__init__(fcGHz,posx_max,posx_min,posy_max,posy_min,grid_number,bspos,Ptx_db,sigma_shadow,shadow_corr_distance)
     self._brder = order
     """ The order of the exponent of the distance in the loss model. """ 
     self.loss = 0
@@ -256,6 +376,8 @@ class ScenarioSimpleLOS(Scenario):
     """    
     return self.get_loss_los(distance,h_MS)
 
+
+
 #3GPP TR 38.901 version 14.0.0 Release 14
 #https://www.etsi.org/deliver/etsi_tr/138900_138999/138901/14.00.00_60/tr_138901v140000p.pdf
 
@@ -281,14 +403,9 @@ class Scenario3GPP(Scenario):
     """ An Array where each element has for one point in the scenario grid  the value of each Large scale parameter (LSP) of the 3gpp model in LOS condition. """
     self.gridLSP_NLOS = np.array([])
     """ An Array where each element has for one point in the scenario grid  the value of each Large scale parameter (LSP) of the 3gpp model in NLOS condition. """
-    self.X = np.array([])
-    """ The x grid "of the scenario """ 
-    self.Y = np.array([])
-    """ The y grid "of the scenario """ 
-    self.XY = np.array([])
-    """ np.array([self.X, self.Y]))  """ 
+    
     self.shadow = 0
-    """ The sadow fading value for a given position of the mobile in the scenario """
+    """ The shadow fading value for a given position of the mobile in the scenario """
     self._O2I = False 
     """ Outdoor to Indoor bolean value. Not implemented yet. """ 
     self._blockage = False 
@@ -471,12 +588,6 @@ class Scenario3GPP(Scenario):
 
     """ 
 
-    stepx = (self.posx_max-self.posx_min)/self.grid_number
-    stepy = (self.posy_max-self.posy_min)/self.grid_number
-
-    x = np.linspace(self.posx_min,self.posx_max+stepx,self.grid_number+1) # 2*self.grid_number)*(self.posx_max-self.posx_min)/(2*self.grid_number-1)+self.posx_min
-    y = np.linspace(self.posy_min,self.posy_max+stepy,self.grid_number+1) #np.arange(0, 2*self.grid_number)*(self.posy_max-self.posy_min)/(2*self.grid_number-1)+self.posy_min
-    self.X, self.Y = np.meshgrid(x, y) 
     self.gridLSP_LOS,self.gridLSP_NLOS,self.XY = self.__generate_correlated_LSP()
     self.LOS_rv = self.__generate_LOSgrid(self._corr_LOS)
     """ A grid with the LOS rv with spatial correlation in each point of the grid.""" 
@@ -513,9 +624,7 @@ class Scenario3GPP(Scenario):
             self._set_los(True)
     #d2D= np.sqrt((self.BS_pos[0] - MS_pos[0] )**2+(self.BS_pos[1] - MS_pos[1])**2)
     #self.set_params(d2D,MS_pos[2])
-        print("-------------------LOS set by position-------------------------")
-        print(self._LOS," force los: ", self.force_los)
-        print("-------------------LOS--------------------------")
+
 
     return self._LOS
 
@@ -527,9 +636,6 @@ class Scenario3GPP(Scenario):
     @return: The LOS parameter (True or False).
     """    
     self._LOS = value
-    print("-------------------LOS forced to--------------------------")
-    print(self._LOS)
-    print("-------------------LOS--------------------------")
     return self._LOS
   
   def is_los_cond(self,MS_pos):
@@ -589,20 +695,20 @@ class Scenario3GPP(Scenario):
     gridLSP_LOS = np.zeros((7,self.grid_number+1,self.grid_number+1))
     gridLSP_NLOS = np.zeros((6,self.grid_number+1,self.grid_number+1))    
     
-    gridLSP_LOS[0],XY = self.__generate_LSPgrid(self._shadowScorr_distance_LOS) 
-    gridLSP_LOS[1],XY = self.__generate_LSPgrid(self._Kcorr_distance_LOS)
-    gridLSP_LOS[2],XY = self.__generate_LSPgrid(self._DScorr_distance_LOS)
-    gridLSP_LOS[3],XY = self.__generate_LSPgrid(self._AOD_AZScorr_distance_LOS)
-    gridLSP_LOS[4],XY = self.__generate_LSPgrid(self._AOA_AZScorr_distance_LOS)
-    gridLSP_LOS[5],XY = self.__generate_LSPgrid(self._AOD_ELScorr_distance_LOS)
-    gridLSP_LOS[6],XY = self.__generate_LSPgrid(self._AOA_ELScorr_distance_LOS)
+    gridLSP_LOS[0],XY = self.generate_LSPgrid(self._shadowScorr_distance_LOS) 
+    gridLSP_LOS[1],XY = self.generate_LSPgrid(self._Kcorr_distance_LOS)
+    gridLSP_LOS[2],XY = self.generate_LSPgrid(self._DScorr_distance_LOS)
+    gridLSP_LOS[3],XY = self.generate_LSPgrid(self._AOD_AZScorr_distance_LOS)
+    gridLSP_LOS[4],XY = self.generate_LSPgrid(self._AOA_AZScorr_distance_LOS)
+    gridLSP_LOS[5],XY = self.generate_LSPgrid(self._AOD_ELScorr_distance_LOS)
+    gridLSP_LOS[6],XY = self.generate_LSPgrid(self._AOA_ELScorr_distance_LOS)
 
-    gridLSP_NLOS[0],XY = self.__generate_LSPgrid(self._shadowScorr_distance_NLOS) 
-    gridLSP_NLOS[1],XY = self.__generate_LSPgrid(self._DScorr_distance_NLOS)
-    gridLSP_NLOS[2],XY = self.__generate_LSPgrid(self._AOD_AZScorr_distance_NLOS)
-    gridLSP_NLOS[3],XY = self.__generate_LSPgrid(self._AOA_AZScorr_distance_NLOS)
-    gridLSP_NLOS[4],XY = self.__generate_LSPgrid(self._AOD_ELScorr_distance_NLOS)
-    gridLSP_NLOS[5],XY = self.__generate_LSPgrid(self._AOA_ELScorr_distance_NLOS)
+    gridLSP_NLOS[0],XY = self.generate_LSPgrid(self._shadowScorr_distance_NLOS) 
+    gridLSP_NLOS[1],XY = self.generate_LSPgrid(self._DScorr_distance_NLOS)
+    gridLSP_NLOS[2],XY = self.generate_LSPgrid(self._AOD_AZScorr_distance_NLOS)
+    gridLSP_NLOS[3],XY = self.generate_LSPgrid(self._AOA_AZScorr_distance_NLOS)
+    gridLSP_NLOS[4],XY = self.generate_LSPgrid(self._AOD_ELScorr_distance_NLOS)
+    gridLSP_NLOS[5],XY = self.generate_LSPgrid(self._AOA_ELScorr_distance_NLOS)
     
     c_LOS = cholesky(self._corrLSPparams_LOS, lower=True)
     c_NLOS = cholesky(self._corrLSPparams_NLOS, lower=True)
@@ -715,42 +821,10 @@ class Scenario3GPP(Scenario):
       gridLSP[3] = gridLSP[3]* self._sigmaASALg+self._muASALg
       gridLSP[4] = gridLSP[4]* self._sigmaZSDLg+self._muZSDLg
       gridLSP[5] = gridLSP[5]* self._sigmaZSALg+self._muZSALg 
-    LSP_xy = np.zeros((self._paranum))
-    absolute_val_array = np.abs(self.XY[0][0]- MS_pos[0])
-    smallest_difference_index_x = absolute_val_array.argmin()
-    closest_element_x = self.XY[0][0][smallest_difference_index_x]
+      
+    return self.LSP_vector_position(gridLSP,MS_pos,type_approx)
     
-    absolute_val_array = np.abs(self.XY[1][:,0]- MS_pos[1])
-    smallest_difference_index_y = absolute_val_array.argmin()
-    closest_element_y = self.XY[1][smallest_difference_index_y,0]
-    if type_approx == 0:
-        LSP_xy[:] = gridLSP[:,smallest_difference_index_y,smallest_difference_index_x] 
-    else:
-        if smallest_difference_index_x < self.XY[0][0].size-1 and smallest_difference_index_y < self.XY[1][:,0].size-1:    
-            distance = np.sqrt((closest_element_x - MS_pos[0])**2 + (closest_element_y - MS_pos[1])**2 )
-            d_step = np.sqrt((closest_element_x -self.XY[0][0][smallest_difference_index_x]+1)**2 + (closest_element_y - self.XY[1][smallest_difference_index_y+1,0])**2) 
-            LSP_xy[:] = (d_step -distance)/d_step*gridLSP[:,smallest_difference_index_y,smallest_difference_index_x] +  distance/d_step*gridLSP[:,smallest_difference_index_y+1,smallest_difference_index_x+1]
-        else:
-            LSP_xy[:] = gridLSP[:,smallest_difference_index_y,smallest_difference_index_x] 
-    return LSP_xy
 
-  def __generate_LSPgrid(self,corr_distance):
-    """This method generates a spatial correlated gaussian random variables using the correlation distance.
-
-    The covariance matrix is defined by cov = exp(-distance/correlation_distance)
-    @type corr_distance: float.
-    @param corr_distance: The correlation distance for the spatial correlated gaussian random variable.
-    @return: A 2D matrix where the values of the matrix are spatially correlated gaussian random variables.
-    """ 
-    # Create a vector of cells
-    XY = np.column_stack((np.ndarray.flatten(self.X),np.ndarray.flatten(self.Y)))
-    # Calculate a matrix of distances between the cells
-    dist = scipy.spatial.distance.pdist(XY)
-    dist = scipy.spatial.distance.squareform(dist)    
-    # Convert the distance matrix into a covariance matrix
-    cov = np.exp(-dist/(corr_distance)) 
-    noise = scipy.stats.multivariate_normal.rvs(mean = np.zeros((self.grid_number+1)**2),cov = cov)
-    return(noise.reshape((self.grid_number+1,self.grid_number+1)),np.array([self.X, self.Y]))
  
   def __generate_LOSgrid(self,corr_distance):
     """This method generates a spatial correlated uniform rvs for LOS.
@@ -763,7 +837,7 @@ class Scenario3GPP(Scenario):
     @param corr_distance: The correlation distance for the spatial correlated gaussian random variable.
     @return: A 2D matrix where the values of the matrix are spatially correlated uniform random variables.
     """ 
-    LOS_normal,XY = self.__generate_LSPgrid(corr_distance)
+    LOS_normal,XY = self.generate_LSPgrid(corr_distance)
     LOS_rv= scipy.stats.norm.cdf(LOS_normal)
     return LOS_rv
 

@@ -8,12 +8,14 @@
 
 import numpy as np
 import copy
-import fast_fading as fad
+import fading as fad
 import angles as ang
+from time import perf_counter
+
 
 class ChannelPerformance:
   """This class computes different performance metrics of the wireless channel"""
-  def __init__(self):
+  def __init__(self) :
     """ChannelPerformance constructor
 
     """ 
@@ -21,33 +23,33 @@ class ChannelPerformance:
     """The Fourier Transform of the channel matrix. Is an array of objects. 
     Each element of the array is the FT of the channel matrix of one MS. """ 
     
-  def average_rx_power(self,fast_fading):
+  def average_rx_power(self,fading):
     """ This method given the Tx power of the radiobase computes the 
     pathloss and shadowing of the scenario and return the average received power.
 
-    @type fast_fading: FastFading3gpp Class.
-    @param fast_fading: The fast fading 3gpp channel model object in one point of the path.
+    @type fading: Fading3gpp Class.
+    @param fading: The fading channel model object in one point of the path.
     @return: scenario.Ptx_db - pathloss - shadowing
     """
-    d3D= np.sqrt((fast_fading.MS_pos[0] - fast_fading.scenario.BS_pos[0] )**2+(fast_fading.MS_pos[1] - fast_fading.scenario.BS_pos[1] )**2+(fast_fading.MS_pos[2] - fast_fading.scenario.BS_pos[2] )**2)
-    rxPow = fast_fading.scenario.Ptx_db
-    if fast_fading.los:
-      rxPow -= fast_fading.scenario.get_loss_los(d3D,fast_fading.MS_pos[2])
+    d3D= np.sqrt((fading.MS_pos[0] - fading.scenario.BS_pos[0] )**2+(fading.MS_pos[1] - fading.scenario.BS_pos[1] )**2+(fading.MS_pos[2] - fading.scenario.BS_pos[2] )**2)
+    rxPow = fading.scenario.Ptx_db
+    if fading.los:
+      rxPow -= fading.scenario.get_loss_los(d3D,fading.MS_pos[2])
     else:
-      rxPow -= fast_fading.scenario.get_loss_nlos(d3D,fast_fading.MS_pos[2])
-    if (fast_fading.scenario.shadow_enabled):
-      rxPow -= fast_fading.scenario.get_shadowing_db(fast_fading.MS_pos,0)
+      rxPow -= fading.scenario.get_loss_nlos(d3D,fading.MS_pos[2])
+    if (fading.scenario.shadow_enabled):
+      rxPow -= fading.scenario.get_shadowing_db(fading.MS_pos,0)
     return rxPow
 
-  def compute_snr(self,fast_fading,freq_band,wMS,wBS):
+  def compute_snr(self,fading,freq_band,wMS,wBS,MSAntenna,BSAntenna):
     """ This method computes the snr and other intermidate performance metrics for one point in the mobile path.
     
     The method computes the pathloss, the shadowing, the Fourier transform of the channel matrix,
     the beamforming gain and other variables. Using this information computes the average snr and the
     received power spectral density.
 
-    @type fast_fading: FastFading3gpp Class.
-    @param fast_fading: The fast fading 3gpp channel model object in one point of the path.
+    @type fading: Fading Class.
+    @param fading: The fading channel model object in one point of the path.
     @type freq_band: FrequencyBnad Class.
     @param freq_band: The frequency band containing the transmited power spectral density and the noise power spctral density for each prb. 
     @type wMS: numpy array.
@@ -58,37 +60,38 @@ class ChannelPerformance:
     the spectral efficiency of the channel, the snr taking into account pathloss and shadow.
     """
     rxPsd = copy.deepcopy(freq_band.txpsd)  
-    d3D= np.sqrt((fast_fading.MS_pos[0] - fast_fading.scenario.BS_pos[0] )**2+(fast_fading.MS_pos[1] - fast_fading.scenario.BS_pos[1] )**2+(fast_fading.MS_pos[2] - fast_fading.scenario.BS_pos[2] )**2)
-    if fast_fading.scenario.is_los_cond(fast_fading.MS_pos):
-      ploss_db = fast_fading.scenario.get_loss_los(d3D,fast_fading.MS_pos[2])
+    d3D= np.sqrt((fading.MS_pos[0] - fading.scenario.BS_pos[0] )**2+(fading.MS_pos[1] - fading.scenario.BS_pos[1] )**2+(fading.MS_pos[2] - fading.scenario.BS_pos[2] )**2)
+    if fading.scenario.is_los_cond(fading.MS_pos):
+      ploss_db = fading.scenario.get_loss_los(d3D,fading.MS_pos[2])
     else:
-      ploss_db = fast_fading.scenario.get_loss_nlos(d3D,fast_fading.MS_pos[2])
+      ploss_db = fading.scenario.get_loss_nlos(d3D,fading.MS_pos[2])
     ploss_linear = pow(10.0, -ploss_db / 10.0)
     ploss_linear_shadow = ploss_linear
-    if (fast_fading.scenario.shadow_enabled):
-      ploss_db_shadow = ploss_db+ fast_fading.scenario.get_shadowing_db(fast_fading.MS_pos,1)
+    if (fading.scenario.shadow_enabled):
+      shadow = fading.scenario.get_shadowing_db(fading.MS_pos,1)  
+      ploss_db_shadow = ploss_db+ shadow
       ploss_linear_shadow = pow(10.0, -ploss_db_shadow / 10.0)
     ploss_linear = pow(10.0, -ploss_db / 10.0)
-
     rxPsd *= ploss_linear
     snr_pl = 10 * np.log10(np.sum(rxPsd) /np.sum(freq_band.noisepsd))
     rxPsd = rxPsd/ploss_linear* ploss_linear_shadow
     snr_pl_shadow = 10 * np.log10(np.sum(rxPsd) /np.sum(freq_band.noisepsd))
 
-    H = self.compute_Tfourier_H(fast_fading,freq_band)
-    G = self.compute_beamforming_gain(fast_fading,freq_band.n_prbs,H,wMS,wBS)
+    H = self.compute_Tfourier_H(fading,freq_band,MSAntenna,BSAntenna)
+    G = self.compute_beamforming_gain(fading,freq_band.n_prbs,H,wMS,wBS,MSAntenna,BSAntenna)
     rxPsd = rxPsd*(np.abs(G)**2)
+
     snr = 10 * np.log10(np.sum(rxPsd) /np.sum(freq_band.noisepsd))
     spectral_eff=  np.log(1+np.sum(rxPsd) /np.sum(freq_band.noisepsd))
     return snr,rxPsd,H,G,ploss_linear,snr_pl,spectral_eff,snr_pl_shadow
 
-  def compute_beamforming_gain(self,fast_fading,n_prbs,H_f,wMS,wBS):
+  def compute_beamforming_gain(self,fading,n_prbs,H_f,wMS,wBS,MSAntenna,BSAntenna):
     """ This method given the Tx power spectral density, the Fourier Tranform of the 
     impulse response of the channel and the MS and BS beamforming vectors,
     computes the beamforming gain for each prb of the OFDM specrum.
  
-    @type fast_fading: FastFading3gpp Class.
-    @param fast_fading: The fast fading 3gpp channel model object in one point of the path.
+    @type fading: Fading Class.
+    @param fading: The fading channel model object in one point of the path.
     @type n_prbs: int.
     @param n_prbs: number of  prbs in the frequency band.
     @type H_f: 3d numpy array.
@@ -100,8 +103,7 @@ class ChannelPerformance:
     @param wBS: the beamforming vector at the BS. 
     @return: bemaforming Gain for each prb (wMS . H_f[prb].wBS)
     """
-    BSAntenna = fast_fading.BS_antenna
-    MSAntenna = fast_fading.MS_antenna
+
     n_BS = BSAntenna.get_number_of_elements()
     n_MS = MSAntenna.get_number_of_elements()
     G_f = np.zeros((n_prbs),dtype=complex)
@@ -111,21 +113,19 @@ class ChannelPerformance:
          G_f[prb]= G_f[prb] + wMS[i]*H_f[prb][i][j]*wBS[j]
     return G_f
 
-  def compute_Tfourier_H(self,fast_fading,freq_band):
+  def compute_Tfourier_H(self,fading,freq_band,MSAntenna,BSAntenna):
     """ This method computes the fourier transform of the channel matrix for each prb,
     each MS antenna element and each BS antenna element.
 
-    @type fast_fading: FastFading3gpp Class.
-    @param fast_fading: The fast fading 3gpp channel model object in one point of the path.
+    @type fading: Fading3gpp Class.
+    @param fading: The fast fading 3gpp channel model object in one point of the path.
     @type freq_band: FrequencyBnad Class.
     @param freq_band: The frequency band containing the transmited power spectral density and the noise power spctral density for each prb. 
     @return: The fourier transform of the channel matrix for each prb,
     each MS antenna element and each BS antenna element.
     """
-    H_usn = fast_fading.H_usn
+    H_usn = fading.H_usn
     n_clusters = H_usn.shape[2]
-    BSAntenna = fast_fading.BS_antenna
-    MSAntenna = fast_fading.MS_antenna
     n_BS = BSAntenna.get_number_of_elements()
     n_MS = MSAntenna.get_number_of_elements()
     H_us_f = np.zeros((freq_band.n_prbs,n_MS,n_BS),dtype=complex)
@@ -134,11 +134,11 @@ class ChannelPerformance:
       for i in range(n_MS):
         for j in range(n_BS):
           for k  in range(n_clusters):
-            tau = -2 * np.pi * f * fast_fading.tau[k]
+            tau = -2 * np.pi * f * fading.tau[k]
             H_us_f[prb][i][j]= H_us_f[prb][i][j] + H_usn[i][j][k]* np.exp(complex(0, tau))
     return H_us_f
     
-  def compute_path(self,scenario,freq_band,antennaTx,antennaRx,n_mspositions,n_times,force_los,path,mode,scatters_move=False,move_probability=0, v_min_scatters=0,v_max_scatters=0,phi_addTx=0,theta_addTx=0,phi_addRx=0,theta_addRx=0,fix_beamforming=False):               
+  def compute_path(self,fading,freq_band,antennaTx,antennaRx,n_mspositions,n_times,force_los,path,mode,phi_addTx=0,theta_addTx=0,phi_addRx=0,theta_addRx=0,fix_beamforming=False):               
     """ This method computes the wireless channel performance in a mobile path given by the veector of positions and times. This is the
     main method to compute the channel performnce in a path.
     
@@ -155,7 +155,7 @@ class ChannelPerformance:
     @type antennaTx: Class AntennaArray3gpp
     @param antennaTx: The BS antenna array model.
     @type antennaRx: Class AntennaArray3gpp
-    @param antennaRx: The BS antenna array model.
+    @param antennaRx: The MS antenna array model.
     @type n_mspositions: Array.
     @param n_mspositions: Is an array of dimension the number of MS. Each element of the array contains the positions of the MS in its path.
     @type n_times: Array.
@@ -177,12 +177,14 @@ class ChannelPerformance:
     # @return: snr (10 * np.log10(np.sum(rxPsd.psd) /np.sum(noisePsd.psd))), rxPsd (txPsd* 10**(-pathloss-shadowing) * (np.abs(beamforming gain)**2)), the channel matrix Fourier Transform, the beamforming gain, the linear path loss, the snr taking into account only the path loss,
     # the spectral efficiency of the channel, the snr taking into account pathloss and shadow.
     """
+    scenario = fading.scenario
     scenario.force_los = force_los
     freq_band.compute_tx_psd (scenario.Ptx_db)
     nMSs = n_mspositions.shape[0]
     np.savetxt(path+'/nMS.csv', [nMSs], delimiter=',')
-
-    fading = fading = fad.FastFading3gpp(scenario, antennaRx,antennaTx,scatters_move,move_probability,v_min_scatters,v_max_scatters)
+    self.aMS = antennaRx
+    self.aBS = antennaTx
+    #fading = fading = fad.Fading3gpp(scenario, antennaRx,antennaTx,scatters_move,move_probability,v_min_scatters,v_max_scatters)
     self.H = np.empty(shape=(nMSs),dtype = object)
     for ms in range(nMSs):
         times = n_times[ms]
@@ -231,29 +233,123 @@ class ChannelPerformance:
                 corr_distance = scenario.corr_ssp_NLOS
             if mode == 0 or mode ==1 or i == 0 or distance_ini[0] > corr_distance or distance_ini[1] > corr_distance or los_condition != los_ant:
                 t0 = times[i]
-                fading.compute_ch_matrix(pos,msvel,times[i],mode)
+                fading.compute_ch_matrix(pos,msvel,self.aMS,self.aBS,times[i],mode)
                 pos_ini = pos
                 pos0 = pos
             else:
                 d2d = np.linalg.norm(pos_ini-scenario.BS_pos)
                 d3d = d2d
-                fading.update(pos,msvel,t0,times[i],d2d,d3d)
+                fading.update(pos,msvel,self.aMS,self.aBS,t0,times[i],d2d,d3d)
                 t0 = times[i]
                 pos_ini = pos
             fading.save(path,i,ms)
             los_ant = los_condition
             #G = G[i]
             los[i] = fading.scenario.is_los_cond(pos)
-            snr[i],rxpsd[i],H[i],G[i],linear_losses[i],snr_pl[i],sp_eff[i],snr_pl_shadow[i]= self.compute_snr(fading,freq_band,wMS,wBS)
+            snr[i],rxpsd[i],H[i],G[i],linear_losses[i],snr_pl[i],sp_eff[i],snr_pl_shadow[i]= self.compute_snr(fading,freq_band,wMS,wBS,self.aMS,self.aBS)
         
             i = i+1
         self.H[ms] = H
         # curr_time = time.localtime() 
         # hour = time.strftime("%b_%d_%Y_%H_%M_%S",curr_time)
-        self.save(los,snr,rxpsd,H,G,linear_losses, distances,path,snr_pl,sp_eff,snr_pl_shadow,ms,times)     
-        #return snr,rxpsd,H,G,linear_losses, distances,snr_pl,sp_eff
+        self.save_path(los,snr,rxpsd,H,G,linear_losses, distances,path,snr_pl,sp_eff,snr_pl_shadow,ms,times)     
+        return snr,rxpsd,H,G,linear_losses, distances,snr_pl,sp_eff
+        
+  def compute_point(self,fading,freq_band,antennaTx,antennaRx,MSposition,MSvelocity,time,force_los,mode,phi_addTx=0,theta_addTx=0,phi_addRx=0,theta_addRx=0,fix_beamforming=False,update =False,t0=0):               
+    """ This method computes the wireless channel performance in the position of a mobile with a given velocity and in a given simulation time.This is the
+    main method to compute the channel performnce in a point of the path of one mobile.
+    
+    The method computes the performance metrics (snr,rxpsd,H,G,linear_losses, distances,snr_pl,sp_eff) in mobile position.
+    For one point of the path it computes the beamforming vector for the LOS direction, using the 3gpp fading model for that point. This method calls the compute_snr method to compute the performance parameters. 
+    In accordance with the spatial consistency distance, the method recalculates the fading model or updates it only.  
+    
+    @type scenario: Scnario3GPP Class.
+    @param scenario: The 3GPP scenario model.    
+    @type freq_band: FrequencyBnad Class.
+    @param freq_band: The frequency band containing the transmited power spectral density and the noise power spctral density for each prb. 
+    @type antennaTx: Class AntennaArray3gpp
+    @param antennaTx: The BS antenna array model.
+    @type antennaRx: Class AntennaArray3gpp
+    @param antennaRx: The BS antenna array model.
+    @type MSposition: Array.
+    @param MSposition: The position of the MS in its path.
+    @type time: float.
+    @param time:The simulation time in seconds corresponding to the position of the MS.
+    @type force_los: int.
+    @param force_los: 0 if LOS is forced to False, 1 if LOS is forced to True and 2 if LOS is computed from the scenario probability model.
+    @type phi_addTx: float.
+    @param phi_addTx: Additional Tx azimuth rotation angle to the LOS angle in the beamforming vector.
+    @type theta_addTx: float.
+    @param theta_addTx: additional Tx inclination rotation angle to the LOS angle in the beamforming vector.
+    @type phi_addRx: float.
+    @param phi_addRx: Additional Rx azimuth rotation angle to the LOS angle in the beamforming vector.
+    @type theta_addRx: float.
+    @param theta_addRx: additional Rx inclination rotation angle to the LOS angle in the beamforming vector.
+    @type path: string
+    @param path: The directory path to save the results of the simulation.
+    @type fix_beamforming: Boolean
+    @param fix_beamforming: False if the AOA and AOD for the beamforming vector is computed using the LOS between the BS and MS positions. True if AOD and AOA are fixed with phi_addTx,theta_addTx and phi_addRx, theta_addRx .
+    # @return: snr (10 * np.log10(np.sum(rxPsd.psd) /np.sum(noisePsd.psd))), rxPsd (txPsd* 10**(-pathloss-shadowing) * (np.abs(beamforming gain)**2)), the channel matrix Fourier Transform, the beamforming gain, the linear path loss, the snr taking into account only the path loss,
+    # the spectral efficiency of the channel, the snr taking into account pathloss and shadow.
+    """
+   
 
-  def save(self,los,snr,rxpsd,H,G,linear_losses, distances,path,snr_pl,sp_eff,snr_pl_shadow,ms,times):
+    self.aMS = antennaRx
+    self.aBS = antennaTx
+    fading.scenario.force_los = force_los
+    freq_band.compute_tx_psd (fading.scenario.Ptx_db)
+
+    n_BS = antennaTx.get_number_of_elements()
+    n_MS = antennaRx.get_number_of_elements()
+    
+    H = np.zeros((freq_band.n_prbs,n_MS,n_BS),dtype=complex)
+    G = np.zeros((freq_band.n_prbs),dtype=complex)
+    rxpsd = np.empty((freq_band.n_prbs))
+
+    if fix_beamforming:
+        wBS = antennaTx.compute_phase_steering (0,np.pi/2,phi_addTx,theta_addTx)
+        wMS = antennaRx.compute_phase_steering (0,np.pi/2,phi_addRx,theta_addRx)
+    else:
+        dAngle = ang.Angles(0,0)
+        dAngle.get_angles_vectors(MSposition,fading.scenario.BS_pos)
+        aAngle = ang.Angles(0,0)
+        aAngle.get_angles_vectors(fading.scenario.BS_pos,MSposition)
+        wBS = antennaTx.compute_phase_steering (dAngle.phi,dAngle.theta)
+        wMS = antennaRx.compute_phase_steering (aAngle.phi,aAngle.theta)
+    # if los_condition:
+    #     corr_distance = fadingscenario.corr_ssp_LOS
+    # else:
+    #     corr_distance = scenario.corr_ssp_NLOS
+    # if mode == 0 or mode ==1 or i == 0 or distance_ini[0] > corr_distance or distance_ini[1] > corr_distance or los_condition != los_ant:
+    #     t0 = times[i]
+    #     fading.compute_ch_matrix(pos,msvel,times[i],mode)
+    #     pos_ini = pos
+    #     pos0 = pos
+    # else:
+    #     d2d = np.linalg.norm(pos_ini-scenario.BS_pos)
+    #     d3d = d2d
+    #     fading.update(pos,msvel,t0,times[i],d2d,d3d)
+    #     t0 = times[i]
+    #     pos_ini = pos
+    # los_ant = los_condition
+    #G = G[i]
+
+    start_time = perf_counter()
+    if update == False:
+            fading.compute_ch_matrix(MSposition,MSvelocity,self.aMS,self.aBS,time,mode)
+    else:
+           d2d = np.linalg.norm(MSposition-fading.scenario.BS_pos)
+           d3d = d2d
+           fading.update(MSposition,MSvelocity,self.aMS,self.aBS,t0,time,d2d,d3d)
+    midle_time = perf_counter()
+
+    snr,rxpsd,H,G,linear_losses,snr_pl,sp_eff,snr_pl_shadow= self.compute_snr(fading,freq_band,wMS,wBS,self.aMS,self.aBS)
+    end_time = perf_counter()
+    return snr,rxpsd,H,G,linear_losses,snr_pl,sp_eff,snr_pl_shadow
+
+  
+
+  def save_path(self,los,snr,rxpsd,H,G,linear_losses, distances,path,snr_pl,sp_eff,snr_pl_shadow,ms,times):
     """ This method save to disk the performance mtrics of the path.
 
     @type los: 1D Array

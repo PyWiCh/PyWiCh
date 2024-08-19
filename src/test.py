@@ -6,18 +6,20 @@ Created on Tue Jul 26 16:05:45 2022
 @author: pablobelzarena
 """
 import scenarios as sc
+import fading as fad
 import antennas as antennas
 import channel_performance as cp
 import frequency_band as fb
 import numpy as np
 import os,sys
 import errno
+import datetime
 
 sys.path.append('./src')
 sys.path.append('./src/gui')
 sys.path.append('./src/graph')
 
-SIM_NAME = "test" #the name of the simulation. Used to give the name 
+SIM_NAME = "test5" #the name of the simulation. Used to give the name 
 #to the directory where to store the simulation results
 
 ######## Build and configure the receive and transmit antennas 
@@ -72,15 +74,15 @@ scf.save(path)
 aBS.save(path)
 aMS.save(path)
 freq_band.save(path)
-
+fading = fad.Fading3gpp(scf)
 ###################### Mobile stations routes configuratiom
 n_MS = 1 # number of MSs in this simulation
 positions = np.empty(shape=(n_MS),dtype = object) # The positions of the route of all MSs
-mspositions1= np.array(([10,10,2],[20,10,2])) # The positions of the MS 1. It has only two points in its route.
+mspositions1= np.array(([10,10,2],[20,10,2],[30,10,2],[40,10,2],[50,10,2],[60,10,2],[70,10,2],[80,10,2])) # The positions of the MS 1. It has only two points in its route.
 positions[0] = mspositions1
 times  = np.empty(shape=(n_MS),dtype = object) # The times of each point in the MS route
-timesMS1 = np.array(([0,0.01])) # Th first point of the route is in simulation time 0 s and the second in the simulation time 0.1 s.
+timesMS1 = np.array(([0,0.01,0.02,0.03,0.04,0.05,0.06,0.07])) # Th first point of the route is in simulation time 0 s and the second in the simulation time 0.01 s.
 times[0] = timesMS1
- # The path to save the results of the simulation.
-performance.compute_path(scf, freq_band, aMS,aBS,positions,times,force_los,path,mode=2,scatters_move=False,move_probability=0,v_min_scatters=0,v_max_scatters=10)               
+performance.compute_path(fading, freq_band, aMS,aBS,positions,times,force_los,path,mode=2,)  
+
 #####################################################
