@@ -125,9 +125,10 @@ def graph_pathloss(cname,fcGHz,posx_min,posx_max,posy_min,posy_max,grid_number,b
   pl_3gppUmiNlos = np.zeros(n_points) 
   
   path_losses = np.zeros((len(tit),n_points))
-  scFriis = sc.ScenarioFriis(fcGHz,posx_min,posx_max,posy_min,posy_max,grid_number,bspos,Ptx_db)
+  order = 2
+  scFriis = sc.ScenarioSimpleLossModel(fcGHz,posx_min,posx_max,posy_min,posy_max,grid_number,bspos,Ptx_db,order)
   order = 4
-  scLOS = sc.ScenarioSimpleLOS(fcGHz,posx_min,posx_max,posy_min,posy_max,grid_number,bspos,Ptx_db,order)
+  scLOS = sc.ScenarioSimpleLossModel(fcGHz,posx_min,posx_max,posy_min,posy_max,grid_number,bspos,Ptx_db,order)
   sc3gppIndoorLos =  sc.Scenario3GPPInDoor(fcGHz,posx_min,posx_max,posy_min,posy_max,grid_number,bspos,Ptx_db)
   sc3gppIndoorNLos =  sc.Scenario3GPPInDoor(fcGHz,posx_min,posx_max,posy_min,posy_max,grid_number,bspos,Ptx_db)
   

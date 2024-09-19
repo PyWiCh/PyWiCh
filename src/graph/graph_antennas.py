@@ -274,8 +274,8 @@ def plot_3d_pattern_array_factor_product(antenna,phi_add,theta_add):
     ax.grid(True)
     ax.axis('on')
     surf = ax.plot_surface(X, Y, Z, rstride=1, cstride=1, linewidth=0.1, color='b',edgecolors='w', shade=False , antialiased=True,label = " Antenna array" )# antialiased=True, shade=False ,,cmap = 'gnuplot',  alpha=0.5, zorder = 0.5)#facecolors=mycol,facecolors=mycol,
-    surf._edgecolors2d = surf._edgecolors3d
-    surf._facecolors2d = surf._facecolors3d
+    surf._edgecolors2d = surf._edgecolor3d
+    surf._facecolors2d = surf._facecolor3d
 
     i= 0
     for p in PHI:
@@ -289,8 +289,8 @@ def plot_3d_pattern_array_factor_product(antenna,phi_add,theta_add):
             j=j+1
         i = i+1
     surf1 = ax.plot_surface(X, Y, Z,rstride=1, cstride=1, linewidth=0.1,color='r', shade=False ,edgecolors='w',  antialiased=True,label = "Antenna element" ) #,rstride=1, cstride=1, linewidth=0.1, antialiased=True, shade=False , edgecolor='none',,cmap='viridis'  facecolors=mycol,facecolors=mycol,
-    surf1._edgecolors2d = surf1._edgecolors3d
-    surf1._facecolors2d = surf1._facecolors3d
+    surf1._edgecolors2d = surf1._edgecolor3d
+    surf1._facecolors2d = surf1._facecolor3d
     ax.legend()
     ax.set_xlabel('X')
     ax.set_ylabel('Y')

@@ -394,14 +394,15 @@ class AppScenarios():
         try:
             nMS = int(self.ent_nMS.get())
             for i in range(nMS):
-                if self.MSs_move[i] == None:
+                print(self.MSs_move[i])
+                if self.MSs_move[i] is None:
                     gum.AppUserMsg("Error message", " You must configure the Movement of all MSs" )
                     return
             cname = self.lb.curselection()
             bspos = np.array([float(self.ent_bsx.get()),float(self.ent_bsy.get()),float(self.ent_bsz.get())])
             self.function_cbk(cname,float(self.ent_fc.get()),float(self.ent_xmin.get()),float(self.ent_xmax.get()),float(self.ent_ymin.get()),float(self.ent_ymax.get()),int(self.ent_grid.get()),bspos,float(self.ent_ptx.get()),self.var,self.MSs_move,self.vmove.get(),self.move_probability,self.v_min_scatters,self.v_max_scatters,self.vmode.get())
         except BaseException as error:
-            gum.AppUserMsg('Exception occurred!','{}'.format(error)+ " try again please!" )
+           gum.AppUserMsg('Exception occurred in Scenario!','{}'.format(error)+ " try again please!" )
     
     def cmd_gr_pl(self):
         """ This method is called when the user press the graph path loss button.

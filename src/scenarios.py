@@ -239,71 +239,7 @@ class Scenario:
     return shadow
 
 
-# class ScenarioFriis(Scenario):
-#   """This class implements the Friis loss model scenario.
-#   """
-#   def __init__(self,fcGHz,posx_max,posx_min,posy_max,posy_min,grid_number,bspos,Ptx_db,sigma_shadow=2,shadow_corr_distance=10):
-#     """ The constructor of the Friis loss model scenario. It Calls the parent class constructor.
-    
-#     @type fcGHz: float .
-#     @param fcGHz: Frequency in GHz of the carrier frequency of the scenario.
-#     @type posx_min: float .
-#     @param posx_min: The minimum limit of the x coordinate in the scenario. 
-#     @type posx_max: float .
-#     @param posx_max: The maximum limit of the x coordinate in the scenario. 
-#     @type posy_min: float .
-#     @param posy_min: The minimum limit of the y coordinate in the scenario. 
-#     @type posy_max: float .
-#     @param posy_max: The maximum limit of the y coordinate in the scenario. 
-#     @type grid_number: int .
-#     @param grid_number: For calculating the spacial distribution of the parameters of the scenario, 
-#     the scenario is divided by a grid in x and y cordinates. This value is the number of divisions in each coordinate. 
-#     @type bspos: 3d array or list .
-#     @param bspos: The position of the Base Satation in the scenario in the coordinates system [x,y,z].
-#     @type Ptx_db: float.
-#     @param Ptx_db: The power transmited by the base station in db. 
-#     """ 
-#     super().__init__(fcGHz,posx_max,posx_min,posy_max,posy_min,grid_number,bspos,Ptx_db,sigma_shadow,shadow_corr_distance)
-#     self.loss = 0
-#     """ The path loss """ 
-  
-    
-#   def __set_params(self,d2d,h_MS):
-#     """ This  sets the params of the scenario. Not used in this scenario
-    
-#     @type d2d: float.
-#     @param d2d: The distance between the BS and MS positions.
-#     @type h_MS: float.
-#     @param h_MS: The MS antenna height.
 
-#     """
-#     pass
-
-#   def get_loss_los(self,distance,h_MS =1): 
-#     """ This method computes the path loss of the scenario using the Friis equation. 
-
-#     @type distance: float.
-#     @param distance: The distance between the BS and MS positions.
-#     @type h_MS: float.
-#     @param h_MS: The MS antenna height. Default value 1.
-#     @return: -20*np.log10(3e8/4/np.pi/self.fcGHz/1e9) + 20*np.log10(distance)
-#     """ 
-#     self.loss = 0
-#     if distance > 0:
-#         self.loss = -20*np.log10(3e8/4/np.pi/self.fcGHz/1e9) + 20*np.log10(distance)
-#     return self.loss
-  
-#   def get_loss_nlos(self,distance,h_MS=1):
-#     """ This method computes the path loss of the scenario using the Friis equation. The Friis
-#     model asumes LOS condition so the loss y the NLOS condition calls the  get_loss_los method.
-
-#     @type distance: float.
-#     @param distance: The distance between the BS and MS positions.
-#     @type h_MS: float.
-#     @param h_MS: The MS antenna height. Default value 1.
-#     @return: get_loss_los(distance,h_MS)
-#     """     
-#     return self.get_loss_los(distance,h_MS)
    
 
 class ScenarioSimpleLossModel(Scenario):
@@ -334,7 +270,7 @@ class ScenarioSimpleLossModel(Scenario):
     @param order: The order of the exponent of the distance in the loss model.
     """ 
     super().__init__(fcGHz,posx_max,posx_min,posy_max,posy_min,grid_number,bspos,Ptx_db,sigma_shadow,shadow_corr_distance)
-    self._brder = order
+    self._order = order
     """ The order of the exponent of the distance in the loss model. """ 
     self.loss = 0
     """ The path loss """ 
@@ -361,7 +297,7 @@ class ScenarioSimpleLossModel(Scenario):
     """ 
     self.loss = 0
     if distance > 0:
-        self.loss = -20*np.log10(3e8/4/np.pi/self.fcGHz/1e9) +10*np.log10( (distance)**self._brder)
+        self.loss = -20*np.log10(3e8/4/np.pi/self.fcGHz/1e9) +10*np.log10( (distance)**self._order)
     return self.loss
   
   def get_loss_nlos (self,distance,h_MS=1):
